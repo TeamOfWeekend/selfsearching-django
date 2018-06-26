@@ -1,4 +1,4 @@
-"""selfsearching URL Configuration
+"""learning_log URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -14,8 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('admin_app.urls', namespace='admin_app')),
+    path('', include('users.urls', namespace='users')),
+    path('', include('learning_logs.urls', namespace='learning_logs')),
+    path('', include('small_tools.urls', namespace='small_tools')),
 ]
