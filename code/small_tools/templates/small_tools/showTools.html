@@ -1,0 +1,18 @@
+{% extends "admin_app/base.html" %}
+{% load bootstrap3 %}
+
+{% block header %}
+	<h2>Small tools</h2>
+{% endblock header %}
+
+{% block content %}
+	
+	<ul>
+		<li>
+			<h3>
+				<a href="{% url 'small_tools:mibToCode' %}">Snmp mib表代码生成工具</a>
+			</h3>
+		</li>
+	</ul>
+	
+{% endblock content %}
