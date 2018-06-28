@@ -8,10 +8,15 @@ from .forms import TopicForm, EntryForm, Entry
 
 # Create your views here.
 
+#render()：用数据渲染Html文件
+#reverse()：反向解析，从html文件名反向解析到url
+
+
 #@login_required -- 注释掉该修饰器，否则用户未登录时不能进行跳转
 def topics(request):
 	"""显示所有的主题"""
 	if request.user.is_authenticated:
+		#从数据库中查找某用户的所有主题，并按添加日期降序排列
 		topics = Topic.objects.filter(owner=request.user).order_by('date_added')
 		context = {'topics': topics}
 		return render(request, 'learning_logs/topics.html', context)
@@ -26,7 +31,7 @@ def topic(request, topic_id):
 	#确认请求的主题是否属于当前用户
 	if topic.owner != request.user:
 		return Http404
-		
+
 	#'-'表示降序排列
 	entries = topic.entry_set.order_by('-date_added')
 	context = {'topic':topic, 'entries':entries}
