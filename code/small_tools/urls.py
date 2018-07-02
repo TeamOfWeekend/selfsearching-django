@@ -19,4 +19,7 @@ urlpatterns = [
 
     #snmp mib代码自动生成工具
 	path('mibToCode/', views.mibToCode, name='mibToCode'),
+
+	#snmp mib代码自动生成工具
+	path('algoString/', views.algoString, name='algoString'),
 ]

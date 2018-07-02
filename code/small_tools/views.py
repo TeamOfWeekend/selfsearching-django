@@ -11,3 +11,8 @@ def showTools(request):
 def mibToCode(request):
 	"""学习笔记的首页"""
 	return render(request, 'small_tools/mibToCode.html')
+
+
+def algoString(request):
+	"""学习笔记的首页"""
+	return render(request, 'small_tools/algoString.html')
