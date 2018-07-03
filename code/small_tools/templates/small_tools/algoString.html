@@ -7,34 +7,44 @@
 
 {% block content %}
 
-	<table cellspacing="10">
-		<tr>
-			<td>选择一个算法：</td>
-			<td colspan="2">
-				<select name="grade">
-					<option value="middle_school">高中及以下</option>
-					<option value="high_school">专科</option>
-					<option value="bachlor" selected="selected">本科</option>
-					<option value="master">研究生及以上</option>
-				</select>
-			</td>
-		</tr>
+	<form action="" method="POST">
+		{% csrf_token %}
 
-		<p></p>
-
-		<tr>
-			<td colspan = "2">输入一个字符串：</td>
-		</tr>
-		<tr>
-			<td colspan="4"><textarea name="result" rows="5" cols="80"></textarea></td>
-		</tr>
-
-		<tr>
-			<td colspan = "2">结果：</td>
+		<table cellspacing="10">
+			<tr>
+				<td>选择一个算法：</td>
+				<td colspan="2">
+					<select name="algoName">
+						<option value="middle_school">高中及以下</option>
+						<option value="high_school">专科</option>
+						<option value="bachlor" selected="selected">本科</option>
+						<option value="master">研究生及以上</option>
+					</select>
+				</td>
 			</tr>
-		<tr>
-			<td colspan="4"><textarea name="result" rows="5" cols="80"></textarea></td>
-		</tr>
-	</table>
+
+			<tr>
+				<td colspan = "2">输入一个字符串：</td>
+			</tr>
+			<tr>
+				<td colspan="4"><textarea name="strInput" rows="5" cols="80"></textarea></td>
+			</tr>
+
+			<tr>
+				<td colspan = "2">结果：</td>
+				</tr>
+			<tr>
+				<td colspan="4"><textarea name="strOutput" rows="5" cols="80">{{ strOutput }}</textarea></td>
+			</tr>
+
+			<tr>
+				<td>
+					{% buttons %}
+						<button name="submit" class="btn btn-primary">calc</button>
+					{% endbuttons %}
+				</td>
+			</tr>
+		</table>
+	</form>
 	
 {% endblock content %}
