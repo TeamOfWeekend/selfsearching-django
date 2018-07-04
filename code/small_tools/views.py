@@ -16,22 +16,18 @@ def mibToCode(request):
 
 
 def algoString(request):
-	"""学习笔记的首页"""
-	processAlgoStringData(request)
-	return render(request, 'small_tools/algoString.html')
-
-
-def processAlgoStringData(request):
 	"""获取并处理algoString.html数据"""
-	strOutput = 'test'
+	return render(request, 'small_tools/algoString.html')
 	if request.method == 'POST':
 		# 获取前端数据
-		algoName = request.POST.get('algoName','')
-		strInput = request.POST.get('strInput', '')
+		# algoName = request.POST.get('algoName','')
+		# strInput = request.POST.get('strInput', '')
 		#进行数据处理
-		context = {'strOutput': strOutput}
-		return render(request, 'small_tools/algoString.html', context)
-
+		# strOutput = strInput[:]
+		# context = {'strOutput': strOutput}
+		#return render(request, 'small_tools/algoString.html', context)
+		return render(request, 'small_tools/algoString.html')
 	else:
-		context = {'strOutput': strOutput}
-		return render(request, 'small_tools/algoString.html', context)
+		return render(request, 'small_tools/algoString.html')
+
+
