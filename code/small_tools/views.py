@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .smallToolsSet import algoStringSet
-import os
+
 # Create your views here.
 
 
@@ -20,11 +20,10 @@ def algoString(request):
 	"""获取并处理algoString.html数据"""
 	if request.is_ajax():
 		#algoName = request.GET['algoName']
-		#print(algoName)
 		strInput = request.GET['strInput']
 		strOutput = algoStringSet.deleteRepeatedChars(strInput)
 		return HttpResponse(strOutput)
 	else:
-		algoNames = algoStringSet.showAllStringAlgos()
+		algoNames = algoStringSet.getAllStringAlgos()
 		context = {'algoNames': algoNames}
 		return render(request, 'small_tools/algoString.html', context)

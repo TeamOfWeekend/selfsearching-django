@@ -14,9 +14,8 @@ ALL_STRING_ALGOS = (
 )
 
 
-def showAllStringAlgos():
-    algoNames = ALL_STRING_ALGOS[:]
-    return algoNames
+def getAllStringAlgos():
+    return ALL_STRING_ALGOS
 
 
 def deleteRepeatedChars(strInput):

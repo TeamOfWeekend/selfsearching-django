@@ -1,5 +1,4 @@
 {% extends "admin_app/base.html" %}
-{% load bootstrap3 %}
 
 {% block header %}
 	<h2>字符串处理工具</h2>
@@ -47,13 +46,13 @@
 		$(document).ready(function (){
 
 			$("#btn").click(function () {
-				var algoName = $('#algoName option:selected").text();
+				//val algoName = $('#algoName').find('option:selected').text();
 				var strInput = $('#strInput').val();
-				$.get("algoString", {'algoName':algoName, 'strInput':strInput}, function(data){
-					$('#strOutput').html(data)
+				$.get("/algoString/", {'strInput':strInput}, function(data){
+					$('#strOutput').text(data);
 				});
 			});
-		})
+		});
 	</script>
 	
 {% endblock content %}
