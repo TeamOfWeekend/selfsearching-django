@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .smallToolsSet import algoStringSet
+from .smallToolsSet import algoStringApi
 
 # Create your views here.
 
@@ -19,11 +19,11 @@ def mibToCode(request):
 def algoString(request):
 	"""获取并处理algoString.html数据"""
 	if request.is_ajax():
-		#algoName = request.GET['algoName']
+		algoName = request.GET['algoSelect']
 		strInput = request.GET['strInput']
-		strOutput = algoStringSet.deleteRepeatedChars(strInput)
+		strOutput = algoStringApi.processString(algoName, strInput)
 		return HttpResponse(strOutput)
 	else:
-		algoNames = algoStringSet.getAllStringAlgos()
+		algoNames = algoStringApi.getAllStringAlgos()
 		context = {'algoNames': algoNames}
 		return render(request, 'small_tools/algoString.html', context)

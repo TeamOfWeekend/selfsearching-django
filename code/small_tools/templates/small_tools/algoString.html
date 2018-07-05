@@ -10,9 +10,9 @@
 		{% csrf_token %}
 
 		<div class="form-group">
-			<label for="algoName" class="col-sm-2 control-label">选择一个算法</label>
+			<label for="algoSelect" class="col-sm-2 control-label">选择一个算法</label>
 			<div class="col-sm-10">
-				<select class="form-control" id="algoName">
+				<select class="form-control" id="algoSelect">
 					{% for algoName in algoNames %}
 				  		<option>{{ algoName }}</option>
 				  	{% empty %}
@@ -46,9 +46,9 @@
 		$(document).ready(function (){
 
 			$("#btn").click(function () {
-				//val algoName = $('#algoName').find('option:selected').text();
+				var value=$("#algoSelect option:selected").val();
 				var strInput = $('#strInput').val();
-				$.get("/algoString/", {'strInput':strInput}, function(data){
+				$.get("/algoString/", {'algoSelect':value,'strInput':strInput}, function(data){
 					$('#strOutput').text(data);
 				});
 			});

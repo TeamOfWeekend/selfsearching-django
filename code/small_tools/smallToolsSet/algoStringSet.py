@@ -9,19 +9,16 @@
 """
 
 
-ALL_STRING_ALGOS = (
-    '删除字符串中的重复字符',
-)
-
-
-def getAllStringAlgos():
-    return ALL_STRING_ALGOS
-
-
 def deleteRepeatedChars(strInput):
+    """删除一个字符串中的重复字符"""
     strOutput = ''
     strOutput += strInput[0]
     for i in range(1, len(strInput)):
         if strOutput.find(strInput[i]) < 0:
             strOutput += strInput[i]
     return strOutput
+
+
+def getCharRepeatCount(strInput):
+    """计算一个字符串中每个字符重复出现的次数"""
+    pass
