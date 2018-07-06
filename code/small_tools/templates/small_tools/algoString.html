@@ -46,7 +46,7 @@
 		$(document).ready(function (){
 
 			$("#btn").click(function () {
-				var value=$("#algoSelect option:selected").val();
+				var value=$('#algoSelect option:selected').val();
 				var strInput = $('#strInput').val();
 				$.get("/algoString/", {'algoSelect':value,'strInput':strInput}, function(data){
 					$('#strOutput').text(data);

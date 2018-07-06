@@ -21,4 +21,10 @@ def deleteRepeatedChars(strInput):
 
 def getCharRepeatCount(strInput):
     """计算一个字符串中每个字符重复出现的次数"""
-    pass
+    strOutput = '%-10s ：%d\n'%('字符串长度',len(strInput))
+    strOutput += '%-7s ：\n'%('重复字符统计')
+    strInput_temp = deleteRepeatedChars(strInput)
+    for i in range(len(strInput_temp)):
+        cnt = strInput.count(strInput_temp[i])
+        strOutput += ('(' + strInput_temp[i] + ' : ' + str(cnt) + ')')
+    return strOutput

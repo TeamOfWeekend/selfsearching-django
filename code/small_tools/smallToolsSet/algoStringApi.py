@@ -12,6 +12,7 @@ from . import algoStringSet
 
 ALL_STRING_ALGOS = {
     '删除字符串中的重复字符': algoStringSet.deleteRepeatedChars,
+    '统计字符串中每个字符出现的次数': algoStringSet.getCharRepeatCount,
 }
 
 
