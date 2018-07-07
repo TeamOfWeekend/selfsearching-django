@@ -23,8 +23,13 @@ def getCharRepeatCount(strInput):
     """计算一个字符串中每个字符重复出现的次数"""
     strOutput = '%-10s ：%d\n'%('字符串长度',len(strInput))
     strOutput += '%-7s ：\n'%('重复字符统计')
+    #删除重复字符
     strInput_temp = deleteRepeatedChars(strInput)
+    #进行排序，达到更友好的呈现效果
+    strInput_temp = "".join((lambda x:(x.sort(), x)[1])(list(strInput_temp)))
     for i in range(len(strInput_temp)):
         cnt = strInput.count(strInput_temp[i])
-        strOutput += ('(' + strInput_temp[i] + ' : ' + str(cnt) + ')')
+        strOutput += (" ('" + strInput_temp[i] + "' : " + str(cnt) + ") ")
+        if 0 == (i + 1)%16:
+            strOutput += '\n'
     return strOutput
