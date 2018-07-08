@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .forms import AlgoStringForm
 from .smallToolsSet import algoStringApi
 
 # Create your views here.
@@ -24,6 +25,9 @@ def algoString(request):
 		strOutput = algoStringApi.processString(algoName, strInput)
 		return HttpResponse(strOutput)
 	else:
-		algoNames = algoStringApi.getAllStringAlgos()
-		context = {'algoNames': algoNames}
+		algoStringForm = AlgoStringForm()
+		algoStringForm.fields['algoName'].choices = algoStringApi.getAllStringAlgos().keys()
+		algoStringForm.algoName.initial =  algoStringForm.fields['algoName'].choices[0]
+		#algoNames = algoStringApi.getAllStringAlgos()
+		context = {'algoStringForm': algoStringForm}
 		return render(request, 'small_tools/algoString.html', context)

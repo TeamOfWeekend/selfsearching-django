@@ -127,18 +127,20 @@ USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+
 #我的设置
 LOGIN_URL = '/users/url'
 
 
 #django-bootstrap3的设置
+#在此处添加jquery，不需要在html中再包含jquery了
 BOOTSTRAP3 = {
 	'include_jquery': True,
 }
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+
