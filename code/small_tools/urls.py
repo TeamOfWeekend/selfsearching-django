@@ -20,6 +20,9 @@ urlpatterns = [
     #snmp mib代码自动生成工具
 	path('mibToCode/', views.mibToCode, name='mibToCode'),
 
-	#snmp mib代码自动生成工具
+	#字符串处理算法页面
 	path('algoString/', views.algoString, name='algoString'),
+
+	#正则表达式学习页面
+	path('algoRegix/', views.algoRegix, name='algoRegix'),
 ]
