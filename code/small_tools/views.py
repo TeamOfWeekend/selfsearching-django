@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .forms import AlgoStringForm
+import os
+import json
+
 from .smallToolsSet import algoStringApi
 
 # Create your views here.
@@ -25,9 +27,42 @@ def algoString(request):
 		strOutput = algoStringApi.processString(algoName, strInput)
 		return HttpResponse(strOutput)
 	else:
-		algoStringForm = AlgoStringForm()
-		algoStringForm.fields['algoName'].choices = algoStringApi.getAllStringAlgos().keys()
-		algoStringForm.algoName.initial =  algoStringForm.fields['algoName'].choices[0]
-		#algoNames = algoStringApi.getAllStringAlgos()
-		context = {'algoStringForm': algoStringForm}
+		algoNames = algoStringApi.getAllStringAlgos()
+		context = {'algoNames': algoNames}
 		return render(request, 'small_tools/algoString.html', context)
+
+
+def algoRegix(request):
+	"""正则表达式学习"""
+	if request.method == 'POST':
+		print("postttttttttttttttttttttttttttttt")
+		fileUpload = request.FILES.get('fileUpload')
+		if fileUpload:
+			print('接收到了上传的文件')
+		else:
+			print('没有接收到了上传的文件')
+		strOutput = 'fdjksfjdlsfjlsdjf'
+		# return render(request, 'small_tools/algoRegix.html', {'strOutput':strOutput})
+		return HttpResponse(strOutput)
+	else:
+		print("gettttttttttttttttttttttttttttttt")
+		return render(request, 'small_tools/algoRegix.html')
+	# if request.method == 'GET':
+	# 	img_list = models.Img.objects.all()
+	# 	return render(request, 'upload.html', {'img_list': img_list})
+	# elif request.method == "POST":
+	# 	user = request.POST.get('user')
+	# 	fafafa = request.POST.get('fafafa')
+    #
+	# 	obj = request.FILES.get('fafafa')
+	# 	# print(obj.name,obj.size)  #读取文件名称和大小，返回后台
+	# 	# print(user,fafafa)
+	# 	file_path = os.path.join('static', 'upload', obj.name)
+	# 	f = open(file_path, 'wb')
+	# 	for chunk in obj.chunks():
+	# 		f.write(chunk)
+	# 	f.close()
+	# 	models.Img.objects.create(path=file_path)
+    #
+	# 	ret = {'status': True, 'path': file_path}
+	# 	return HttpResponse(json.dumps(ret))

@@ -1,7 +1,7 @@
 {% extends "admin_app/base.html" %}
 
 {% block header %}
-	<h2>正则表达式学习</h2>
+	<h2>正则表达式工具  <small>(上传一个文本文件或输入一个字符串)</small></h2>
 {% endblock header %}
 
 {% block content %}
@@ -10,9 +10,9 @@
 		{% csrf_token %}
 
 		<div class="form-group">
-			<label for="loadFile" class="col-sm-2 control-label">上传一个文件</label>
+			<label class="col-sm-2 control-label">上传一个文件</label>
 			<div class="col-sm-2">
-				<input type="file" id="loadFile" name="file" accept="text/plain, application/msword">
+				<input type="file" id="fileUpload" name="fileUpload" accept="text/plain, application/msword">
 			</div>
 		</div>
 
@@ -51,13 +51,28 @@
 	</form>
 
 	<script>
+
 		$(document).ready(function (){
 
-			$("#btn").click(function () {
-				var value=$('#algoSelect option:selected').val();
-				var strInput = $('#strInput').val();
-				$.get("/algoString/", {'algoSelect':value,'strInput':strInput}, function(data){
-					$('#strOutput').text(data);
+			$("#btn").click(function (){
+				//if(undefined == fileUpload){
+				//	alert('你没有选中任何文件');
+				//	return false;
+				//}
+				$.ajax({	//提交ajax请求
+					url: "{% url 'small_tools:algoRegix' %}",
+					type: 'POST',
+					data: {
+						"fileUpload" : $('#fileUpload')[0].files[0],
+						"csrfmiddlewaretoken" : $("[name='csrfmiddlewaretoken']").val(),
+					},
+					processDate: false,		//tell jquery not to process the data
+					contentType: false,		//tell jquery not to set contentType
+					success: function(data) {
+						//$('#strOutput').text(data);
+						if(data)
+							alert(data);
+					}
 				});
 			});
 		});
