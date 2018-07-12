@@ -34,13 +34,15 @@ def algoString(request):
 
 def algoRegix(request):
 	"""正则表达式学习"""
-	if request.method == 'POST':
+	if request.is_ajax():
 		print("postttttttttttttttttttttttttttttt")
+		strInput = request.POST.get('strInput')
+		print(strInput)
 		fileUpload = request.FILES.get('fileUpload')
 		if fileUpload:
 			print('接收到了上传的文件')
 		else:
-			print('没有接收到了上传的文件')
+			print('没有接收到上传的文件')
 		strOutput = 'fdjksfjdlsfjlsdjf'
 		# return render(request, 'small_tools/algoRegix.html', {'strOutput':strOutput})
 		return HttpResponse(strOutput)

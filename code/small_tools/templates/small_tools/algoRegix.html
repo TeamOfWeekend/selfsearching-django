@@ -55,23 +55,24 @@
 		$(document).ready(function (){
 
 			$("#btn").click(function (){
-				//if(undefined == fileUpload){
-				//	alert('你没有选中任何文件');
-				//	return false;
-				//}
+				if(undefined == fileUpload){
+					alert('你没有选中任何文件');
+					return false;
+				}
+
 				$.ajax({	//提交ajax请求
 					url: "{% url 'small_tools:algoRegix' %}",
 					type: 'POST',
 					data: {
 						"fileUpload" : $('#fileUpload')[0].files[0],
-						"csrfmiddlewaretoken" : $("[name='csrfmiddlewaretoken']").val(),
+						"strInput" : $('#strInput').val(),
+						"csrfmiddlewaretoken" : $("[name='csrfmiddlewaretoken']").val()
 					},
 					processDate: false,		//tell jquery not to process the data
 					contentType: false,		//tell jquery not to set contentType
 					success: function(data) {
-						//$('#strOutput').text(data);
 						if(data)
-							alert(data);
+							$('#strOutput').text(data);
 					}
 				});
 			});

@@ -1,7 +1,7 @@
 """定义learning_logs的URL模式"""
 
 from django.urls import path, re_path
-
+from django.views.decorators.csrf import csrf_exempt
 
 from . import views
 
@@ -24,5 +24,5 @@ urlpatterns = [
 	path('algoString/', views.algoString, name='algoString'),
 
 	#正则表达式学习页面
-	path('algoRegix/', views.algoRegix, name='algoRegix'),
+	path('algoRegix/', csrf_exempt(views.algoRegix), name='algoRegix'),
 ]
