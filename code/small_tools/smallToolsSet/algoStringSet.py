@@ -8,7 +8,6 @@
 @desc:
 """
 
-
 def deleteRepeatedChars(strInput):
     """删除一个字符串中的重复字符"""
     strOutput = ''

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from django.views.decorators.csrf import csrf_exempt
 import os
 import json
 
@@ -32,6 +32,7 @@ def algoString(request):
 		return render(request, 'small_tools/algoString.html', context)
 
 
+@csrf_exempt
 def algoRegix(request):
 	"""正则表达式学习"""
 	if request.is_ajax():

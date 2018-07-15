@@ -6,7 +6,7 @@
 
 {% block content %}
 
-	<form class="form-horizontal" role="form">
+	<form class="form-horizontal" role="form" id="form">
 		{% csrf_token %}
 
 		<div class="form-group">
@@ -51,29 +51,81 @@
 	</form>
 
 	<script>
+		function getCookie(name) {
+			var cookieValue = null;
+			if (document.cookie && document.cookie != '') {
+				var cookies = document.cookie.split(';');
+				for (var i = 0; i < cookies.length; i++) {
+					var cookie = jQuery.trim(cookies[i]);
+					// Does this cookie string begin with the name we want?
+					if (cookie.substring(0, name.length + 1) == (name + '=')) {
+						cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+						break;
+					}
+				}
+			}
+			return cookieValue;
+		}
+
+		$.ajaxSetup({
+		  beforeSend: function(xhr, settings){
+
+			  xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));              //request头需要添加csrftoken,告诉服务器，我是个好yin哪，我是正常访问者
+		  }
+		});
 
 		$(document).ready(function (){
+			$.ajaxSetup({
+				data: {"csrfmiddlewaretoken": '{{ csrf_token }}'},
+			});
 
 			$("#btn").click(function (){
-				if(undefined == fileUpload){
-					alert('你没有选中任何文件');
+				var fileUpload = document.getElementById("fileUpload").files[0];
+
+				var strInput = $('#strInput').val();
+				//alert(typeof(strInput));
+				//alert(strInput.length);
+				if(("undefined" == typeof(fileUpload) || fileUpload.size <= 0) && strInput.length<=0){
+					alert('你没有选中任何文件或未输入任何字符串');
 					return false;
 				}
 
+				//var formData = new FormData();
+				//formData.append("fileUpload", fileUpload);
+				//formData.append("strInput", strInput);
+				//formData.append("csrfmiddlewaretoken", $("[name='csrfmiddlewaretoken']").val());
+				//console.log(data);
+				$.post("/algoRegix/",{"strInput": strInput},function(data){
+					   alert("上传成功");
+					})；
 				$.ajax({	//提交ajax请求
 					url: "{% url 'small_tools:algoRegix' %}",
-					type: 'POST',
+					//url:"/algoRegix/",
+					type: 'post',
 					data: {
-						"fileUpload" : $('#fileUpload')[0].files[0],
-						"strInput" : $('#strInput').val(),
-						"csrfmiddlewaretoken" : $("[name='csrfmiddlewaretoken']").val()
+						//"formData": formData.serialize(),
+						//"formData": formData,
+						"strInput": strInput,
+						"fileUpload": fileUpload,
+						//"csrfmiddlewaretoken": $("[name='csrfmiddlewaretoken']").val()
 					},
+					//dataType: 'json',
+					cache: false,
 					processDate: false,		//tell jquery not to process the data
 					contentType: false,		//tell jquery not to set contentType
+
+					beforeSend: function(xhr, settings){
+						xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+						alert("准备发送数据了");
+					},
+
 					success: function(data) {
 						if(data)
 							$('#strOutput').text(data);
-					}
+					},
+					error: function(){
+						alert("ajax提交数据失败了");
+					},
 				});
 			});
 		});

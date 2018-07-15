@@ -26,4 +26,3 @@ def processString(algoName, strInput):
         if k == algoName:
             return v(strInput)
 
-
