@@ -1,11 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-import os
-import json
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
+
 
 from .smallToolsSet import algoStringApi
-
+from .forms import AlgoRegixForm
 # Create your views here.
 
 
@@ -32,40 +31,24 @@ def algoString(request):
 		return render(request, 'small_tools/algoString.html', context)
 
 
-@csrf_exempt
+#@csrf_exempt
 def algoRegix(request):
 	"""正则表达式学习"""
-	if request.is_ajax():
-		print("postttttttttttttttttttttttttttttt")
-		strInput = request.POST.get('strInput')
-		print(strInput)
-		fileUpload = request.FILES.get('fileUpload')
-		if fileUpload:
-			print('接收到了上传的文件')
-		else:
-			print('没有接收到上传的文件')
-		strOutput = 'fdjksfjdlsfjlsdjf'
-		# return render(request, 'small_tools/algoRegix.html', {'strOutput':strOutput})
-		return HttpResponse(strOutput)
+	if request.method != 'POST':
+		form = AlgoRegixForm()
+		return render(request, 'small_tools/algoRegix.html', {'form':form})
 	else:
-		print("gettttttttttttttttttttttttttttttt")
-		return render(request, 'small_tools/algoRegix.html')
-	# if request.method == 'GET':
-	# 	img_list = models.Img.objects.all()
-	# 	return render(request, 'upload.html', {'img_list': img_list})
-	# elif request.method == "POST":
-	# 	user = request.POST.get('user')
-	# 	fafafa = request.POST.get('fafafa')
-    #
-	# 	obj = request.FILES.get('fafafa')
-	# 	# print(obj.name,obj.size)  #读取文件名称和大小，返回后台
-	# 	# print(user,fafafa)
-	# 	file_path = os.path.join('static', 'upload', obj.name)
-	# 	f = open(file_path, 'wb')
-	# 	for chunk in obj.chunks():
-	# 		f.write(chunk)
-	# 	f.close()
-	# 	models.Img.objects.create(path=file_path)
-    #
-	# 	ret = {'status': True, 'path': file_path}
-	# 	return HttpResponse(json.dumps(ret))
+		strInput = request.POST.get('strInput',None)
+		regixInput = request.POST.get('regixInput', None)
+		fileUpload = request.FILES.get('fileUpload', None)
+		print(strInput)
+		print(fileUpload)
+		print(regixInput)
+		if fileUpload != None:
+			print(fileUpload.read())
+		# with open(fileUpload.name, 'r') as f:
+		# 	contents = f.read()
+		# 	print(contents)
+		strOutput = 'Output tessssssssssst'
+		return HttpResponse(strOutput)
+
