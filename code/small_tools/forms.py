@@ -72,6 +72,7 @@ class AlgoRegixForm(forms.Form):
                                    'class':'form-control',
                                    'id':'regixInput',
                                    'rows':'2',
+                                   'placeholder': '请输入待查找内容',
                                }))
     strOutput = forms.CharField(required=False,
                                 widget = widgets.Textarea(attrs={

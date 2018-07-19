@@ -25,7 +25,8 @@ SECRET_KEY = 'd5n++)3hc^em$#@z&^6c*2o6w#02qrhkgi1d*mwg*j)4=*)@+&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#局域网访问服务器时添加ip，使用python manage.py runserver 0.0.0.0:8000启动服务器
+ALLOWED_HOSTS = ['192.192.121.121', 'localhost']
 
 
 # Application definition
