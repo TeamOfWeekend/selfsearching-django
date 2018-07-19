@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from django.urls import reverse
+# from django.urls import reverse
 
+from .forms import AlgoRegixForm
 
 from .smallToolsSet import algoStringApi
-from .forms import AlgoRegixForm
+from .smallToolsSet import algoRegixApi
+from .mathTools import random_walk
 # Create your views here.
 
 
@@ -38,17 +40,23 @@ def algoRegix(request):
 		form = AlgoRegixForm()
 		return render(request, 'small_tools/algoRegix.html', {'form':form})
 	else:
+		strOutput = ''
 		strInput = request.POST.get('strInput',None)
 		regixInput = request.POST.get('regixInput', None)
 		fileUpload = request.FILES.get('fileUpload', None)
-		print(strInput)
-		print(fileUpload)
-		print(regixInput)
+		# print(strInput)
+		# print(fileUpload)
+		# print(regixInput)
+		random_walk.drawRandomWalk()
 		if fileUpload != None:
-			print(fileUpload.read())
+			strIn = str(fileUpload.read())
+			strIn = strIn[2:(len(strIn) -2)]
+			strOutput = algoRegixApi.findAllStringByRegix(regixInput, strIn)
+		elif len(strInput):
+			strOutput = algoRegixApi.findAllStringByRegix(regixInput, strInput)
 		# with open(fileUpload.name, 'r') as f:
 		# 	contents = f.read()
 		# 	print(contents)
-		strOutput = 'Output tessssssssssst'
+		# strOutput = 'Output tessssssssssst'
 		return HttpResponse(strOutput)
 

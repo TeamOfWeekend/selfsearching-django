@@ -63,7 +63,7 @@ class AlgoRegixForm(forms.Form):
                                widget = widgets.Textarea(attrs={
                                    'class':'form-control',
                                    'id':'strInput',
-                                   'rows':'6',
+                                   'rows':'3',
                                    'style':'background:#FFFFFF; color:#000000; font-size:11pt',
                                    'placeholder':'请输入一个字符串',
                                }))
@@ -78,8 +78,8 @@ class AlgoRegixForm(forms.Form):
                                 widget = widgets.Textarea(attrs={
                                    'class':'form-control',
                                    'id':'strOutput',
-                                   'rows':'6',
-                                   'style':'background:#DCDCDC; color:#000000; font-size:11pt',
+                                   'rows':'10',
+                                   'style':'background:#DCDCDC; color:#000000; font-size:9pt',
                                    'placeholder':'等待输出',
                                    'readonly': True
                                }))
