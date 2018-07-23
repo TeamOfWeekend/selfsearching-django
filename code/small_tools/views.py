@@ -6,7 +6,8 @@ from .forms import AlgoRegixForm
 
 from .smallToolsSet import algoStringApi
 from .smallToolsSet import algoRegixApi
-from .mathTools import random_walk
+from .mathTools.random_walk import RandomWalk
+from .mathTools.worldPopulation import WorldPopulationMap
 # Create your views here.
 
 
@@ -47,7 +48,6 @@ def algoRegix(request):
 		# print(strInput)
 		# print(fileUpload)
 		# print(regixInput)
-		random_walk.drawRandomWalk()
 		if fileUpload != None:
 			strIn = str(fileUpload.read())
 			strIn = strIn[2:(len(strIn) -2)]
@@ -58,5 +58,12 @@ def algoRegix(request):
 		# 	contents = f.read()
 		# 	print(contents)
 		# strOutput = 'Output tessssssssssst'
+
+		randomWalk = RandomWalk()
+		randomWalk.drawWalkMap()
+
+		wm = WorldPopulationMap(2016)
+		wm.draw_population_map()
+
 		return HttpResponse(strOutput)
 
