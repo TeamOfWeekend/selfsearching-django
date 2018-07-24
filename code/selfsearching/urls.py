@@ -23,4 +23,5 @@ urlpatterns = [
     path('', include('users.urls', namespace='users')),
     path('', include('learning_logs.urls', namespace='learning_logs')),
     path('', include('small_tools.urls', namespace='small_tools')),
+    path('', include('imagination.urls', namespace='imagination')),
 ]

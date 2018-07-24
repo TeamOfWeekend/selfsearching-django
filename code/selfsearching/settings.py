@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'admin_app',
     'users',
     'learning_logs',
-    'small_tools'
+    'small_tools',
+    'imagination'
 ]
 
 MIDDLEWARE = [
