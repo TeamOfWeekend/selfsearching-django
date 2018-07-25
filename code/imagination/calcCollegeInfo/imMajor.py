@@ -9,12 +9,32 @@
 """
 
 
+from .imGrade import ImGrade
+
 class ImMajor():
     """专业"""
-    def __init__(self):
+    def __init__(self, academy, id):
         # 名称
         self.name = ''
         # 编号
-        self.id = 0
+        self.id = id
         # 班级
-        self.classes = []
+        self.grades = []
+        # 所属学院
+        self.academy = academy
+
+
+    def createRandomAttrs(self):
+        """创建随机属性"""
+        # 四个年级，每个年级班级数目随机
+        for i in range(1, 5):
+            grade = ImGrade(self, i)
+            grade.createRandomAttrs()
+            self.grades.append(grade)
+            # ranInt = random.randint(CLASSS_IN_MAJOR_MIN, CLASSS_IN_MAJOR_MAX)
+            # for j in range(CLASSS_IN_MAJOR_MIN, ranInt + 1):
+            #     classs = ImClass()
+            #     classs.createRandomAttrs()
+            #     self.grades[i].append(classs)
+
+

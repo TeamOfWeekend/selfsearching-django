@@ -8,6 +8,10 @@
 @Time    : 2018/7/24 22:07
 """
 
+import random
+from .imTypes import CollegeEnum, AcademyEnum
+from .imAcademy import ImAcademy
+
 
 class ImCollege():
     """大学"""
@@ -24,4 +28,34 @@ class ImCollege():
         # 校园面积
         self.area = 0
         # 学院
-        self.academies = []
+        self.academies = {}
+
+
+    def createRandomAttrs(self):
+        """生成随机属性"""
+        self.id = random.randint(1, len(CollegeEnum))
+        self.name = CollegeEnum(self.id).name
+        for academyE in AcademyEnum:
+            academy = ImAcademy(self, academyE.value)
+            academy.fillMajors()
+            self.academies[academyE.name] = academy
+        # print('--------------------------------------')
+        # for key, val in self.academies.items():
+        #     print(key)
+        #     print(val.majors.keys())
+        print(self.getStudentNum())
+
+
+    def getStudentNum(self):
+        """获取全校学生数量"""
+        stuNum = 0
+        for academy in self.academies.values():
+            for major in academy.majors.values():
+                for grade in major.grades:
+                    for classs in grade.classes:
+                        stuNum += len(classs.students)
+        return stuNum
+
+
+
+

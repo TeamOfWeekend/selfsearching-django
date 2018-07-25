@@ -8,14 +8,55 @@
 @Time    : 2018/7/24 22:16
 """
 
+import random
+from .imStudent import ImStudent
+from .imTypes import STUDENTS_IN_CLASS_MAX, STUDENTS_IN_CLASS_MIN
+
 class ImClass():
     """大学班级"""
-    def __init__(self):
+    def __init__(self, grade, id):
         # 编号
-        self.id = 0
-        # 年级
-        self.grade = 0
-        # 班级
-        self.classs = 0
+        self.id = id
+        # 学生数量
+        self.studentsNum = 0
         # 学生
         self.students = []
+        # 所属年级
+        self.grade = grade
+
+
+    def createRandomAttrs(self):
+        """生成随机属性"""
+        self.studentsNum = random.randint(STUDENTS_IN_CLASS_MIN, STUDENTS_IN_CLASS_MAX)
+        for i in range(0, self.studentsNum):
+            stu = ImStudent(self)
+            stu.createRandomAttrs()
+            self.students.append(stu)
+        self.sortStudentsIdByName()
+
+
+    def sortStudentsIdByName(self):
+        """按名字顺序对学生进行排序"""
+        n = len(self.students)
+        while n > 1:
+            swapped = False
+            i = 0
+            while i < (n - 1):
+                # print("%s  %s" %(self.students[i].name, self.students[i+1].name))
+                # print(self.students[i].name < self.students[i+1].name)
+                if self.students[i].name < self.students[i+1].name:
+                    self.students[i], self.students[i+1] = self.students[i+1], self.students[i]
+                    swapped = True
+                i += 1
+            if False == swapped:
+                return
+            n -= 1
+
+        for i in range(0,len(self.students)):
+            self.students[i].id = i + 1
+            self.students[i].createId()
+
+
+
+
+
