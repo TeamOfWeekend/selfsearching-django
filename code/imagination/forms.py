@@ -4,7 +4,7 @@ from django.db import models
 
 class CollegeForm(forms.Form):
     """大学表单"""
-    name = forms.CharField(min_length = 10,
+    collegeName = forms.CharField(min_length = 10,
                                strip = True,
                                error_messages = {
                                    'required':'该字段不能为空',

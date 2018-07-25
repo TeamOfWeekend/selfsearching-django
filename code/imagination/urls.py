@@ -16,5 +16,5 @@ app_name = 'imagination'
 urlpatterns = [
     #小工具首页
 	path('showIndex/', views.showIndex, name='showIndex'),
-	path('inputCollegeInfo/', views.inputCollegeInfo, name='inputCollegeInfo'),
+	path('collegeInfo/', views.collegeInfo, name='collegeInfo'),
 ]

@@ -12,5 +12,5 @@ def showIndex(request):
     return render(request, 'imagination/showIndex.html')
 
 
-def inputCollegeInfo(request):
-    return render(request, 'imagination/inputCollegeInfo.html')
+def collegeInfo(request):
+    return render(request, 'imagination/collegeInfo.html')

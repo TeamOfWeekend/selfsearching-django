@@ -32,10 +32,10 @@ class ImClass():
             stu = ImStudent(self)
             stu.createRandomAttrs()
             self.students.append(stu)
-        self.sortStudentsIdByName()
+        self.sortStudentsIdByNamePinYin()
 
 
-    def sortStudentsIdByName(self):
+    def sortStudentsIdByNamePinYin(self):
         """按名字顺序对学生进行排序"""
         n = len(self.students)
         while n > 1:
@@ -44,7 +44,7 @@ class ImClass():
             while i < (n - 1):
                 # print("%s  %s" %(self.students[i].name, self.students[i+1].name))
                 # print(self.students[i].name < self.students[i+1].name)
-                if self.students[i].name < self.students[i+1].name:
+                if self.students[i].namePinYin > self.students[i+1].namePinYin:
                     self.students[i], self.students[i+1] = self.students[i+1], self.students[i]
                     swapped = True
                 i += 1

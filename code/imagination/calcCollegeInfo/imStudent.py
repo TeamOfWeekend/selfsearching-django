@@ -9,11 +9,12 @@
 """
 
 import random, datetime
-from pinyin import PinYin
+from pypinyin import pinyin, NORMAL
 
 from enum import Enum, unique
 
-FIRST_NAMES = ('赵', '钱', '孙', '李', '周', '吴', '郑', '王', '冯', '陈', '褚', '卫', '蒋', '沈', '韩', '杨', '朱', '秦', '尤', '许',
+FIRST_NAMES = ('丁',
+              '赵', '钱', '孙', '李', '周', '吴', '郑', '王', '冯', '陈', '褚', '卫', '蒋', '沈', '韩', '杨', '朱', '秦', '尤', '许',
               '何', '吕', '施', '张', '孔', '曹', '严', '华', '金', '魏', '陶', '姜', '戚', '谢', '邹', '喻', '柏', '水', '窦', '章',
               '云', '苏', '潘', '葛', '奚', '范', '彭', '郎', '鲁', '韦', '昌', '马', '苗', '凤', '花', '方', '俞', '任', '袁', '柳',
               '酆', '鲍', '史', '唐', '费', '廉', '岑', '薛', '雷', '贺', '倪', '汤', '滕', '殷', '罗', '毕', '郝', '邬', '安', '常',
@@ -136,9 +137,10 @@ class ImStudent:
             self.name = random.choice(FIRST_NAMES) + random.choice(LAST_NAMES)
         else:
             self.name = random.choice(FIRST_NAMES) + random.choice(LAST_NAMES) + random.choice(LAST_NAMES)
-        test = PinYin()
-        test.load_word()
-        print(str(test.hanzi2pinyin(self.name)))
+
+        for piny in pinyin(self.name, style=NORMAL):
+            self.namePinYin += ''.join(piny)
+        # print(self.namePinYin)
 
 
     def createRandomSex(self):
@@ -168,8 +170,7 @@ class ImStudent:
                   + self.classs.grade.major.academy.id * 10**4\
                   + self.classs.grade.major.id * 10**2\
                   + self.id
-
-        print('%6s --> %d' % (self.name, self.id))
+        # print('%6s --> %d' % (self.name, self.id))
 
 
     def createRandomAttrs(self):
@@ -180,50 +181,9 @@ class ImStudent:
             self.year_in_college = datetime.datetime.now().year - self.classs.grade.id + 1
 
         self.createRandomName()
-        # self.createId()
         self.createRandomSex()
         self.age = (datetime.datetime.now().year - self.year_in_college + 17)
         self.height = random.randint(130, 200)
         self.weight = random.random() + random.randint(30, 100)
         self.hobby = []
 
-
-
-# stu = ImStudent()
-# stu.createRandomName()
-# stu.createRandomSex()
-# stu.createRandomHobbies()
-# print(stu.hobby)
-# print(stu.name)
-# print(stu.sex)
-
-
-stus = ['晓明', '李丽', '单播', '今飞凯达', '放大', '房间']
-n = len(stus)
-while n > 1:
-    swapped = False
-    i = 0
-    while i < (n - 1):
-        print("%s  %s" %(stus[i], stus[i+1]))
-        print(stus[i] < stus[i+1])
-        if stus[i] < stus[i + 1]:
-            stus[i], stus[i + 1] = stus[i + 1], stus[i]
-            swapped = True
-            print('换了')
-        i += 1
-    if False == swapped:
-        break
-    n -= 1
-
-print(stus)
-for i in range(0, len(stus)-1):
-    if stus[i] < stus[i+1]:
-        print("出错了")
-
-print('晓明' < '放大')
-print('李丽' < '晓明')
-
-# a = '晓明'
-# b = '发斯蒂芬开灯时'
-# a, b = b,a
-# print("%s  %s" % (a, b))
