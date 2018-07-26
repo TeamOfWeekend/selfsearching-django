@@ -27,6 +27,8 @@ class ImCollege():
         self.level = None
         # 校园面积
         self.area = 0
+        # 学院数量
+        self.academyNum = 0
         # 学院
         self.academies = {}
 
@@ -39,6 +41,7 @@ class ImCollege():
             academy = ImAcademy(self, academyE.value)
             academy.fillMajors()
             self.academies[academyE.name] = academy
+            self.academyNum += 1
         # print('--------------------------------------')
         # for key, val in self.academies.items():
         #     print(key)

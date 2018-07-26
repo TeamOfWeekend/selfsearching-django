@@ -18,7 +18,7 @@ class ImClass():
         # 编号
         self.id = id
         # 学生数量
-        self.studentsNum = 0
+        self.studentNum = 0
         # 学生
         self.students = []
         # 所属年级
@@ -27,8 +27,8 @@ class ImClass():
 
     def createRandomAttrs(self):
         """生成随机属性"""
-        self.studentsNum = random.randint(STUDENTS_IN_CLASS_MIN, STUDENTS_IN_CLASS_MAX)
-        for i in range(0, self.studentsNum):
+        self.studentNum = random.randint(STUDENTS_IN_CLASS_MIN, STUDENTS_IN_CLASS_MAX)
+        for i in range(0, self.studentNum):
             stu = ImStudent(self)
             stu.createRandomAttrs()
             self.students.append(stu)

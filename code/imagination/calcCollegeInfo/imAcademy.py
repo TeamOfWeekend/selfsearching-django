@@ -19,6 +19,8 @@ class ImAcademy():
         self.name = ''
         # 编号
         self.id = id
+        # 专业数量
+        self.majorNum = 0
         # 专业
         self.majors = {}
         # 所属学校
@@ -32,5 +34,6 @@ class ImAcademy():
             major = ImMajor(self, id+1)
             major.createRandomAttrs()
             self.majors[ACADEMY_MAJOR_DIR[self.name][id]] = major
+            self.majorNum += 1
         # except:
         #     print('选择的院系名称有误')

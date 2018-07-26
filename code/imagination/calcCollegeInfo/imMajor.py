@@ -18,7 +18,9 @@ class ImMajor():
         self.name = ''
         # 编号
         self.id = id
-        # 班级
+        # 年级数量
+        self.gradeNum = 0
+        # 年级
         self.grades = []
         # 所属学院
         self.academy = academy
@@ -31,6 +33,7 @@ class ImMajor():
             grade = ImGrade(self, i)
             grade.createRandomAttrs()
             self.grades.append(grade)
+            self.gradeNum += 1
             # ranInt = random.randint(CLASSS_IN_MAJOR_MIN, CLASSS_IN_MAJOR_MAX)
             # for j in range(CLASSS_IN_MAJOR_MIN, ranInt + 1):
             #     classs = ImClass()
