@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .calcCollegeInfo import imCollege
+from .collegeInfo import imCollege
 
 
 # Create your views here.
