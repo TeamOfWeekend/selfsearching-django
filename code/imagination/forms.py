@@ -1,9 +1,31 @@
 from django import forms
 from django.forms import widgets
-from django.db import models
 
-class CollegeForm(forms.Form):
+from .models import CollegeInfo
+
+
+# Form 仅做表单数据验证
+# ModelForm 做数据库与表单数据验证
+
+class CollegeForm(forms.ModelForm):
     """大学表单"""
+    class Meta:
+        # 表单对应的模型
+        model = CollegeInfo
+        # 引入的模型的属性
+        fields = ['name', 'collegeId', 'address', 'level', 'area', 'academyNum']
+        # 配置上述属性的html属性
+        widgets = {
+            'name': forms.CharField(attrs={'class': "form-control",
+                                           'id': "collegeName",
+                                           'readonly': 'true'}),
+            'collegeId': forms.IntegerField(attrs={'class': "form-control",
+                                                   'id': "collegeId",
+                                           'readonly': 'true'}),
+        }
+
+
+
     collegeName = forms.CharField(min_length = 10,
                                strip = True,
                                error_messages = {
