@@ -13,13 +13,8 @@ from pypinyin import pinyin, NORMAL
 
 from enum import Enum, unique
 
-from .vvlib import baijiaxing, person
+from .vvlib import baijiaxing, person, enumTypes
 
-
-@unique
-class ImSex(Enum):
-    male = 1
-    female = 2
 
 
 @unique
@@ -81,8 +76,8 @@ class ImStudent(person.Person):
 
     def createRandomSex(self):
         """随机获取性别"""
-        ranInt = random.randint(1, len(ImSex))
-        self.sex = ImSex(ranInt)
+        ranInt = random.randint(1, len(enumTypes.SexEnum))
+        self.sex = enumTypes.SexEnum(ranInt)
 
 
     def createRandomHobbies(self):
@@ -119,8 +114,8 @@ class ImStudent(person.Person):
         self.createRandomName()
         self.createRandomSex()
         self.age = (datetime.datetime.now().year - self.year_in_college + 17)
-        self.height = random.randint(130, 200)
-        self.weight = random.random() + random.randint(30, 100)
+        self.height = random.randint(130, 200) + random.random()
+        self.weight = random.randint(30, 100) + random.random()
         self.hobbies = []
 
 

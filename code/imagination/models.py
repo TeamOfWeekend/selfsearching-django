@@ -17,6 +17,7 @@ class CollegeInfoManager(models.Manager):
         # 调用父类方法
         return super(CollegeInfoManager, self).get_query_set()
 
+
 class CollegeInfo(models.Model):
     """大学信息模型"""
     # 管理器定义
@@ -49,7 +50,7 @@ class CollegeInfo(models.Model):
         # 按照某外键引用的关系排序
         # order_with_respect_to = ''
         # 默认排序字段，可设置多个，默认降序，如果升序需在前面加“-”号
-        ordering = 'collegeId'
+        ordering = ['collegeId']
         # 模型操作权限，默认为add、change、delete
         default_permissions = ('add', 'change', 'delete')
         # 本模型及所有继承自本模型的子模型是否为代理模型

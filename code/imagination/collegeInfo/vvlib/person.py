@@ -94,7 +94,7 @@ class Person:
 
     @age.setter
     def age(self, age):
-        if not isinstance(id, int):
+        if not isinstance(age, int):
             raise ValueError('人的年龄必须是数字')
         if age < AGE_MIN or age > AGE_MAX:
             raise ValueError('人的年龄范围<%d, %d>', (AGE_MIN, AGE_MAX))
@@ -106,7 +106,7 @@ class Person:
 
     @height.setter
     def height(self, height):
-        if not isinstance(height, int):
+        if not isinstance(height, float) and not isinstance(height, int):
             raise ValueError('人的身高必须是数字')
         if height < HEIGHT_MIN or height > HEIGHT_MAX:
             raise ValueError('人的身高范围<%d, %d>', (HEIGHT_MIN, HEIGHT_MAX))
@@ -118,7 +118,7 @@ class Person:
 
     @weight.setter
     def weight(self, weight):
-        if not isinstance(weight, int):
+        if not isinstance(weight, float) and not isinstance(weight, int):
             raise ValueError('人的体重必须是数字')
         if weight < WEIGHT_MIN or weight > WEIGHT_MAX:
             raise ValueError('人的体重范围<%d, %d>', (WEIGHT_MIN, WEIGHT_MAX))

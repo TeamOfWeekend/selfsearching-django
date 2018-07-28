@@ -1,27 +1,18 @@
 {% extends "admin_app/base.html" %}
 
 {% block header %}
-	<h2>Small tools</h2>
+	<h2>College Information</h2>
 {% endblock header %}
 
 {% block content %}
 	
-	<ul>
-		<li>
-			<h3>
-				<a href="{% url 'small_tools:mibToCode' %}">Snmp mib代码生成工具</a>
-			</h3>
-		</li>
-		<li>
-			<h3>
-				<a href="{% url 'small_tools:algoString' %}">字符串处理工具</a>
-			</h3>
-		</li>
-		<li>
-			<h3>
-				<a href="{% url 'small_tools:algoRegix' %}">正则表达式学习工具</a>
-			</h3>
-		</li>
-	</ul>
+	<form class="form-horizontal" role="form" id="form" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ collegeForm.as_p }}
+		<table>
+
+		</table>
+
+	</form>
 	
 {% endblock content %}

@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from .collegeInfo import imCollege
 
+from .forms import CollegeForm
 
 # Create your views here.
 
@@ -13,4 +14,6 @@ def showIndex(request):
 
 
 def collegeInfo(request):
-    return render(request, 'imagination/collegeInfo.html')
+    collegeForm = CollegeForm()
+    # collegeForm['name'] = '郑州大学'
+    return render(request, 'imagination/collegeInfo.html', {'collegeForm': collegeForm})
