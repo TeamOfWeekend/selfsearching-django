@@ -5,14 +5,13 @@
 {% endblock header %}
 
 {% block content %}
-	
-	<form class="form-horizontal" role="form" id="form" enctype="multipart/form-data">
-		{% csrf_token %}
-		{{ collegeForm.as_p }}
-		<table>
+	{% csrf_token %}
+	<!--<form class="form-horizontal" role="form" id="form" enctype="multipart/form-data">-->
+		<!--{{ collegeForm.as_table }}-->
+	<!--</form>-->
 
-		</table>
-
-	</form>
+	<table border="0" cellpadding="50" cellspacing="30">
+		{{ collegeForm.as_table }}
+	</table>
 	
 {% endblock content %}
