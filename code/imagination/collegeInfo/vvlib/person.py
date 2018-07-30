@@ -73,10 +73,10 @@ class Person:
         return self._idCardNum
 
     @idCardNum.setter
-    def idCardNum(self, id):
-        if not isinstance(id, int):
+    def idCardNum(self, cardNum):
+        if not isinstance(cardNum, str):
             raise ValueError('人的身份证号必须是数字')
-        self._idCardNum = id
+        self._idCardNum = cardNum
 
     @property
     def sex(self):
@@ -86,7 +86,7 @@ class Person:
     def sex(self, sex):
         if sex not in SexEnum:
             raise ValueError('人的性别必须从SexEnum中选择')
-        self._idCardNum = id
+        self._idCardNum = sex
 
     @property
     def age(self):

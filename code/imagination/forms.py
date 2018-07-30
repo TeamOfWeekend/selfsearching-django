@@ -15,7 +15,7 @@ class CollegeForm(forms.ModelForm):
         # 引入的模型的属性
         fields = ['name', 'collegeId', 'address', 'level', 'area', 'academyNum']
         # 配置上述属性的html属性
-        widgets = {'text': forms.Textarea(attrs={'cols': 80})}
+        # widgets = {'text': forms.Textarea(attrs={'cols': 80})}
         widgets = {
             'name': forms.TextInput(attrs={'class': "form-control",
                                            'id': "collegeName",
