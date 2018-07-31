@@ -14,7 +14,10 @@ app_name = 'imagination'
 #re_path 用于含参数方法的URL映射
 
 urlpatterns = [
-    #小工具首页
+    # 小工具首页
 	path('showIndex/', views.showIndex, name='showIndex'),
+	# 学校入口页面
+	path('collegeEntry/', views.collegeEntry, name='collegeEntry'),
+	# 学校信息页面
 	path('collegeInfo/', views.collegeInfo, name='collegeInfo'),
 ]

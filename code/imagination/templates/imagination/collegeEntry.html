@@ -1,14 +1,14 @@
 {% extends "admin_app/base.html" %}
 
 {% block header %}
-	<h2>{{ collegeName }}</h2>
+	<h2>College Information</h2>
 {% endblock header %}
 
 {% block content %}
 
 	<form action="{% url 'imagination:collegeInfo' %}" method='post' class='form'>
 		{% csrf_token %}
-		{{ collegeForm.as_table }}
+		{{ collegeForm.as_p }}
 
 		<button name="submit" class="btn btn-primary">查询</button>
 
