@@ -4,6 +4,7 @@ from .collegeInfo import imCollege
 
 from .forms import CollegeEntryForm, CollegeForm
 from .collegeInfo.imTypes import AcademyEnum
+from .collegeInfo.imCollege import ImCollege
 
 # Create your views here.
 
@@ -23,11 +24,15 @@ def collegeEntry(request):
 
 def collegeInfo(request):
     collegeForm = CollegeForm()
-    collegeName = '郑州大学'
+    college = ImCollege()
+    college.name = '郑州大学'
+    college.id = 123
+    college.address = '郑州高新区'
+    college.area = 5000
 
     choice_list = []
     for item in AcademyEnum:
         choice_list.append([item.value, item.name])
     collegeForm.academyChoiceSet(choice_list)
 
-    return render(request, 'imagination/collegeInfo.html', {'collegeForm': collegeForm, 'collegeName': collegeName})
+    return render(request, 'imagination/collegeInfo.html', {'collegeForm': collegeForm, 'college': college})

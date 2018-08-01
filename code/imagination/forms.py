@@ -111,14 +111,52 @@ class CollegeEntryForm(forms.Form):
 
 class CollegeForm(forms.Form):
     """大学表单"""
-    academyName = forms.ChoiceField(widget = widgets.Select(attrs={
-                                        'class':'form-control',
-                                        'id':'academyName',
-                                        'style':'background:#FFFFFF; color:#000000; font-size:11pt',
+    collegeId = forms.CharField(widget=widgets.TextInput(attrs={
+                                        'class': 'form-control',
+                                        'id': 'collegeId',
+                                        'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
                                         #  'placeholder':'请输入学校名字',
-                                        })
-                                    )
+                                    })
+                                )
 
+    address = forms.CharField(widget=widgets.TextInput(attrs={
+                                        'class': 'form-control',
+                                        'id': 'address',
+                                        'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
+                                        #  'placeholder':'请输入学校名字',
+                                    })
+                                )
+
+    collegeLevel = forms.ChoiceField(widget=widgets.Select(attrs={
+                                        'class': 'form-control',
+                                        'id': 'collegeLevel',
+                                        'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
+                                        #  'placeholder':'请输入学校名字',
+                                    })
+                                )
+
+    area = forms.IntegerField(widget=widgets.TextInput(attrs={
+                                        'class': 'form-control',
+                                        'id': 'area',
+                                        'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
+                                        #  'placeholder':'请输入学校名字',
+                                    })
+                                )
+
+    academyNum = forms.CharField(widget=widgets.TextInput(attrs={
+                                        'class': 'form-control',
+                                        'id': 'academyNum',
+                                        'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
+                                        #  'placeholder':'请输入学校名字',
+                                    })
+                                )
+    academyName = forms.ChoiceField(widget=widgets.Select(attrs={
+                                        'class': 'form-control',
+                                        'id': 'academyName',
+                                        'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
+                                        #  'placeholder':'请输入学校名字',
+                                    })
+                                )
     def __init__(self, *args, **kwargs):
         # 实时更新，拷贝所有的静态字段，复制给self.fields
         super(CollegeForm, self).__init__(*args, **kwargs)
@@ -129,4 +167,3 @@ class CollegeForm(forms.Form):
 
     def academyChoiceSet(self, choice_list):
         self.fields['academyName'].widget.choices = choice_list
-

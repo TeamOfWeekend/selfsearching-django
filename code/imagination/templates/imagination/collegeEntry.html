@@ -10,7 +10,8 @@
 		{% csrf_token %}
 		{{ collegeForm.as_p }}
 
-		<button name="submit" class="btn btn-primary">查询</button>
+		<button name="submit" class="btn btn-primary">进入学校</button>
+		<p>{{ collegeForm.area|length }}</p>
 
 	</form>
 	
