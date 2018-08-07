@@ -29,6 +29,8 @@ def collegeInfo(request):
     college.id = 123
     college.address = '郑州高新区'
     college.area = 5000
+    college.level = 1
+    college.academyNum = 10
 
     choice_list = []
     for item in AcademyEnum:

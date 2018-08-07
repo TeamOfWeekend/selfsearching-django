@@ -1,7 +1,7 @@
 {% extends "admin_app/base.html" %}
 
 {% block header %}
-	<h2>College Information</h2>
+	<h2>学校入口</h2>
 {% endblock header %}
 
 {% block content %}
@@ -11,7 +11,6 @@
 		{{ collegeForm.as_p }}
 
 		<button name="submit" class="btn btn-primary">进入学校</button>
-		<p>{{ collegeForm.area|length }}</p>
 
 	</form>
 	

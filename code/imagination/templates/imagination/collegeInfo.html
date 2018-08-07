@@ -6,22 +6,30 @@
 
 {% block content %}
 
-	<table class="table table-striped table-hover table-condensed">
-		<caption>学校基本信息</caption>
-		<thead>
-			<tr>
-				<th>College area</th>
-				<th>College id</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>{{ college.area }}</td>
-				<td>{{ college.id }}</td>
-			</tr>
-		</tbody>
-
-
+	<table border="1" class="table table-striped table-hover table-condensed">
+		<tr>
+			<th colspan="2">学校信息</th>
+		</tr>
+		<tr>
+			<td>CollegeId</td>
+			<td>{{ college.id }}</td>
+		</tr>
+		<tr>
+			<td>CollegeLevel</td>
+			<td colspan="2">{{ college.level }}</td>
+		</tr>
+		<tr>
+			<td>Address</td>
+			<td>{{ college.address }}</td>
+		</tr>
+		<tr>
+			 <td>Area</td>
+			 <td>{{ college.area }}</td>
+		</tr>
+		<tr>
+			 <td>AcademyNum</td>
+			 <td>{{ college.academyNum }}</td>
+		</tr>
 	</table>
 
 	<form action="{% url 'imagination:collegeInfo' %}" method='post' class='form'>
