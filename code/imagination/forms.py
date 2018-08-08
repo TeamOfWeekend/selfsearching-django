@@ -131,3 +131,46 @@ class CollegeForm(forms.Form):
 
     def academyChoiceSet(self, choice_list):
         self.fields['academyName'].widget.choices = choice_list
+
+
+class AcademyForm(forms.Form):
+    """大学表单"""
+    majorName = forms.ChoiceField(widget=widgets.Select(attrs={
+                                        'class': 'form-control',
+                                        'id': 'majorName',
+                                        'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
+                                        #  'placeholder':'请输入学校名字',
+                                    })
+                                )
+
+    def majorChoiceSet(self, choice_list):
+        self.fields['majorName'].widget.choices = choice_list
+
+
+class MajorForm(forms.Form):
+    """大学表单"""
+    gradeName = forms.ChoiceField(widget=widgets.Select(attrs={
+                                        'class': 'form-control',
+                                        'id': 'gradeName',
+                                        'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
+                                        #  'placeholder':'请输入学校名字',
+                                    })
+                                )
+
+    def gradeChoiceSet(self, choice_list):
+        self.fields['gradeName'].widget.choices = choice_list
+
+
+class GradeForm(forms.Form):
+    """大学表单"""
+    className = forms.ChoiceField(widget=widgets.Select(attrs={
+                                        'class': 'form-control',
+                                        'id': 'className',
+                                        'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
+                                        #  'placeholder':'请输入学校名字',
+                                    })
+                                )
+
+    def classChoiceSet(self, choice_list):
+        self.fields['className'].widget.choices = choice_list
+

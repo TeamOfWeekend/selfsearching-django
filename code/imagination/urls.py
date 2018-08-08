@@ -20,4 +20,9 @@ urlpatterns = [
 	path('collegeEntry/', views.collegeEntry, name='collegeEntry'),
 	# 学校信息页面
 	path('collegeInfo/', views.collegeInfo, name='collegeInfo'),
+	path('academyInfo/', views.academyInfo, name='academyInfo'),
+	path('majorInfo/', views.majorInfo, name='majorInfo'),
+	path('gradeInfo/', views.gradeInfo, name='gradeInfo'),
+	path('classInfo/', views.classInfo, name='classInfo'),
+	path('studentInfo/', views.studentInfo, name='studentInfo'),
 ]
