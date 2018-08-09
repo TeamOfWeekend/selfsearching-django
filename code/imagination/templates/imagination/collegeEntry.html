@@ -8,7 +8,7 @@
 
 	<form action="{% url 'imagination:collegeInfo' %}" method='post' class='form'>
 		{% csrf_token %}
-		{{ collegeForm.as_p }}
+		{{ collegeEntryForm.as_p }}
 
 		<button name="submit" class="btn btn-primary">进入学校</button>
 

@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import widgets
 
-from .collegeInfo.imTypes import CollegeEnum, AcademyEnum
+# from .collegeInfo.imTypes import CollegeEnum, AcademyEnum
 
 
 # Form 仅做表单数据验证
@@ -92,7 +92,8 @@ from .collegeInfo.imTypes import CollegeEnum, AcademyEnum
 
 class CollegeEntryForm(forms.Form):
     """大学表单"""
-    collegeName = forms.ChoiceField(widget = widgets.Select(attrs={
+    collegeName = forms.ChoiceField(label = '学校名称',
+                                    widget = widgets.Select(attrs={
                                         # 'class': 'form-control',
                                         'id': 'collegeName',
                                         'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
@@ -103,10 +104,10 @@ class CollegeEntryForm(forms.Form):
     def __init__(self, *args, **kwargs):
         # 实时更新，拷贝所有的静态字段，复制给self.fields
         super(CollegeEntryForm, self).__init__(*args, **kwargs)
-        choice_list = []
-        for item in CollegeEnum:
-            choice_list.append([item.value, item.name])
-        self.fields['collegeName'].widget.choices = choice_list
+        # choice_list = []
+        # for item in CollegeEnum:
+        #     choice_list.append([item.value, item.name])
+        # self.fields['collegeName'].widget.choices = choice_list
 
     def collegeChoiceSet(self, choice_list):
         self.fields['collegeName'].widget.choices = choice_list

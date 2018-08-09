@@ -9,7 +9,7 @@
 """
 
 import random
-from .imTypes import CollegeEnum, AcademyEnum
+from .imTypes import AcademyEnum
 from .imAcademy import ImAcademy
 
 
@@ -35,8 +35,8 @@ class ImCollege():
 
     def createRandomAttrs(self):
         """生成随机属性"""
-        self.id = random.randint(1, len(CollegeEnum))
-        self.name = CollegeEnum(self.id).name
+        # self.id = random.randint(1, len(CollegeEnum))
+        # self.name = CollegeEnum(self.id).name
         for academyE in AcademyEnum:
             academy = ImAcademy(self, academyE.value)
             academy.fillMajors()
@@ -46,7 +46,7 @@ class ImCollege():
         # for key, val in self.academies.items():
         #     print(key)
         #     print(val.majors.keys())
-        print(self.getStudentNum())
+        # print(self.getStudentNum())
 
 
     def getStudentNum(self):
