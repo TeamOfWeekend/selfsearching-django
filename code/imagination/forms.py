@@ -92,7 +92,7 @@ from django.forms import widgets
 
 class CollegeEntryForm(forms.Form):
     """大学表单"""
-    collegeName = forms.ChoiceField(label = '学校名称',
+    collegeName = forms.ChoiceField(label = '选择学校',
                                     widget = widgets.Select(attrs={
                                         # 'class': 'form-control',
                                         'id': 'collegeName',
@@ -115,7 +115,8 @@ class CollegeEntryForm(forms.Form):
 
 class CollegeForm(forms.Form):
     """大学表单"""
-    academyName = forms.ChoiceField(widget=widgets.Select(attrs={
+    academyName = forms.ChoiceField(label = '选择学院',
+                                    widget=widgets.Select(attrs={
                                         'class': 'form-control',
                                         'id': 'academyName',
                                         'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
@@ -136,7 +137,8 @@ class CollegeForm(forms.Form):
 
 class AcademyForm(forms.Form):
     """大学表单"""
-    majorName = forms.ChoiceField(widget=widgets.Select(attrs={
+    majorName = forms.ChoiceField(label = '选择专业',
+                                  widget=widgets.Select(attrs={
                                         'class': 'form-control',
                                         'id': 'majorName',
                                         'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
@@ -150,7 +152,8 @@ class AcademyForm(forms.Form):
 
 class MajorForm(forms.Form):
     """大学表单"""
-    gradeName = forms.ChoiceField(widget=widgets.Select(attrs={
+    gradeId = forms.ChoiceField(label = '选择年级',
+                                  widget=widgets.Select(attrs={
                                         'class': 'form-control',
                                         'id': 'gradeName',
                                         'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
@@ -159,12 +162,13 @@ class MajorForm(forms.Form):
                                 )
 
     def gradeChoiceSet(self, choice_list):
-        self.fields['gradeName'].widget.choices = choice_list
+        self.fields['gradeId'].widget.choices = choice_list
 
 
 class GradeForm(forms.Form):
     """大学表单"""
-    className = forms.ChoiceField(widget=widgets.Select(attrs={
+    className = forms.ChoiceField(label = '选择班级',
+                                  widget=widgets.Select(attrs={
                                         'class': 'form-control',
                                         'id': 'className',
                                         'style': 'background:#FFFFFF; color:#000000; font-size:11pt',

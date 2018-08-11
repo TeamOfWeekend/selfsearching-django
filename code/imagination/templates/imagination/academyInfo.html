@@ -1,7 +1,7 @@
 {% extends "admin_app/base.html" %}
 
 {% block header %}
-	<h2>{{ academy.name }}</h2>
+	<h2>{{ college.name }} <small> > {{ academy.name }}</small></h2>
 {% endblock header %}
 
 {% block content %}
@@ -11,19 +11,12 @@
 			<th colspan="2">学院信息</th>
 		</tr>
 		<tr>
-			<td>编号</td>
+			<td>学院编号</td>
+			<td>{{ academy.id }}</td>
 		</tr>
 		<tr>
-			<td>级别</td>
-		</tr>
-		<tr>
-			<td>地址</td>
-		</tr>
-		<tr>
-			 <td>面积</td>
-		</tr>
-		<tr>
-			 <td>学院数量</td>
+			<td>专业数量</td>
+			<td>{{ academy.majorNum }}</td>
 		</tr>
 	</table>
 
@@ -34,7 +27,7 @@
 			{{ academyForm.as_table }}
 		</table>
 
-		<button name="submit" class="btn btn-primary">进入学院</button>
+		<button name="submit" class="btn btn-primary">进入专业</button>
 
 	</form>
 	

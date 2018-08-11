@@ -1,7 +1,9 @@
 {% extends "admin_app/base.html" %}
 
 {% block header %}
-	<h2>{{ major.name }}</h2>
+	<h2>{{ college.name }}
+		<small> > {{ academy.name }} > {{ majorName }}</small>
+	</h2>
 {% endblock header %}
 
 {% block content %}
@@ -12,18 +14,11 @@
 		</tr>
 		<tr>
 			<td>编号</td>
+			<td>{{ major.id }}</td>
 		</tr>
 		<tr>
-			<td>级别</td>
-		</tr>
-		<tr>
-			<td>地址</td>
-		</tr>
-		<tr>
-			 <td>面积</td>
-		</tr>
-		<tr>
-			 <td>学院数量</td>
+			<td>年级数量</td>
+			<td>{{ major.gradeNum }}</td>
 		</tr>
 	</table>
 

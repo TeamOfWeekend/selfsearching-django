@@ -17,7 +17,12 @@ from .main import main, getCollege
 
 # 暂时使用该方法运行后台程序
 main()
-gCollege = ImCollege()
+
+gCollege = None
+gAcademy = None
+gMajor = None
+gGrade = None
+gClass = None
 
 def showIndex(request):
     return render(request, 'imagination/showIndex.html')
@@ -36,46 +41,58 @@ def collegeEntry(request):
 def collegeInfo(request):
     if request.method == 'POST':
         collegeName = request.POST['collegeName']
-
         collegeForm = CollegeForm()
         choice_list = []
         for item in AcademyEnum:
             choice_list.append([item.name, item.name])
         collegeForm.academyChoiceSet(choice_list)
-
+        global gCollege
         gCollege = getCollege(collegeName)
-
-    return render(request, 'imagination/collegeInfo.html', {'collegeForm': collegeForm, 'college': gCollege})
+        return render(request, 'imagination/collegeInfo.html', {'collegeForm': collegeForm, 'college': gCollege})
 
 
 def academyInfo(request):
+    global gCollege, gAcademy
     if request.method == 'POST':
         academyName = request.POST['academyName']
-
+        gAcademy = gCollege.academies[academyName]
         academyForm = AcademyForm()
         choice_list = []
-        for key in ACADEMY_MAJOR_DIR.keys():
+        for key in gAcademy.majors.keys():
             choice_list.append([key, key])
         academyForm.majorChoiceSet(choice_list)
-        print(gCollege.name)
-        print(gCollege.academies)
 
-        academy = gCollege.academies[academyName]
-    return render(request, 'imagination/academyInfo.html', {'academyForm': academyForm, 'academy': academy})
+        context = {'academyForm': academyForm, 'academy': gAcademy, 'college': gCollege}
+        return render(request, 'imagination/academyInfo.html', context)
 
 
 def majorInfo(request):
-    majorForm = MajorForm()
-    major = ImMajor()
-    major.name = '电气工程学院'
-    return render(request, 'imagination/majorInfo.html', {'majorForm': majorForm, 'major': major})
+    global gCollege, gAcademy, gMajor
+    if request.method == 'POST':
+        majorName = request.POST['majorName']
+        gMajor = gAcademy.majors[majorName]
+        print(gAcademy.majors)
+        print(gMajor.name)
+        majorForm = MajorForm()
+        choice_list = []
+        for grade in range(1, len(gMajor.grades) + 1):
+            choice_list.append([grade, grade])
+        majorForm.gradeChoiceSet(choice_list)
+
+        context = {'majorForm': majorForm, 'majorName': majorName,
+                   'major': gMajor, 'academy': gAcademy, 'college': gCollege}
+        return render(request, 'imagination/majorInfo.html', context)
 
 
 def gradeInfo(request):
-    gradeForm = GradeForm()
-    grade = ImGrade()
-    grade.id = 1
-    return render(request, 'imagination/gradeInfo.html', {'gradeForm': gradeForm, 'grade': grade})
+    global gCollege, gAcademy, gMajor, gGrade
+    if request.method == 'POST':
+        gradeForm = GradeForm()
+        gradeId = request.POST['gradeId']
+        gGrade.id = gMajor.grades[gradeId-1]
+        context = {'gradeForm': gradeForm, 'grade': gGrade,
+                   'major': gMajor, 'academy': gAcademy, 'college': gCollege}
+        return render(request, 'imagination/gradeInfo.html', {'gradeForm': gradeForm, 'grade': grade})
 
 
 def classInfo(request):
