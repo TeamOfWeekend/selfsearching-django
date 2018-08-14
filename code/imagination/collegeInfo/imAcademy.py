@@ -32,6 +32,7 @@ class ImAcademy():
         self.name = AcademyEnum(self.id).name
         for id in range(0, len(ACADEMY_MAJOR_DIR[self.name])):
             major = ImMajor(self, id+1)
+            major.name = ACADEMY_MAJOR_DIR[self.name][id]
             major.createRandomAttrs()
             self.majors[ACADEMY_MAJOR_DIR[self.name][id]] = major
             self.majorNum += 1

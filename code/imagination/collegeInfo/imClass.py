@@ -49,7 +49,7 @@ class ImClass():
                     swapped = True
                 i += 1
             if False == swapped:
-                return
+                break
             n -= 1
 
         for i in range(0,len(self.students)):

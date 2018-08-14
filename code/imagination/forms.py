@@ -167,7 +167,7 @@ class MajorForm(forms.Form):
 
 class GradeForm(forms.Form):
     """大学表单"""
-    className = forms.ChoiceField(label = '选择班级',
+    classId = forms.ChoiceField(label = '选择班级',
                                   widget=widgets.Select(attrs={
                                         'class': 'form-control',
                                         'id': 'className',
@@ -177,5 +177,5 @@ class GradeForm(forms.Form):
                                 )
 
     def classChoiceSet(self, choice_list):
-        self.fields['className'].widget.choices = choice_list
+        self.fields['classId'].widget.choices = choice_list
 

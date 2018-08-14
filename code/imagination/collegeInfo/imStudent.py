@@ -57,7 +57,7 @@ class ImStudent(person.Person):
         # 所属班级
         self.classs = classs
         # 爱好
-        self.hobbies = []
+        self.hobbies = ''
 
 
     def createRandomName(self):
@@ -77,20 +77,27 @@ class ImStudent(person.Person):
     def createRandomSex(self):
         """随机获取性别"""
         ranInt = random.randint(1, len(enumTypes.SexEnum))
-        self.sex = enumTypes.SexEnum(ranInt)
+        self.sex = enumTypes.SexEnum(ranInt).name
 
 
     def createRandomHobbies(self):
         """获取随机爱好"""
-        ranInt = random.randint(1,5)
-        if ImSex.male == self.sex:
-            while ranInt:
-                self.hobbies.append(MaleHobbies(random.randint(1, len(MaleHobbies))))
-                ranInt -= 1
+
+        hobbyCnt = 0
+        if enumTypes.SexEnum(1).name == self.sex:
+            ranInts = random.sample(range(1, len(MaleHobbies) + 1), random.randint(1, len(MaleHobbies)))
+            for ranInt in ranInts:
+                if 0 != hobbyCnt:
+                    self.hobbies += ','
+                self.hobbies += MaleHobbies(ranInt).name
+                hobbyCnt += 1
         else:
-            while ranInt:
-                self.hobbies.append(FemaleHobbies(random.randint(1, len(FemaleHobbies))))
-                ranInt -= 1
+            ranInts = random.sample(range(1, len(FemaleHobbies) + 1), random.randint(1, len(FemaleHobbies)))
+            for ranInt in ranInts:
+                if 0 != hobbyCnt:
+                    self.hobbies += ','
+                self.hobbies += FemaleHobbies(ranInt).name
+                hobbyCnt += 1
 
 
 
@@ -113,10 +120,11 @@ class ImStudent(person.Person):
 
         self.createRandomName()
         self.createRandomSex()
+        self.createRandomHobbies()
+        # self.createId()
         self.age = (datetime.datetime.now().year - self.year_in_college + 17)
-        self.height = random.randint(130, 200) + random.random()
-        self.weight = random.randint(30, 100) + random.random()
-        self.hobbies = []
+        self.height = round(random.randint(130, 200) + random.random(), 1)
+        self.weight = round(random.randint(30, 100) + random.random(), 1)
 
 
     def getStudentAllInfo(self):

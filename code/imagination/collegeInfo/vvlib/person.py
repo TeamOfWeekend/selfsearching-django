@@ -28,7 +28,7 @@ class Person:
     """自然人的类"""
 
     # Constructor
-    def __init__(self, name='', age=0, sex=SexEnum.male):
+    def __init__(self, name='', age=0, sex=SexEnum(1).name):
         """Set the initial state of self, which includes the contents of
         sourceCollection, if it's present"""
 
@@ -84,9 +84,9 @@ class Person:
 
     @sex.setter
     def sex(self, sex):
-        if sex not in SexEnum:
+        if sex not in SexEnum.__members__.keys():
             raise ValueError('人的性别必须从SexEnum中选择')
-        self._idCardNum = sex
+        self._sex = sex
 
     @property
     def age(self):

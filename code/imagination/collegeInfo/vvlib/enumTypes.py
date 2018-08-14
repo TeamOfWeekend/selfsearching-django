@@ -14,6 +14,6 @@ from enum import Enum, unique
 
 @unique
 class SexEnum(Enum):
-    male = 1
-    female = 2
+    男 = 1
+    女 = 2
 

@@ -79,8 +79,8 @@ def majorInfo(request):
             choice_list.append([grade, grade])
         majorForm.gradeChoiceSet(choice_list)
 
-        context = {'majorForm': majorForm, 'majorName': majorName,
-                   'major': gMajor, 'academy': gAcademy, 'college': gCollege}
+        context = {'majorForm': majorForm, 'major': gMajor,
+                   'academy': gAcademy, 'college': gCollege}
         return render(request, 'imagination/majorInfo.html', context)
 
 
@@ -88,17 +88,27 @@ def gradeInfo(request):
     global gCollege, gAcademy, gMajor, gGrade
     if request.method == 'POST':
         gradeForm = GradeForm()
-        gradeId = request.POST['gradeId']
-        gGrade.id = gMajor.grades[gradeId-1]
+        gradeId = int(request.POST['gradeId'])
+        gGrade = gMajor.grades[gradeId-1]
+        choice_list = []
+        for classesId in range(1, len(gGrade.classes) + 1):
+            choice_list.append([classesId, classesId])
+        gradeForm.classChoiceSet(choice_list)
+
         context = {'gradeForm': gradeForm, 'grade': gGrade,
                    'major': gMajor, 'academy': gAcademy, 'college': gCollege}
-        return render(request, 'imagination/gradeInfo.html', {'gradeForm': gradeForm, 'grade': grade})
+        return render(request, 'imagination/gradeInfo.html', context)
 
 
 def classInfo(request):
-    classs = ImClass()
-    classs.id = 1
-    return render(request, 'imagination/classInfo.html', {'classs': classs})
+    global gCollege, gAcademy, gMajor, gGrade, gClass
+    if request.method == 'POST':
+        # print(request.POST)
+        classsId = int(request.POST['classId'])
+        gClass = gGrade.classes[classsId-1]
+        context = {'classs': gClass, 'grade': gGrade,
+                   'major': gMajor, 'academy': gAcademy, 'college': gCollege}
+        return render(request, 'imagination/classInfo.html', context)
 
 
 def studentInfo(request):

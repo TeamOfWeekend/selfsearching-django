@@ -2,7 +2,7 @@
 
 {% block header %}
 	<h2>{{ college.name }}
-		<small> > {{ academy.name }} > {{ majorName }}</small>
+		<small> > {{ academy.name }} > {{ major.name }}</small>
 	</h2>
 {% endblock header %}
 
@@ -29,7 +29,7 @@
 			{{ majorForm.as_table }}
 		</table>
 
-		<button name="submit" class="btn btn-primary">进入学院</button>
+		<button name="submit" class="btn btn-primary">进入年级</button>
 
 	</form>
 	
