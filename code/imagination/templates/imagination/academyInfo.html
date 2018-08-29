@@ -1,7 +1,12 @@
 {% extends "admin_app/base.html" %}
 
 {% block header %}
-	<h2>{{ college.name }} <small> > {{ academy.name }}</small></h2>
+	<h2>
+		<a href="{% url 'imagination:collegeInfo' %}">{{ college.name }}</a>
+		<small>
+			>> {{ academy.name }}
+		</small>
+	</h2>
 {% endblock header %}
 
 {% block content %}

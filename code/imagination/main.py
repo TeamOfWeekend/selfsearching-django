@@ -8,34 +8,47 @@
 @Time    : 2018/8/8 21:50
 """
 
+import platform, socket, json
+
 from .collegeInfo.imCollege import ImCollege
-from .collegeInfo.imTypes import CollegeEnum
+from .collegeInfo.imAcademy import ImAcademy
+from .collegeInfo.imMajor import ImMajor
+from .collegeInfo.imGrade import ImGrade
+from .collegeInfo.imClass import ImClass
+from .collegeInfo.imStudent import ImStudent
 
 
-collegeList = []
+def getSocketData(collegeName):
+    ossys = platform.system()
 
-gCollegeList = []
+    college = ''
+    # college 作为服务器，实现本机进程间通信，为django提供数据
+    if 'Windows' == ossys:
+        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        host = socket.gethostname()
+        port = 8003
+        server.connect((host, port))
+        server.send(collegeName.encode())
+        college = server.recv(1024)
+        print(college)
+        server.shutdown(socket.SHUT_RDWR)
+        server.close()
+    elif 'Linux' == ossys:
+        server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    else:
+        raise OSError('Other operate system')
 
-
-def main():
-    collegeInfoMain()
-
-
-def collegeInfoMain():
-    for collegeE in CollegeEnum:
-        college = ImCollege()
-        college.name = collegeE.name
-        college.id = collegeE.value
-        college.createRandomAttrs()
-        print("%s %d" % (college.name, college.getStudentNum()))
-        gCollegeList.append(college)
-
-
-def getCollege(collegeName):
-    for college in gCollegeList:
-        print("%s vs %s" % (college.name, collegeName))
-        if college.name == collegeName:
-            return college
-    return None
+    return college
 
 
+def getCollege(server, collegeName):
+    """
+    通过socket ipc获取college数据
+    :param server:
+    :param collegeName:
+    :return:
+    """
+    college = ImCollege()
+    server.send(collegeName.encode())
+    while server.recv(1024) < 1024:
+        pass

@@ -1,8 +1,14 @@
 {% extends "admin_app/base.html" %}
 
 {% block header %}
-	<h2>{{ college.name }}
-		<small> > {{ academy.name }} > {{ major.name }} > {{ grade.id }}年级 > {{ classs.id }}班</small>
+	<h2>
+		<a href="{% url 'imagination:collegeInfo' %}">{{ college.name }}</a>
+		<small>
+			>> <a href="{% url 'imagination:academyInfo' %}">{{ academy.name }}</a>
+			>> <a href="{% url 'imagination:majorInfo' %}">{{ major.name }}</a>
+			>> <a href="{% url 'imagination:gradeInfo' %}">{{ grade.id }}年级</a>
+			>> {{ classs.id }}班
+		</small>
 	</h2>
 {% endblock header %}
 
