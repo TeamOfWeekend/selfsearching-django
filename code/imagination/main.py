@@ -28,9 +28,17 @@ def getSocketData(collegeName):
         host = socket.gethostname()
         port = 8003
         server.connect((host, port))
-        server.send(collegeName.encode())
-        college = server.recv(1024)
-        print(college)
+        # server.send(collegeName.encode())
+
+        # server.send(repr({'college_name': collegeName}).encode())
+        # data = server.recv(1024)
+        # print(eval(data.decode()))
+
+        server.send(repr({'college_name': collegeName}).encode())
+        data = eval(server.recv(1024).decode())
+        print(data)
+        # print(data[0], '-->', data[1])
+
         server.shutdown(socket.SHUT_RDWR)
         server.close()
     elif 'Linux' == ossys:
@@ -41,14 +49,15 @@ def getSocketData(collegeName):
     return college
 
 
-def getCollege(server, collegeName):
+def getCollege( collegeName):
     """
     通过socket ipc获取college数据
     :param server:
     :param collegeName:
     :return:
     """
-    college = ImCollege()
-    server.send(collegeName.encode())
-    while server.recv(1024) < 1024:
-        pass
+    # college = ImCollege()
+    # server.send(collegeName.encode())
+    # while server.recv(1024) < 1024:
+    #     pass
+    getSocketData(collegeName)
