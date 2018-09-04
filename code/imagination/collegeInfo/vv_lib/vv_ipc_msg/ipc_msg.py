@@ -165,6 +165,24 @@ class IpcMsg:
         attrs_list.append(self.data)
         return attrs_list
 
+    def from_list(self, data_list):
+        """
+        从list中获取各项数据
+        :param data_list:
+        :return:
+        """
+        if not isinstance(data_list, list):
+            raise TypeError('data_list')
+        if 7 != len(data_list):
+            raise ValueError('data_list')
+        self.module_id = data_list[0]
+        self.sender_id = data_list[1]
+        self.msg_type = data_list[2]
+        self.msg_subtype = data_list[3]
+        self.opcode = data_list[4]
+        self.data_num = data_list[5]
+        self.data = data_list[6]
+
     @property
     def module_id(self):
         return self._module_id

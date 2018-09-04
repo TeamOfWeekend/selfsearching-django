@@ -20,11 +20,13 @@ from .vv_lib.vv_college.student import ImStudent
 from .vv_lib.vv_college.teacher import ImTeacher
 
 
-gCollege = None
-gAcademy = None
-gMajor = None
-gGrade = None
-gClass = None
+gCollege = ImCollege()
+gAcademy = ImAcademy()
+gMajor = ImMajor()
+gGrade = ImGrade()
+gClass = ImClass()
+gStudent = ImStudent()
+gTeacher = ImTeacher()
 
 
 server = None
@@ -41,48 +43,16 @@ else:
     raise OSError('Other operate system')
 
 
-def getSocketData(collegeName):
-    ossys = platform.system()
-
-    college = ''
-    # college 作为服务器，实现本机进程间通信，为django提供数据
-    if 'Windows' == ossys:
-        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        host = socket.gethostname()
-        port = 8003
-        server.connect((host, port))
-        # server.send(collegeName.encode())
-
-        # server.send(repr({'college_name': collegeName}).encode())
-        # data = server.recv(1024)
-        # print(eval(data.decode()))
-
-        server.send(repr({'college_name': collegeName}).encode())
-        data = eval(server.recv(1024).decode())
-        print(data)
-        # print(data[0], '-->', data[1])
-
-        server.shutdown(socket.SHUT_RDWR)
-        server.close()
-    elif 'Linux' == ossys:
-        server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-    else:
-        raise OSError('Other operate system')
-
-    return college
-
-
 def get_college_info(college_name):
     """
     通过socket ipc获取college数据
     :param college_name:
     :return:
     """
-    # college = ImCollege()
-    # server.send(collegeName.encode())
-    # while server.recv(1024) < 1024:
-    #     pass
-    getSocketData(collegeName)
+    global gCollege
+    data_send = {'college_name': college_name}
+    msg_rcv = send_ipc_wait_reply(ModuleId.College, MSG_Type.College, 0, IPC_Opcode.Get, data_send)
+    data_recv = msg_rcv.data
 
 
 def send_ipc_wait_reply(module_id, msg_type, msg_subtype, opcode, data):
@@ -98,13 +68,15 @@ def send_ipc_wait_reply(module_id, msg_type, msg_subtype, opcode, data):
     ipc_msg_send.sender_id = ModuleId.Django
     ipc_msg_send.msg_type = msg_type
     ipc_msg_send.msg_subtype = msg_subtype
-    ipc_msg_send.opcode = IPC_Opcode.Get
+    ipc_msg_send.opcode = opcode
     ipc_msg_send.data = data
 
     server.connect((host, port))
     server.sendall(repr(ipc_msg_send.to_list()).encode())
     ipc_msg_recv = IpcMsg()
-    ipc_msg_recv = eval(server.recv(1024).decode())
+    data = eval(server.recv(1024).decode())
+    ipc_msg_recv.from_list(data)
     server.shutdown(socket.SHUT_RDWR)
     server.close()
+    return ipc_msg_recv
 

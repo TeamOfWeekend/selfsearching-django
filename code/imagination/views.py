@@ -29,13 +29,12 @@ def collegeInfo(request):
     for item in AcademyEnum:
         choice_list.append([item.name, item.name])
     collegeForm.academyChoiceSet(choice_list)
-    global gCollege
 
     if request.method == 'POST':
         collegeName = request.POST['collegeName']
-        gCollege = getCollege(collegeName)
+        college = getCollege(collegeName)
 
-    return render(request, 'imagination/collegeInfo.html', {'collegeForm': collegeForm, 'college': gCollege})
+    return render(request, 'imagination/collegeInfo.html', {'collegeForm': collegeForm, 'college': college})
 
 
 def academyInfo(request):
