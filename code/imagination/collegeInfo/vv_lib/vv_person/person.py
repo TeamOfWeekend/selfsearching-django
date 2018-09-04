@@ -32,35 +32,25 @@ class Person:
         """Set the initial state of self, which includes the contents of
         sourceCollection, if it's present"""
 
-        # 名字、身份证号、年龄、性别、身高、体重
-        self._name = name
-        self._idCardNum = 0
-        self._sex = sex
-        self._age = age
-        self._height = 0
-        self._weight = 0
-        # 胸围、腰围、臀围
-        self._bust = 0
-        self._waist = 0
-        self._hips = 0
-        # 是否结婚
-        self._married = False
-
-
+        self._name = name       # 名字
+        self._id_number = 0     # 省份证号
+        self._sex = sex         # 性别
+        self._age = age         # 年龄
+        self._height = 0        # 身高
+        self._weight = 0        # 体重
+        self._bust = 0          # 胸围
+        self._waist = 0         # 腰围
+        self._hips = 0          # 臀围
+        self._married = False   # 是否结婚
 
     def __str__(self):
         """Return the string representation of self."""
-        msg = ''
-        msg += ("%-10s : %s\n" % ('name', self._name))
-        msg += ("%-10s : %s\n" % ('age', str(self._age)))
-        msg += ("%-10s : %s\n" % ('sex', self._sex.name))
+        msg = '%s : %s, %d' % (self.name, self.sex, self.age)
         return msg
-
 
     @property
     def name(self):
         return self._name
-
 
     @name.setter
     def name(self, name):
@@ -69,14 +59,14 @@ class Person:
         self._name = name
 
     @property
-    def idCardNum(self):
-        return self._idCardNum
+    def id_number(self):
+        return self._id_number
 
-    @idCardNum.setter
-    def idCardNum(self, cardNum):
-        if not isinstance(cardNum, str):
+    @id_number.setter
+    def id_number(self, id_number):
+        if not isinstance(id_number, str):
             raise ValueError('人的身份证号必须是数字')
-        self._idCardNum = cardNum
+        self._id_number = id_number
 
     @property
     def sex(self):
@@ -133,3 +123,33 @@ class Person:
         if not isinstance(val, bool):
             raise ValueError('人的婚姻状况必须是Ture或False')
         self._married = val
+
+    @property
+    def bust(self):
+        return self._bust
+
+    @bust.setter
+    def bust(self, bust):
+        if not isinstance(bust, int):
+            raise TypeError('bust')
+        self._bust = bust
+
+    @property
+    def waist(self):
+        return self._waist
+
+    @waist.setter
+    def waist(self, waist):
+        if not isinstance(waist, int):
+            raise TypeError('waist')
+        self._waist = waist
+
+    @property
+    def hips(self):
+        return self._hips
+
+    @hips.setter
+    def hips(self, hips):
+        if not isinstance(hips, int):
+            raise TypeError('hips')
+        self._hips = hips

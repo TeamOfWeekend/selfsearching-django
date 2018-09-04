@@ -5,20 +5,9 @@ from .collegeInfo import imCollege
 from .forms import CollegeEntryForm, CollegeForm, AcademyForm, MajorForm, GradeForm
 from .collegeInfo.imTypes import CollegeEnum, AcademyEnum
 from .collegeInfo.imStudent import ImStudent
-from .main import getCollege
+from .collegeInfo.run import getCollege
 
 # Create your views here.
-
-
-# 暂时使用该方法运行后台程序
-# main()
-
-gCollege = None
-gAcademy = None
-gMajor = None
-gGrade = None
-gClass = None
-
 
 def showIndex(request):
     return render(request, 'imagination/showIndex.html')

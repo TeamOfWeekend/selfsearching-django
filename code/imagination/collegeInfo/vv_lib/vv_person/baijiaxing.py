@@ -73,7 +73,6 @@ LAST_NAMES = ('的', '一', '是', '了', '我', '不', '人', '在', '他', '�
                '乾', '坤')
 
 
-
 class Baijiaxing:
     """收录百家姓、常用汉字，并可产生随机名字"""
 
@@ -83,18 +82,16 @@ class Baijiaxing:
         sourceCollection, if it's present"""
         pass
 
-
     def __str__(self):
         """Return the string representation of self."""
         return str(FIRST_NAMES[:20])
 
-
     # Mutator methods
     @staticmethod
-    def getRandomName():
+    def get_random_name():
         """Make self become empty."""
-        ranInt = random.randint(1, 2)
-        if 1 == ranInt:
+        random_int = random.randint(1, 2)
+        if 1 == random_int:
             name = random.choice(FIRST_NAMES) + random.choice(LAST_NAMES)
         else:
             name = random.choice(FIRST_NAMES) + random.choice(LAST_NAMES) + random.choice(LAST_NAMES)
@@ -104,5 +101,5 @@ class Baijiaxing:
 # 屏蔽部分为非静态方法的替换，可简化外部引用该方法
 # _baijx = Baijiaxing()
 # getRandomName = _baijx.getRandomName()
-getRandomName = Baijiaxing.getRandomName
+get_random_name = Baijiaxing.get_random_name
 
