@@ -32,13 +32,30 @@ class ImMajor:
         将所有属性放在字典中
         :return:
         """
-        attributes_dict = {}
-        attributes_dict['name'] = self.name
-        attributes_dict['id'] = self.id
-        attributes_dict['teachers_num'] = self.teachers_num
-        attributes_dict['teachers_name'] = self.teachers_name
-        attributes_dict['grades_num'] = self.grades_num
-        return attributes_dict
+        attributes = {}
+        attributes['name'] = self.name
+        attributes['id'] = self.id
+        attributes['teachers_num'] = self.teachers_num
+        attributes['teachers_name'] = self.teachers_name
+        attributes['grades_num'] = self.grades_num
+        return attributes
+    
+    def from_dict(self, attributes):
+        """
+        从字典中取值，填充实例属性
+        :param attributes:
+        :return:
+        """
+        attributes_num = 5
+        if not isinstance(attributes, dict):
+            raise TypeError('attributes')
+        if attributes_num != len(attributes):
+            raise ValueError('attributes number error')
+        self.name = attributes['name']
+        self.id = attributes['id']
+        self.teachers_num = attributes['teachers_num']
+        self.teachers_name = attributes['teachers_name']
+        self.grades_num = attributes['grades_num']
 
     def add_grade(self, grade):
         if not isinstance(grade, ImGrade):
@@ -114,9 +131,21 @@ class ImMajor:
     def teachers_num(self):
         return self._teachers_num
 
+    @teachers_num.setter
+    def teachers_num(self, teachers_num):
+        if not isinstance(teachers_num, int):
+            raise TypeError('teachers_num')
+        self._teachers_num = teachers_num
+
     @property
     def teachers_name(self):
         return self._teachers_name
+
+    @teachers_name.setter
+    def teachers_name(self, teachers_name):
+        if not isinstance(teachers_name, list):
+            raise TypeError('teachers_name')
+        self._teachers_name = teachers_name
 
     @property
     def teachers(self):
@@ -135,6 +164,12 @@ class ImMajor:
     @property
     def grades_num(self):
         return self._grades_num
+
+    @grades_num.setter
+    def grades_num(self, grades_num):
+        if not isinstance(grades_num, int):
+            raise TypeError('grades_num')
+        self._grades_num = grades_num
 
     @property
     def grades(self):

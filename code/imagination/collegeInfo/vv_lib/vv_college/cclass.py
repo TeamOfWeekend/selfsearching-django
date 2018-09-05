@@ -37,6 +37,27 @@ class ImClass:
             attributes['students_info'].append(student_info)
         return attributes
 
+    def from_dict(self, attributes):
+        """
+        从字典中取值，填充实例属性
+        :param attributes:
+        :return:
+        """
+        attributes_num = 3
+        if not isinstance(attributes, dict):
+            raise TypeError('attributes')
+        if attributes_num != len(attributes):
+            raise ValueError('attributes number error')
+        self.id = attributes['id']
+        self.students_num = attributes['students_num']
+        students_info = attributes['students_info']
+        for student_info in students_info:
+            student = ImStudent()
+            student.name = student_info[0]
+            student.id = student_info[1]
+            student.sex = student_info[2]
+            self.students.append(student)
+
     def update_student_id(self):
         """按名字顺序对学生进行排序"""
         n = len(self.students)
@@ -61,7 +82,7 @@ class ImClass:
     def add_student(self, student):
         if not isinstance(student, ImStudent):
             raise TypeError('student')
-        self._students_num += 1
+        self.students_num += 1
         student.id = self.students_num
         self.students.append(student)
 
@@ -70,7 +91,7 @@ class ImClass:
             raise TypeError('student_id')
         for student in self.students:
             if student_id == student.id:
-                self._students_num -= 1
+                self.students_num -= 1
                 self.students.remove(student)
 
     def get_student(self, student_id):
@@ -100,6 +121,12 @@ class ImClass:
     @property
     def students_num(self):
         return self._students_num
+
+    @students_num.setter
+    def students_num(self, students_num):
+        if not isinstance(students_num, int):
+            raise TypeError('students_num')
+        self._students_num = students_num
 
     @property
     def students(self):

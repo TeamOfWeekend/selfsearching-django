@@ -47,20 +47,44 @@ class ImCollege:
         将ImCollege实例的属性按顺序放置在字典中
         :return:
         """
-        attributes_dict = {}
-        attributes_dict['name'] = self.name
-        attributes_dict['id'] = self.id
-        attributes_dict['description'] = self.description
-        attributes_dict['address'] = self.address
-        attributes_dict['level'] = self.level
-        attributes_dict['area'] = self.area
-        attributes_dict['headmaster'] = self.headmaster
-        attributes_dict['academies_num'] = self.academies_num
-        attributes_dict['majors_num'] = self.majors_num
-        attributes_dict['students_num'] = self.students_num
-        attributes_dict['teachers_num'] = self.teachers_num
-        attributes_dict['academies_name'] = self.academies_name
-        return attributes_dict
+        attributes = {}
+        attributes['name'] = self.name
+        attributes['id'] = self.id
+        attributes['description'] = self.description
+        attributes['address'] = self.address
+        attributes['level'] = self.level
+        attributes['area'] = self.area
+        attributes['headmaster'] = self.headmaster
+        attributes['academies_num'] = self.academies_num
+        attributes['majors_num'] = self.majors_num
+        attributes['students_num'] = self.students_num
+        attributes['teachers_num'] = self.teachers_num
+        attributes['academies_name'] = self.academies_name
+        return attributes
+    
+    def from_dict(self, attributes):
+        """
+        从字典中取值，填充实例属性
+        :param attributes:
+        :return:
+        """
+        attributes_num = 12
+        if not isinstance(attributes, dict):
+            raise TypeError('attributes')
+        if attributes_num != len(attributes):
+            raise ValueError('attributes number error')
+        self.name = attributes['name']
+        self.id = attributes['id']
+        self.description = attributes['description']
+        self.address = attributes['address']
+        self.level = attributes['level']
+        self.area = attributes['area']
+        self.headmaster = attributes['headmaster']
+        self.academies_num = attributes['academies_num']
+        self.academies_name = attributes['academies_name']
+        self.majors_num = attributes['majors_num']
+        self.students_num = attributes['students_num']
+        self.teachers_num = attributes['teachers_num']
 
     def add_academy(self, academy):
         """
@@ -187,6 +211,12 @@ class ImCollege:
     def academies_num(self):
         return self._academies_num
 
+    @academies_num.setter
+    def academies_num(self, academies_num):
+        if not isinstance(academies_num, int):
+            raise TypeError('academies_num')
+        self._academies_num = academies_num
+
     @property
     def majors_num(self):
         return self._majors_num
@@ -220,6 +250,12 @@ class ImCollege:
     @property
     def academies_name(self):
         return self._academies_name
+
+    @academies_name.setter
+    def academies_name(self, academies_name):
+        if not isinstance(academies_name, list):
+            raise TypeError('academies_name')
+        self._academies_name = academies_name
 
     @property
     def academies(self):

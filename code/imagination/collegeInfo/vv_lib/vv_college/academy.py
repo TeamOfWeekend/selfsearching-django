@@ -30,13 +30,30 @@ class ImAcademy:
         将所有属性放在一个字典中
         :return:
         """
-        attributes_dict = {}
-        attributes_dict['name'] = self.name
-        attributes_dict['id'] = self.id
-        attributes_dict['description'] = self.description
-        attributes_dict['majors_num'] = self.majors_num
-        attributes_dict['majors_name'] = self.majors_name
-        return attributes_dict
+        attributes = {}
+        attributes['name'] = self.name
+        attributes['id'] = self.id
+        attributes['description'] = self.description
+        attributes['majors_num'] = self.majors_num
+        attributes['majors_name'] = self.majors_name
+        return attributes
+    
+    def from_dict(self, attributes):
+        """
+        从字典中取值，填充实例属性
+        :param attributes:
+        :return:
+        """
+        attributes_num = 5
+        if not isinstance(attributes, dict):
+            raise TypeError('attributes')
+        if attributes_num != len(attributes):
+            raise ValueError('attributes number error')
+        self.name = attributes['name']
+        self.id = attributes['id']
+        self.description = attributes['description']
+        self.majors_num = attributes['majors_num']
+        self.majors_name = attributes['majors_name']
 
     def add_major(self, major):
         if not isinstance(major, ImMajor):
@@ -97,9 +114,21 @@ class ImAcademy:
     def majors_num(self):
         return self._majors_num
 
+    @majors_num.setter
+    def majors_num(self, majors_num):
+        if not isinstance(majors_num, int):
+            raise TypeError('majors_num')
+        self._majors_num = majors_num
+
     @property
     def majors_name(self):
         return self._majors_name
+
+    @majors_name.setter
+    def majors_name(self, majors_name):
+        if not isinstance(majors_name, list):
+            raise TypeError('majors_name')
+        self._majors_name = majors_name
 
     @property
     def majors(self):

@@ -8,9 +8,10 @@
 @Time    : 2018/8/8 21:50
 """
 
-import platform, socket
+import platform
+import socket
 
-from .vv_lib.vv_ipc_msg.ipc_msg import IpcMsg, ModuleId, MSG_Type, MSG_SubType, IPC_Opcode
+from .vv_lib.vv_ipc_msg.ipc_msg import IpcMsg, ModuleId, MSG_Type, IPC_Opcode
 from .vv_lib.vv_college.college import ImCollege
 from .vv_lib.vv_college.academy import ImAcademy
 from .vv_lib.vv_college.major import ImMajor
@@ -53,13 +54,106 @@ def get_college_info(college_name):
     data_send = {'college_name': college_name}
     msg_rcv = send_ipc_wait_reply(ModuleId.College, MSG_Type.College, 0, IPC_Opcode.Get, data_send)
     data_recv = msg_rcv.data
+    gCollege.from_dict(data_recv)
+    return data_recv
+
+
+def get_academy_info(academy_name):
+    """
+    通过socket ipc获取academy数据
+    :param academy_name:
+    :return:
+    """
+    global gCollege, gAcademy
+    data_send = {'college_name': gCollege.name, 'academy_name': academy_name}
+    msg_rcv = send_ipc_wait_reply(ModuleId.College, MSG_Type.Academy, 0, IPC_Opcode.Get, data_send)
+    data_recv = msg_rcv.data
+    gAcademy.from_dict(data_recv)
+    return data_recv
+
+
+def get_major_info(major_name):
+    """
+    通过socket ipc获取major数据
+    :param major_name:
+    :return:
+    """
+    global gCollege, gAcademy, gMajor
+    data_send = {'college_name': gCollege.name, 'academy_name': gAcademy.name, 'major_name': major_name}
+    msg_rcv = send_ipc_wait_reply(ModuleId.College, MSG_Type.Major, 0, IPC_Opcode.Get, data_send)
+    data_recv = msg_rcv.data
+    gMajor.from_dict(data_recv)
+    return data_recv
+
+
+def get_grade_info(grade_id):
+    """
+    通过socket ipc获取grade数据
+    :param grade_id:
+    :return:
+    """
+    global gCollege, gAcademy, gMajor, gGrade
+    data_send = {'college_name': gCollege.name, 'academy_name': gAcademy.name, 'major_name': gMajor.name,
+                 'grade_id': grade_id}
+    msg_rcv = send_ipc_wait_reply(ModuleId.College, MSG_Type.Grade, 0, IPC_Opcode.Get, data_send)
+    data_recv = msg_rcv.data
+    gGrade.from_dict(data_recv)
+    return data_recv
+
+
+def get_class_info(class_id):
+    """
+    通过socket ipc获取class数据
+    :param class_id:
+    :return:
+    """
+    global gCollege, gAcademy, gMajor, gGrade, gClass
+    data_send = {'college_name': gCollege.name, 'academy_name': gAcademy.name, 'major_name': gMajor.name,
+                 'grade_id': gGrade.id, 'class_id': class_id}
+    msg_rcv = send_ipc_wait_reply(ModuleId.College, MSG_Type.Classs, 0, IPC_Opcode.Get, data_send)
+    data_recv = msg_rcv.data
+    gClass.from_dict(data_recv)
+    return data_recv
+
+
+def get_student_info(student_id):
+    """
+    通过socket ipc获取student数据
+    :param student_id:
+    :return:
+    """
+    global gCollege, gAcademy, gMajor, gGrade, gClass, gStudent
+    data_send = {'college_name': gCollege.name, 'academy_name': gAcademy.name, 'major_name': gMajor.name,
+                 'grade_id': gGrade.id, 'class_id': gClass.id, 'student_id': student_id}
+    msg_rcv = send_ipc_wait_reply(ModuleId.College, MSG_Type.Student, 0, IPC_Opcode.Get, data_send)
+    data_recv = msg_rcv.data
+    gStudent.from_dict(data_recv)
+    return data_recv
+
+
+def get_teacher_info(teacher_name):
+    """
+    通过socket ipc获取teacher数据
+    :param teacher_name:
+    :return:
+    """
+    global gCollege, gAcademy, gMajor, gTeacher
+    data_send = {'college_name': gCollege.name, 'academy_name': gAcademy.name, 'major_name': gMajor.name,
+                 'teacher_name': teacher_name}
+    msg_rcv = send_ipc_wait_reply(ModuleId.College, MSG_Type.Teacher, 0, IPC_Opcode.Get, data_send)
+    data_recv = msg_rcv.data
+    gTeacher.from_dict(data_recv)
+    return data_recv
 
 
 def send_ipc_wait_reply(module_id, msg_type, msg_subtype, opcode, data):
     """
     发送ipc消息，并等待应答
-    :param ipc_msg_send:  待发送的ipc消息
-    :param data: 要发送的数据
+    :param module_id:
+    :param msg_type:
+    :param msg_subtype:
+    :param opcode:
+    :param data:
     :return:
     """
     global server
@@ -79,4 +173,3 @@ def send_ipc_wait_reply(module_id, msg_type, msg_subtype, opcode, data):
     server.shutdown(socket.SHUT_RDWR)
     server.close()
     return ipc_msg_recv
-

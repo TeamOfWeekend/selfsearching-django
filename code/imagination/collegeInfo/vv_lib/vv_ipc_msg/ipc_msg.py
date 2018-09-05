@@ -28,6 +28,7 @@ class MSG_Type(Enum):
     Grade = 4
     Classs = 5
     Student = 6
+    Teacher = 7
 
 
 @unique

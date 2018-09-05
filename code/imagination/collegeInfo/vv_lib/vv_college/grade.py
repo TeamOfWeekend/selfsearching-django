@@ -33,17 +33,34 @@ class ImGrade:
         attributes['classes_num'] = self.classes_num
         return attributes
 
+    def from_dict(self, attributes):
+        """
+        从字典中取值，填充实例属性
+        :param attributes:
+        :return:
+        """
+        attributes_num = 3
+        if not isinstance(attributes, dict):
+            raise TypeError('attributes')
+        if attributes_num != len(attributes):
+            raise ValueError('attributes number error')
+        self.id = attributes['id']
+        self.students_num = attributes['students_num']
+        self.classes_num = attributes['classes_num']
+
     def add_class(self, classs):
         if not isinstance(classs, ImClass):
             raise TypeError('classs')
         if classs.id not in self.classes.keys():
             self.classes[classs.id] = classs
+            self.classes_num += 1
 
     def del_class(self, class_id):
         if not isinstance(class_id, int):
             raise TypeError('class_id')
         if class_id not in self.classes.keys():
             del self.classes[class_id]
+            self.classes_num -= 1
 
     def get_class(self, class_id):
         """
@@ -72,9 +89,21 @@ class ImGrade:
     def students_num(self):
         return self._students_num
 
+    @students_num.setter
+    def students_num(self, students_num):
+        if not isinstance(students_num, int):
+            raise TypeError('students_num')
+        self._students_num = students_num
+
     @property
     def classes_num(self):
         return self._classes_num
+
+    @classes_num.setter
+    def classes_num(self, classes_num):
+        if not isinstance(classes_num, int):
+            raise TypeError('classes_num')
+        self._classes_num = classes_num
 
     @property
     def classes(self):
