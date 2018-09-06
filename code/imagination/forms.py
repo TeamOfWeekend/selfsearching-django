@@ -92,14 +92,14 @@ from django.forms import widgets
 
 class CollegeEntryForm(forms.Form):
     """大学表单"""
-    collegeName = forms.ChoiceField(label = '选择学校',
-                                    widget = widgets.Select(attrs={
-                                        # 'class': 'form-control',
-                                        'id': 'collegeName',
-                                        'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
-                                        #  'placeholder':'请输入学校名字',
-                                        })
-                                    )
+    college_name = forms.ChoiceField(label='选择学校',
+                                     widget=widgets.Select(attrs={
+                                         'class': 'form-control',
+                                         'id': 'college_name',
+                                         'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
+                                         #  'placeholder':'请输入学校名字',
+                                         })
+                                     )
 
     def __init__(self, *args, **kwargs):
         # 实时更新，拷贝所有的静态字段，复制给self.fields
@@ -110,19 +110,20 @@ class CollegeEntryForm(forms.Form):
         # self.fields['collegeName'].widget.choices = choice_list
 
     def collegeChoiceSet(self, choice_list):
-        self.fields['collegeName'].widget.choices = choice_list
+        self.fields['college_name'].widget.choices = choice_list
 
 
 class CollegeForm(forms.Form):
     """大学表单"""
-    academyName = forms.ChoiceField(label = '选择学院',
-                                    widget=widgets.Select(attrs={
-                                        'class': 'form-control',
-                                        'id': 'academyName',
-                                        'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
-                                        #  'placeholder':'请输入学校名字',
-                                    })
-                                )
+    academy_name = forms.ChoiceField(label = '选择学院',
+                                     widget=widgets.Select(attrs={
+                                         'class': 'form-control',
+                                         'id': 'academy_name',
+                                         'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
+                                         #  'placeholder':'请输入学校名字',
+                                         })
+                                     )
+
     def __init__(self, *args, **kwargs):
         # 实时更新，拷贝所有的静态字段，复制给self.fields
         super(CollegeForm, self).__init__(*args, **kwargs)
@@ -132,50 +133,50 @@ class CollegeForm(forms.Form):
         # self.fields['academyName'].widget.choices = choice_list
 
     def academyChoiceSet(self, choice_list):
-        self.fields['academyName'].widget.choices = choice_list
+        self.fields['academy_name'].widget.choices = choice_list
 
 
 class AcademyForm(forms.Form):
     """大学表单"""
-    majorName = forms.ChoiceField(label = '选择专业',
-                                  widget=widgets.Select(attrs={
-                                        'class': 'form-control',
-                                        'id': 'majorName',
-                                        'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
-                                        #  'placeholder':'请输入学校名字',
-                                    })
-                                )
+    major_name = forms.ChoiceField(label='选择专业',
+                                   widget=widgets.Select(attrs={
+                                       'class': 'form-control',
+                                       'id': 'major_name',
+                                       'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
+                                       #  'placeholder':'请输入学校名字',
+                                       })
+                                   )
 
     def majorChoiceSet(self, choice_list):
-        self.fields['majorName'].widget.choices = choice_list
+        self.fields['major_name'].widget.choices = choice_list
 
 
 class MajorForm(forms.Form):
     """大学表单"""
-    gradeId = forms.ChoiceField(label = '选择年级',
-                                  widget=widgets.Select(attrs={
-                                        'class': 'form-control',
-                                        'id': 'gradeName',
-                                        'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
-                                        #  'placeholder':'请输入学校名字',
-                                    })
-                                )
+    grade_id = forms.ChoiceField(label='选择年级',
+                                 widget=widgets.Select(attrs={
+                                     'class': 'form-control',
+                                     'id': 'grade_id',
+                                     'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
+                                     #  'placeholder':'请输入学校名字',
+                                     })
+                                 )
 
     def gradeChoiceSet(self, choice_list):
-        self.fields['gradeId'].widget.choices = choice_list
+        self.fields['grade_id'].widget.choices = choice_list
 
 
 class GradeForm(forms.Form):
     """大学表单"""
-    classId = forms.ChoiceField(label = '选择班级',
-                                  widget=widgets.Select(attrs={
-                                        'class': 'form-control',
-                                        'id': 'className',
-                                        'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
-                                        #  'placeholder':'请输入学校名字',
-                                    })
-                                )
+    class_id = forms.ChoiceField(label='选择班级',
+                                 widget=widgets.Select(attrs={
+                                     'class': 'form-control',
+                                     'id': 'class_id',
+                                     'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
+                                     #  'placeholder':'请输入学校名字',
+                                     })
+                                 )
 
     def classChoiceSet(self, choice_list):
-        self.fields['classId'].widget.choices = choice_list
+        self.fields['class_id'].widget.choices = choice_list
 

@@ -10,9 +10,6 @@
 
 from enum import Enum, unique
 
-MSG_TYPE = ()
-
-
 @unique
 class ModuleId(Enum):
     Django = 1
@@ -144,11 +141,11 @@ class IpcMsg:
         """
         if not isinstance(msg, list) or IPC_MSG_LEN != len(msg):
             raise TypeError('msg must be a list and length is %d' % IPC_MSG_LEN)
-        self.module_id = msg[0]
-        self.sender_id = msg[1]
-        self.msg_type = msg[2]
-        self.msg_subtype = msg[3]
-        self.opcode = msg[4]
+        self.module_id = ModuleId(msg[0])
+        self.sender_id = ModuleId(msg[1])
+        self.msg_type = MSG_Type(msg[2])
+        self.msg_subtype = MSG_SubType(msg[3])
+        self.opcode = IPC_Opcode(msg[4])
         self.data_num = msg[5]
         self.data = msg[6]
 
@@ -158,11 +155,11 @@ class IpcMsg:
         :return:
         """
         attrs_list = []
-        attrs_list.append(self.module_id)
-        attrs_list.append(self.sender_id)
-        attrs_list.append(self.msg_type)
-        attrs_list.append(self.msg_subtype)
-        attrs_list.append(self.opcode)
+        attrs_list.append(self.module_id.value)
+        attrs_list.append(self.sender_id.value)
+        attrs_list.append(self.msg_type.value)
+        attrs_list.append(self.msg_subtype.value)
+        attrs_list.append(self.opcode.value)
         attrs_list.append(self.data_num)
         attrs_list.append(self.data)
         return attrs_list
@@ -177,11 +174,11 @@ class IpcMsg:
             raise TypeError('data_list')
         if 7 != len(data_list):
             raise ValueError('data_list')
-        self.module_id = data_list[0]
-        self.sender_id = data_list[1]
-        self.msg_type = data_list[2]
-        self.msg_subtype = data_list[3]
-        self.opcode = data_list[4]
+        self.module_id = ModuleId(data_list[0])
+        self.sender_id = ModuleId(data_list[1])
+        self.msg_type = MSG_Type(data_list[2])
+        self.msg_subtype = MSG_SubType(data_list[3])
+        self.opcode = IPC_Opcode(data_list[4])
         self.data_num = data_list[5]
         self.data = data_list[6]
 
@@ -253,13 +250,17 @@ class IpcMsg:
     def data(self, data):
         if not isinstance(data, dict):
             raise TypeError('data must be type of dict')
-        self.data = data
+        self._data = data
         self.data_num = len(self.data)
 
 
 # msg = IpcMsg()
+# msg.data = {1:1}
 # # list(msg)
-# print(msg.to_list())
+# print(msg.data)
+# # print(msg.to_list())
 #
+# b = {}
 # a = {1:11, 2:22, 3:33}
-# print(len(a))
+# b = a
+# print(b)

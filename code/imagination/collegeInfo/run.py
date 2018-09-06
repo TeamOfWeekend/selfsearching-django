@@ -32,20 +32,6 @@ gStudent = ImStudent()
 gTeacher = ImTeacher()
 
 
-server = None
-os_sys = platform.system()
-
-# 外部app作为服务器，实现本机进程间通信，为django提供数据
-if 'Windows' == os_sys:
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    host = socket.gethostname()
-    port = 8003
-elif 'Linux' == os_sys:
-    server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-else:
-    raise OSError('Other operate system')
-
-
 def get_all_colleges_info():
     """
     通过socket ipc获取所有college
@@ -170,7 +156,19 @@ def send_ipc_wait_reply(module_id, msg_type, msg_subtype, opcode, data):
     :param data:
     :return:
     """
-    global server
+    # server = None
+    host = socket.gethostname()
+    port = 8003
+    os_sys = platform.system()
+
+    # 外部app作为服务器，实现本机进程间通信，为django提供数据
+    if 'Windows' == os_sys:
+        server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    elif 'Linux' == os_sys:
+        server = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    else:
+        raise OSError('Other operate system')
+
     ipc_msg_send = IpcMsg()
     ipc_msg_send.module_id = module_id
     ipc_msg_send.sender_id = ModuleId.Django
@@ -178,6 +176,10 @@ def send_ipc_wait_reply(module_id, msg_type, msg_subtype, opcode, data):
     ipc_msg_send.msg_subtype = msg_subtype
     ipc_msg_send.opcode = opcode
     ipc_msg_send.data = data
+
+    print('------------------------------------------------------')
+    print(repr(ipc_msg_send.to_list()))
+    print('------------------------------------------------------')
 
     server.connect((host, port))
     server.sendall(repr(ipc_msg_send.to_list()).encode())

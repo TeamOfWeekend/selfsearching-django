@@ -31,8 +31,7 @@ def collegeInfo(request):
         for academy_name in college_info['academies_name']:
             choice_list.append([academy_name, academy_name])
         collegeForm.academyChoiceSet(choice_list)
-
-    return render(request, 'imagination/collegeInfo.html', {'collegeForm': collegeForm, 'college': college_info})
+        return render(request, 'imagination/collegeInfo.html', {'collegeForm': collegeForm, 'college': college_info})
 
 
 def academyInfo(request):

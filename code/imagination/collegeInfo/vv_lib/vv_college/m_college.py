@@ -18,31 +18,33 @@ from . import m_city
 @unique
 class CollegeLevel(Enum):
     """学校级别"""
-    双一流 = 1
-    普通一本 = 2
-    二本 = 3
-    三本 = 4
-    专科 = 5
+    未知 = 1
+    双一流 = 2
+    普通一本 = 3
+    二本 = 4
+    三本 = 5
+    专科 = 6
 
 
 class ImCollege:
     """大学"""
+
     def __init__(self):
         """学校属性"""
-        self._name = ''             # 学校名称
-        self._id = 0                # 学校编号
-        self._description = ''      # 学校简介
-        self._city = None           # 所在城市
-        self._address = ''          # 学校地址
-        self._level = 0             # 学校级别
-        self._area = 0              # 校园面积
-        self._headmaster = None    # 校长
-        self._academies_num = 0     # 学院数量
-        self._academies_name = []   # 学院名称列表
-        self._academies = {}        # 学院信息字典，key为学院名，value为学院对象
-        self._majors_num = 0        # 专业数量
-        self._teachers_num = 0      # 教师数量
-        self._students_num = 0      # 学生数量
+        self._name = ''                             # 学校名称
+        self._id = 0                                # 学校编号
+        self._description = ''                      # 学校简介
+        self._city = m_city.ImCity()                # 所在城市
+        self._address = ''                          # 学校地址
+        self._level = CollegeLevel.未知             # 学校级别
+        self._area = 0                              # 校园面积
+        self._headmaster = m_teacher.ImTeacher()    # 校长
+        self._academies_num = 0                     # 学院数量
+        self._academies_name = []                   # 学院名称列表
+        self._academies = {}                        # 学院信息字典，key为学院名，value为学院对象
+        self._majors_num = 0                        # 专业数量
+        self._teachers_num = 0                      # 教师数量
+        self._students_num = 0                      # 学生数量
 
     def to_dict(self):
         """
@@ -54,16 +56,16 @@ class ImCollege:
         attributes['id'] = self.id
         attributes['description'] = self.description
         attributes['address'] = self.address
-        attributes['level'] = self.level
+        attributes['level'] = self.level.value
         attributes['area'] = self.area
-        attributes['headmaster'] = self.headmaster
+        attributes['headmaster'] = self.headmaster.name
         attributes['academies_num'] = self.academies_num
         attributes['majors_num'] = self.majors_num
         attributes['students_num'] = self.students_num
         attributes['teachers_num'] = self.teachers_num
         attributes['academies_name'] = self.academies_name
         return attributes
-    
+
     def from_dict(self, attributes):
         """
         从字典中取值，填充实例属性
@@ -79,9 +81,9 @@ class ImCollege:
         self.id = attributes['id']
         self.description = attributes['description']
         self.address = attributes['address']
-        self.level = attributes['level']
+        self.level = CollegeLevel(attributes['level'])
         self.area = attributes['area']
-        self.headmaster = attributes['headmaster']
+        self.headmaster.name = attributes['headmaster']
         self.academies_num = attributes['academies_num']
         self.academies_name = attributes['academies_name']
         self.majors_num = attributes['majors_num']
