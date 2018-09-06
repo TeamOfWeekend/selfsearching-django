@@ -9,8 +9,8 @@
 @Software: PyCharm Community Edition
 """
 
-from vv_lib.vv_college.cclass import ImClass
-from vv_lib.vv_college.major import ImMajor
+from . import m_class
+from . import m_major
 
 
 class ImGrade:
@@ -49,18 +49,27 @@ class ImGrade:
         self.classes_num = attributes['classes_num']
 
     def add_class(self, classs):
-        if not isinstance(classs, ImClass):
+        if not isinstance(classs, m_class.ImClass):
             raise TypeError('classs')
         if classs.id not in self.classes.keys():
             self.classes[classs.id] = classs
             self.classes_num += 1
+            self.students_num += classs.students_num
+            self.major.students_num += classs.students_num
+            self.major.academy.students_num += classs.students_num
+            self.major.academy.college.students_num += classs.students_num
 
     def del_class(self, class_id):
         if not isinstance(class_id, int):
             raise TypeError('class_id')
         if class_id not in self.classes.keys():
-            del self.classes[class_id]
+            classs = self.classes[class_id]
             self.classes_num -= 1
+            self.students_num -= classs.students_num
+            self.major.students_num -= classs.students_num
+            self.major.academy.students_num -= classs.students_num
+            self.major.academy.college.students_num -= classs.students_num
+            del self.classes[class_id]
 
     def get_class(self, class_id):
         """
@@ -121,6 +130,6 @@ class ImGrade:
 
     @major.setter
     def major(self, major):
-        if not isinstance(major, ImMajor):
+        if not isinstance(major, m_major.ImMajor):
             raise TypeError('major')
         self._major = major

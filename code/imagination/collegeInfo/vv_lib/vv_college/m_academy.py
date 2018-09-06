@@ -8,8 +8,8 @@
 @Time    : 2018/7/24 22:29
 """
 
-from vv_lib.vv_college.major import ImMajor
-from vv_lib.vv_college.college import ImCollege
+from . import m_major
+from . import m_college
 
 
 class ImAcademy:
@@ -54,17 +54,32 @@ class ImAcademy:
         self.description = attributes['description']
         self.majors_num = attributes['majors_num']
         self.majors_name = attributes['majors_name']
+        self.teachers_num = attributes['teachers_num']
+        self.students_num = attributes['students_num']
 
     def add_major(self, major):
-        if not isinstance(major, ImMajor):
+        if not isinstance(major, m_major.ImMajor):
             raise TypeError('major')
         if major.name not in self.majors.keys():
             self.majors[major.name] = major
+            self.majors_num += 1
+            self.students_num += major.students_num
+            self.teachers_num += major.teachers_num
+            self.college.majors_num += 1
+            self.college.students_num += major.students_num
+            self.college.teachers_num += major.teachers_num
 
     def del_major(self, major_name):
         if not isinstance(major_name, str):
             raise TypeError('major_name')
         if major_name in self.majors.keys():
+            major = self.majors[major_name]
+            self.majors_num -= 1
+            self.students_num -= major.students_num
+            self.teachers_num -= major.teachers_num
+            self.college.majors_num -= 1
+            self.college.students_num -= major.students_num
+            self.college.teachers_num -= major.teachers_num
             del self.majors[major_name]
 
     def get_major(self, major_name):
@@ -144,9 +159,21 @@ class ImAcademy:
     def students_num(self):
         return self._students_num
 
+    @students_num.setter
+    def students_num(self, students_num):
+        if not isinstance(students_num, int):
+            raise TypeError('students_num')
+        self._students_num = students_num
+
     @property
     def teachers_num(self):
         return self._teachers_num
+
+    @teachers_num.setter
+    def teachers_num(self, teachers_num):
+        if not isinstance(teachers_num, int):
+            raise TypeError('teachers_num')
+        self._teachers_num = teachers_num
 
     @property
     def college(self):
@@ -154,6 +181,6 @@ class ImAcademy:
 
     @college.setter
     def college(self, college):
-        if not isinstance(college, ImCollege):
+        if not isinstance(college, m_college.ImCollege):
             raise TypeError('college')
         self._college = college

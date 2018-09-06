@@ -8,8 +8,8 @@
 @Time    : 2018/7/24 22:16
 """
 
-from vv_lib.vv_college.student import ImStudent
-from vv_lib.vv_college.grade import ImGrade
+from . import m_student
+from . import m_grade
 
 
 class ImClass:
@@ -52,7 +52,7 @@ class ImClass:
         self.students_num = attributes['students_num']
         students_info = attributes['students_info']
         for student_info in students_info:
-            student = ImStudent()
+            student = m_student.ImStudent()
             student.name = student_info[0]
             student.id = student_info[1]
             student.sex = student_info[2]
@@ -67,7 +67,7 @@ class ImClass:
             while i < (n - 1):
                 # print("%s  %s" %(self.students[i].name, self.students[i+1].name))
                 # print(self.students[i].name < self.students[i+1].name)
-                if self.students[i].namePinYin > self.students[i+1].namePinYin:
+                if self.students[i].name_pinyin > self.students[i+1].name_pinyin:
                     self.students[i], self.students[i+1] = self.students[i+1], self.students[i]
                     swapped = True
                 i += 1
@@ -77,12 +77,16 @@ class ImClass:
 
         for i in range(0, len(self.students)):
             self.students[i].id = i + 1
-            self.students[i].createId()
+            self.students[i].create_id()
 
     def add_student(self, student):
-        if not isinstance(student, ImStudent):
+        if not isinstance(student, m_student.ImStudent):
             raise TypeError('student')
         self.students_num += 1
+        self.grade.students_num += 1
+        self.grade.major.students_num += 1
+        self.grade.major.academy.students_num += 1
+        self.grade.major.academy.college.students_num += 1
         student.id = self.students_num
         self.students.append(student)
 
@@ -92,6 +96,10 @@ class ImClass:
         for student in self.students:
             if student_id == student.id:
                 self.students_num -= 1
+                self.grade.students_num -= 1
+                self.grade.major.students_num -= 1
+                self.grade.major.academy.students_num -= 1
+                self.grade.major.academy.college.students_num -= 1
                 self.students.remove(student)
 
     def get_student(self, student_id):
@@ -144,6 +152,6 @@ class ImClass:
 
     @grade.setter
     def grade(self, grade):
-        if not isinstance(grade, ImGrade):
+        if not isinstance(grade, m_grade.ImGrade):
             raise TypeError('grade')
         self._grade = grade

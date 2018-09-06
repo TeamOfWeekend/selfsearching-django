@@ -1,11 +1,8 @@
 from django.shortcuts import render
 
-from .collegeInfo import imCollege
-
 from .forms import CollegeEntryForm, CollegeForm, AcademyForm, MajorForm, GradeForm
-from .collegeInfo.imTypes import CollegeEnum, AcademyEnum
-from .collegeInfo.imStudent import ImStudent
-from .collegeInfo.run import getCollege
+from .collegeInfo.run import get_all_colleges_info, get_college_info, get_academy_info,\
+    get_major_info, get_grade_info, get_class_info, get_teacher_info, get_student_info
 
 # Create your views here.
 
@@ -17,8 +14,9 @@ def collegeEntry(request):
     collegeEntryForm = CollegeEntryForm()
     # 生成学校信息列表，添加到学校选项中
     choice_list = []
-    for item in CollegeEnum:
-        choice_list.append([item.name, item.name])
+    colleges_info = get_all_colleges_info()
+    for college_name in colleges_info['colleges_name']:
+        choice_list.append([college_name, college_name])
     collegeEntryForm.collegeChoiceSet(choice_list)
     return render(request, 'imagination/collegeEntry.html', {'collegeEntryForm': collegeEntryForm})
 
@@ -26,22 +24,22 @@ def collegeEntry(request):
 def collegeInfo(request):
     collegeForm = CollegeForm()
     choice_list = []
-    for item in AcademyEnum:
-        choice_list.append([item.name, item.name])
-    collegeForm.academyChoiceSet(choice_list)
 
     if request.method == 'POST':
-        collegeName = request.POST['collegeName']
-        college = getCollege(collegeName)
+        college_name = request.POST['college_name']
+        college_info = get_college_info(college_name)
+        for academy_name in college_info['academies_name']:
+            choice_list.append([academy_name, academy_name])
+        collegeForm.academyChoiceSet(choice_list)
 
-    return render(request, 'imagination/collegeInfo.html', {'collegeForm': collegeForm, 'college': college})
+    return render(request, 'imagination/collegeInfo.html', {'collegeForm': collegeForm, 'college': college_info})
 
 
 def academyInfo(request):
     global gCollege, gAcademy
     if request.method == 'POST':
-        academyName = request.POST['academyName']
-        gAcademy = gCollege.academies[academyName]
+        academy_name = request.POST['academy_name']
+        academy_info = gCollege.academies[academy_name]
 
     academyForm = AcademyForm()
     choice_list = []

@@ -10,8 +10,9 @@
 from enum import Enum, unique
 # import random
 
-from vv_lib.vv_college.academy import ImAcademy
-from vv_lib.vv_college.teacher import ImTeacher
+from . import m_academy
+from . import m_teacher
+from . import m_city
 
 
 @unique
@@ -29,8 +30,9 @@ class ImCollege:
     def __init__(self):
         """学校属性"""
         self._name = ''             # 学校名称
-        self._id = 0                # 学校名称
-        self._description = ''      # 学校简述
+        self._id = 0                # 学校编号
+        self._description = ''      # 学校简介
+        self._city = None           # 所在城市
         self._address = ''          # 学校地址
         self._level = 0             # 学校级别
         self._area = 0              # 校园面积
@@ -39,8 +41,8 @@ class ImCollege:
         self._academies_name = []   # 学院名称列表
         self._academies = {}        # 学院信息字典，key为学院名，value为学院对象
         self._majors_num = 0        # 专业数量
-        self._students_num = 0      # 学生数量
         self._teachers_num = 0      # 教师数量
+        self._students_num = 0      # 学生数量
 
     def to_dict(self):
         """
@@ -92,13 +94,16 @@ class ImCollege:
         :param academy: ImAcademy实例对象
         :return:
         """
-        if not isinstance(academy, ImAcademy):
+        if not isinstance(academy, m_academy.ImAcademy):
             raise TypeError('academy')
         if (academy.name in self.academies.keys()) or (academy.name in self._academies_name):
             raise ValueError('academy exists, add failed')
-        self._academies_num += 1
-        self._academies_name.append(academy.name)
+        self.academies_num += 1
+        self.academies_name.append(academy.name)
         self.academies[academy.name] = academy
+        self.teachers_num += academy.teachers_num
+        self.students_num += academy.students_num
+        self.majors_num += academy.majors_num
 
     def del_academy(self, academy_name):
         """
@@ -110,8 +115,12 @@ class ImCollege:
             raise TypeError('academy_name')
         if (academy_name not in self._academies_name) or (academy_name not in self.academies.keys()):
             raise ValueError('%s not exists, del failed' % academy_name)
-        self._academies_num -= 1
-        self._academies_name.remove(academy_name)
+        academy = self.academies[academy_name]
+        self.academies_num -= 1
+        self.teachers_num -= academy.teachers_num
+        self.students_num -= academy.students_num
+        self.majors_num -= academy.majors_num
+        self.academies_name.remove(academy_name)
         del self.academies[academy_name]
 
     def get_academy(self, academy_name):
@@ -126,16 +135,6 @@ class ImCollege:
             return self.academies[academy_name]
         else:
             return None
-
-    def get_student_num(self):
-        """获取全校学生数量"""
-        stuNum = 0
-        for academy in self.academies.values():
-            for major in academy.majors.values():
-                for grade in major.grades:
-                    for classs in grade.classes:
-                        stuNum += len(classs.students)
-        return stuNum
 
     @property
     def name(self):
@@ -166,6 +165,16 @@ class ImCollege:
         if not isinstance(description, str):
             raise TypeError('college description must be type of str')
         self._description = description
+
+    @property
+    def city(self):
+        return self._city
+
+    @city.setter
+    def city(self, city):
+        if not isinstance(city, m_city.ImCity):
+            raise TypeError('city')
+        self._city = city
 
     @property
     def address(self):
@@ -203,7 +212,7 @@ class ImCollege:
 
     @headmaster.setter
     def headmaster(self, headmaster):
-        if not isinstance(headmaster, ImTeacher):
+        if not isinstance(headmaster, m_teacher.ImTeacher):
             raise TypeError('headmaster')
         self._headmaster = headmaster
 

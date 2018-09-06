@@ -11,7 +11,7 @@
 from enum import Enum, unique
 
 from ..vv_person.person import Person
-from .major import ImMajor
+from . import m_major
 
 
 @unique
@@ -122,7 +122,7 @@ class ImTeacher(Person):
 
     @major.setter
     def major(self, major):
-        if isinstance(major, ImMajor):
+        if isinstance(major, m_major.ImMajor):
             raise TypeError('major')
         self._major = major
 
