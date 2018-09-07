@@ -31,6 +31,9 @@ class ImGrade:
         attributes['id'] = self.id
         attributes['students_num'] = self.students_num
         attributes['classes_num'] = self.classes_num
+        attributes['major_name'] = self.major.name
+        attributes['academy_name'] = self.major.academy.name
+        attributes['college_name'] = self.major.academy.college.name
         return attributes
 
     def from_dict(self, attributes):
@@ -39,7 +42,7 @@ class ImGrade:
         :param attributes:
         :return:
         """
-        attributes_num = 3
+        attributes_num = 6
         if not isinstance(attributes, dict):
             raise TypeError('attributes')
         if attributes_num != len(attributes):
@@ -47,11 +50,15 @@ class ImGrade:
         self.id = attributes['id']
         self.students_num = attributes['students_num']
         self.classes_num = attributes['classes_num']
+        self.major.name = attributes['major_name']
+        self.major.academy.name = attributes['academy_name']
+        self.major.academy.college.name = attributes['college_name']
 
     def add_class(self, classs):
         if not isinstance(classs, m_class.ImClass):
             raise TypeError('classs')
         if classs.id not in self.classes.keys():
+            classs.grade = self
             self.classes[classs.id] = classs
             self.classes_num += 1
             self.students_num += classs.students_num

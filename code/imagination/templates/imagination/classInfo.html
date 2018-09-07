@@ -2,11 +2,11 @@
 
 {% block header %}
 	<h2>
-		<a href="{% url 'imagination:collegeInfo' %}">{{ college.name }}</a>
+		<a href="{% url 'imagination:collegeInfo' %}">{{ classs.college_name }}</a>
 		<small>
-			>> <a href="{% url 'imagination:academyInfo' %}">{{ academy.name }}</a>
-			>> <a href="{% url 'imagination:majorInfo' %}">{{ major.name }}</a>
-			>> <a href="{% url 'imagination:gradeInfo' %}">{{ grade.id }}年级</a>
+			>> <a href="{% url 'imagination:academyInfo' %}">{{ classs.academy_name }}</a>
+			>> <a href="{% url 'imagination:majorInfo' %}">{{ classs.major_name }}</a>
+			>> <a href="{% url 'imagination:gradeInfo' %}">{{ classs.grade_id }}年级</a>
 			>> {{ classs.id }}班
 		</small>
 	</h2>
@@ -20,7 +20,7 @@
 		</tr>
 		<tr>
 			<td>学生数量</td>
-			<td>{{ classs.studentNum }}</td>
+			<td>{{ classs.students_num }}</td>
 		</tr>
 	</table>
 
@@ -28,21 +28,14 @@
 		<tr>
 			<th colspan="1">姓名</th>
 			<th colspan="1">学号</th>
-			<th colspan="1">年龄</th>
 			<th colspan="1">性别</th>
-			<th colspan="1">身高</th>
-			<th colspan="1">体重</th>
-			<th colspan="1">爱好</th>
 		</tr>
-		{% for student in classs.students %}
+		{% for student_info in classs.students_info %}
 			<tr>
-				<td>{{ student.name }}</td>
-				<td>{{ student.id }}</td>
-				<td>{{ student.age }}</td>
-				<td>{{ student.sex }}</td>
-				<td>{{ student.height }}</td>
-				<td>{{ student.weight }}</td>
-				<td>{{ student.hobbies }}</td>
+				{% for data in student_info %}
+					<td>{{ data }}</td>
+				{% empty %}
+				{% endfor %}
 			</tr>
 		{% empty %}
 		{% endfor %}

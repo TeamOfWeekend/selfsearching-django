@@ -68,6 +68,9 @@ class ImTeacher(Person):
         attributes['title'] = self.title
         attributes['position'] = self.position
         attributes['curricula'] = self.curricula
+        attributes['major_name'] = self.major.name
+        attributes['academy_name'] = self.major.academy.name
+        attributes['college_name'] = self.major.academy.college.name
         return attributes
 
     def from_dict(self, attributes):
@@ -76,7 +79,7 @@ class ImTeacher(Person):
         :param attributes:
         :return:
         """
-        attributes_num = 5
+        attributes_num = 8
         if not isinstance(attributes, dict):
             raise TypeError('attributes')
         if attributes_num != len(attributes):
@@ -86,6 +89,9 @@ class ImTeacher(Person):
         self.title = attributes['title']
         self.position = attributes['position']
         self.curricula = attributes['curricula']
+        self.major.name = attributes['major_name']
+        self.major.academy.name = attributes['academy_name']
+        self.major.academy.college.name = attributes['college_name']
 
     def add_curriculum(self, curriculum):
         if not isinstance(curriculum, str):
@@ -122,7 +128,7 @@ class ImTeacher(Person):
 
     @major.setter
     def major(self, major):
-        if isinstance(major, m_major.ImMajor):
+        if not isinstance(major, m_major.ImMajor):
             raise TypeError('major')
         self._major = major
 

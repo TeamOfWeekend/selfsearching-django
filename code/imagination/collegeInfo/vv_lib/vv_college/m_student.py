@@ -75,6 +75,11 @@ class ImStudent(person.Person):
         attributes['waist'] = self.waist
         attributes['hips'] = self.hips
         attributes['married'] = self.married
+        attributes['class_id'] = self.cclass.id
+        attributes['grade_id'] = self.cclass.grade.id
+        attributes['major_name'] = self.cclass.grade.major.name
+        attributes['academy_name'] = self.cclass.grade.major.academy.name
+        attributes['college_name'] = self.cclass.grade.major.academy.college.name
         return attributes
 
     def from_dict(self, attributes):
@@ -83,7 +88,7 @@ class ImStudent(person.Person):
         :param attributes:
         :return:
         """
-        attributes_num = 14
+        attributes_num = 19
         if not isinstance(attributes, dict):
             raise TypeError('attributes')
         if attributes_num != len(attributes):
@@ -102,6 +107,11 @@ class ImStudent(person.Person):
         self.waist = attributes['waist']
         self.hips = attributes['hips']
         self.married = attributes['married']
+        self.cclass.id = attributes['class_id']
+        self.cclass.grade.id = attributes['grade_id']
+        self.cclass.grade.major.name = attributes['major_name']
+        self.cclass.grade.major.academy.name = attributes['academy_name']
+        self.cclass.grade.major.academy.college.name = attributes['college_name']
 
     def get_random_name(self):
         """随机获取一个名字"""

@@ -2,7 +2,7 @@
 
 {% block header %}
 	<h2>
-		<a href="{% url 'imagination:collegeInfo' %}">{{ college.name }}</a>
+		<a href="{% url 'imagination:collegeInfo' %}">{{ academy.college_name }}</a>
 		<small>
 			>> {{ academy.name }}
 		</small>
@@ -16,12 +16,16 @@
 			<th colspan="2">学院信息</th>
 		</tr>
 		<tr>
-			<td>学院编号</td>
+			<td>编号</td>
 			<td>{{ academy.id }}</td>
 		</tr>
 		<tr>
+			<td>简介</td>
+			<td>{{ academy.description }}</td>
+		</tr>
+		<tr>
 			<td>专业数量</td>
-			<td>{{ academy.majorNum }}</td>
+			<td>{{ academy.majors_num }}</td>
 		</tr>
 	</table>
 

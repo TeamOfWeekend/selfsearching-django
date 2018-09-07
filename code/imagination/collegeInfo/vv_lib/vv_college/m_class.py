@@ -35,6 +35,10 @@ class ImClass:
             student_info.append(student.id)
             student_info.append(student.sex)
             attributes['students_info'].append(student_info)
+        attributes['grade_id'] = self.grade.id
+        attributes['major_name'] = self.grade.major.name
+        attributes['academy_name'] = self.grade.major.academy.name
+        attributes['college_name'] = self.grade.major.academy.college.name
         return attributes
 
     def from_dict(self, attributes):
@@ -43,7 +47,7 @@ class ImClass:
         :param attributes:
         :return:
         """
-        attributes_num = 3
+        attributes_num = 7
         if not isinstance(attributes, dict):
             raise TypeError('attributes')
         if attributes_num != len(attributes):
@@ -57,6 +61,10 @@ class ImClass:
             student.id = student_info[1]
             student.sex = student_info[2]
             self.students.append(student)
+        self.grade.id = attributes['grade_id']
+        self.grade.major.name = attributes['major_name']
+        self.grade.major.academy.name = attributes['academy_name']
+        self.grade.major.academy.college.name = attributes['college_name']
 
     def update_student_id(self):
         """按名字顺序对学生进行排序"""
@@ -82,6 +90,7 @@ class ImClass:
     def add_student(self, student):
         if not isinstance(student, m_student.ImStudent):
             raise TypeError('student')
+        student.cclass = self
         self.students_num += 1
         self.grade.students_num += 1
         self.grade.major.students_num += 1

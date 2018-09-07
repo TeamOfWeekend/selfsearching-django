@@ -137,7 +137,7 @@ class CollegeForm(forms.Form):
 
 
 class AcademyForm(forms.Form):
-    """大学表单"""
+    """学院表单"""
     major_name = forms.ChoiceField(label='选择专业',
                                    widget=widgets.Select(attrs={
                                        'class': 'form-control',
@@ -152,7 +152,7 @@ class AcademyForm(forms.Form):
 
 
 class MajorForm(forms.Form):
-    """大学表单"""
+    """专业表单"""
     grade_id = forms.ChoiceField(label='选择年级',
                                  widget=widgets.Select(attrs={
                                      'class': 'form-control',
@@ -167,7 +167,7 @@ class MajorForm(forms.Form):
 
 
 class GradeForm(forms.Form):
-    """大学表单"""
+    """年级表单"""
     class_id = forms.ChoiceField(label='选择班级',
                                  widget=widgets.Select(attrs={
                                      'class': 'form-control',
@@ -180,3 +180,39 @@ class GradeForm(forms.Form):
     def classChoiceSet(self, choice_list):
         self.fields['class_id'].widget.choices = choice_list
 
+
+class ClassForm(forms.Form):
+    """班级表单"""
+    student_name = forms.CharField(min_length = 1,
+                                   strip = True,
+                                   error_messages = None,
+                                   widget = widgets.TextInput(attrs={
+                                       'class': 'form-control',
+                                       'id': 'student_name',
+                                       'rows': '6',
+                                       'style': 'background:#DCDCDC; color:#000000; font-size:11pt',
+                                       'placeholder': '等待计算结果',
+                                       'readonly': 'true'
+                                   }))
+    student_id = forms.CharField(min_length=1,
+                                 strip=True,
+                                 error_messages=None,
+                                 widget=widgets.TextInput(attrs={
+                                     'class': 'form-control',
+                                     'id': 'student_id',
+                                     'rows': '6',
+                                     'style': 'background:#DCDCDC; color:#000000; font-size:11pt',
+                                     'placeholder': '等待计算结果',
+                                     'readonly': 'true'
+                                 }))
+    student_sex = forms.CharField(min_length=1,
+                                  strip=True,
+                                  error_messages=None,
+                                  widget=widgets.TextInput(attrs={
+                                      'class': 'form-control',
+                                      'id': 'student_sex',
+                                      'rows': '6',
+                                      'style': 'background:#DCDCDC; color:#000000; font-size:11pt',
+                                      'placeholder': '等待计算结果',
+                                      'readonly': 'true'
+                                  }))

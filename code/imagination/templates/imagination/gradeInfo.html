@@ -2,10 +2,10 @@
 
 {% block header %}
 	<h2>
-		<a href="{% url 'imagination:collegeInfo' %}">{{ college.name }}</a>
+		<a href="{% url 'imagination:collegeInfo' %}">{{ grade.college_name }}</a>
 		<small>
-			>> <a href="{% url 'imagination:academyInfo' %}">{{ academy.name }}</a>
-			>> <a href="{% url 'imagination:majorInfo' %}">{{ major.name }}</a>
+			>> <a href="{% url 'imagination:academyInfo' %}">{{ grade.academy_name }}</a>
+			>> <a href="{% url 'imagination:majorInfo' %}">{{ grade.major_name }}</a>
 			>> {{ grade.id }}年级
 		</small>
 	</h2>
@@ -19,7 +19,11 @@
 		</tr>
 		<tr>
 			<td>班级数量</td>
-			<td>{{ grade.classNum }}</td>
+			<td>{{ grade.classes_num }}</td>
+		</tr>
+		<tr>
+			<td>学生数量</td>
+			<td>{{ grade.students_num }}</td>
 		</tr>
 	</table>
 

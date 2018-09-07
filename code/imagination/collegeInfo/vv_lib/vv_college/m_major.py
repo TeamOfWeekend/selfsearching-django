@@ -38,6 +38,9 @@ class ImMajor:
         attributes['teachers_num'] = self.teachers_num
         attributes['teachers_name'] = self.teachers_name
         attributes['grades_num'] = self.grades_num
+        attributes['students_num'] = self.students_num
+        attributes['academy_name'] = self.academy.name
+        attributes['college_name'] = self.academy.college.name
         return attributes
     
     def from_dict(self, attributes):
@@ -46,7 +49,7 @@ class ImMajor:
         :param attributes:
         :return:
         """
-        attributes_num = 5
+        attributes_num = 8
         if not isinstance(attributes, dict):
             raise TypeError('attributes')
         if attributes_num != len(attributes):
@@ -56,11 +59,15 @@ class ImMajor:
         self.teachers_num = attributes['teachers_num']
         self.teachers_name = attributes['teachers_name']
         self.grades_num = attributes['grades_num']
+        self.students_num = attributes['students_num']
+        self.academy.name = attributes['academy_name']
+        self.academy.college.name = attributes['college_name']
 
     def add_grade(self, grade):
         if not isinstance(grade, m_grade.ImGrade):
             raise TypeError('grade')
         if grade.id not in self.grades.keys():
+            grade.major = self
             self.grades[grade.id] = grade
             self.grades_num += 1
             self.students_num += grade.students_num
@@ -91,6 +98,7 @@ class ImMajor:
         if not isinstance(teacher, m_teacher.ImTeacher):
             raise TypeError('teacher')
         if teacher.name not in self.teachers.keys():
+            teacher.major = self
             self.teachers[teacher.name] = teacher
             self.teachers_num += 1
             self.academy.teachers_num += 1
@@ -134,8 +142,8 @@ class ImMajor:
 
     @id.setter
     def id(self, val):
-        if not isinstance(val, str):
-            raise TypeError('name')
+        if not isinstance(val, int):
+            raise TypeError('id')
         self._id = val
 
     @property

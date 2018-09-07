@@ -14,16 +14,16 @@ from . import m_college
 
 class ImAcademy:
     """学院"""
-    def __init__(self, college=None, mid=0):
+    def __init__(self):
         self._name = ''             # 名称
-        self._id = mid              # 编号
+        self._id = 0                # 编号
         self._description = ''      # 学院概述
         self._majors_num = 0        # 专业数量
         self._majors_name = []      # 专业名称
         self._majors = {}           # 专业
         self._students_num = 0      # 学生数量
         self._teachers_num = 0      # 教师数量
-        self._college = college     # 所属学校
+        self._college = None        # 所属学校
 
     def to_dict(self):
         """
@@ -36,6 +36,9 @@ class ImAcademy:
         attributes['description'] = self.description
         attributes['majors_num'] = self.majors_num
         attributes['majors_name'] = self.majors_name
+        attributes['teachers_num'] = self.teachers_num
+        attributes['students_num'] = self.students_num
+        attributes['college_name'] = self.college.name
         return attributes
     
     def from_dict(self, attributes):
@@ -44,7 +47,7 @@ class ImAcademy:
         :param attributes:
         :return:
         """
-        attributes_num = 5
+        attributes_num = 8
         if not isinstance(attributes, dict):
             raise TypeError('attributes')
         if attributes_num != len(attributes):
@@ -56,13 +59,16 @@ class ImAcademy:
         self.majors_name = attributes['majors_name']
         self.teachers_num = attributes['teachers_num']
         self.students_num = attributes['students_num']
+        self.college.name = attributes['college_name']
 
     def add_major(self, major):
         if not isinstance(major, m_major.ImMajor):
             raise TypeError('major')
         if major.name not in self.majors.keys():
+            major.academy = self
             self.majors[major.name] = major
             self.majors_num += 1
+            self.majors_name.append(major.name)
             self.students_num += major.students_num
             self.teachers_num += major.teachers_num
             self.college.majors_num += 1
@@ -75,6 +81,7 @@ class ImAcademy:
         if major_name in self.majors.keys():
             major = self.majors[major_name]
             self.majors_num -= 1
+            self.majors_name.remove(major.name)
             self.students_num -= major.students_num
             self.teachers_num -= major.teachers_num
             self.college.majors_num -= 1
