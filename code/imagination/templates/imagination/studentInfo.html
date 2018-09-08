@@ -1,7 +1,16 @@
 {% extends "admin_app/base.html" %}
 
 {% block header %}
-	<h2>{{ student.name }}</h2>
+	<h2><a href="{% url 'imagination:collegeInfo' %}">{{ student.college_name }}</a>
+		<small>
+			>> <a href="{% url 'imagination:academyInfo' %}">{{ student.academy_name }}</a>
+			>> <a href="{% url 'imagination:majorInfo' %}">{{ student.major_name }}</a>
+			>> <a href="{% url 'imagination:gradeInfo' %}">{{ student.grade_id }}年级</a>
+			>> <a href="{% url 'imagination:classInfo' %}">{{ student.class_id }}年级</a>
+			>> {{ student.name }}
+		</small>
+	</h2>
+
 {% endblock header %}
 
 {% block content %}

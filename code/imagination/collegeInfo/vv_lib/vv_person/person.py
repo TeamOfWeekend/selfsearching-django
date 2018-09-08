@@ -9,7 +9,13 @@
 @Software: PyCharm Community Edition
 """
 
-from .enumTypes import SexEnum
+from enum import Enum, unique
+
+
+@unique
+class SexEnum(Enum):
+    男 = 1
+    女 = 2
 
 
 AGE_MIN = 0
@@ -64,7 +70,7 @@ class Person:
 
     @id_number.setter
     def id_number(self, id_number):
-        if not isinstance(id_number, str):
+        if not isinstance(id_number, int):
             raise ValueError('人的身份证号必须是数字')
         self._id_number = id_number
 
@@ -74,7 +80,7 @@ class Person:
 
     @sex.setter
     def sex(self, sex):
-        if sex not in SexEnum.__members__.keys():
+        if sex not in SexEnum.__members__.values():
             raise ValueError('人的性别必须从SexEnum中选择')
         self._sex = sex
 

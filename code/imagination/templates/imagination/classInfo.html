@@ -32,10 +32,9 @@
 		</tr>
 		{% for student_info in classs.students_info %}
 			<tr>
-				{% for data in student_info %}
-					<td>{{ data }}</td>
-				{% empty %}
-				{% endfor %}
+				<td><a href="{% url 'imagination:studentInfo' student_info.1 %}">{{ student_info.0 }}</a></td>
+				<td>{{ student_info.1 }}</td>
+				<td>{{ student_info.2 }}</td>
 			</tr>
 		{% empty %}
 		{% endfor %}

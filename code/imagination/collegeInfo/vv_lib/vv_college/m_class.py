@@ -8,6 +8,7 @@
 @Time    : 2018/7/24 22:16
 """
 
+from ..vv_person.person import SexEnum
 from . import m_student
 from . import m_grade
 
@@ -33,7 +34,7 @@ class ImClass:
             student_info = []
             student_info.append(student.name)
             student_info.append(student.id)
-            student_info.append(student.sex)
+            student_info.append(student.sex.name)
             attributes['students_info'].append(student_info)
         attributes['grade_id'] = self.grade.id
         attributes['major_name'] = self.grade.major.name
@@ -59,7 +60,7 @@ class ImClass:
             student = m_student.ImStudent()
             student.name = student_info[0]
             student.id = student_info[1]
-            student.sex = student_info[2]
+            student.sex = SexEnum[student_info[2]]
             self.students.append(student)
         self.grade.id = attributes['grade_id']
         self.grade.major.name = attributes['major_name']
@@ -79,7 +80,7 @@ class ImClass:
                     self.students[i], self.students[i+1] = self.students[i+1], self.students[i]
                     swapped = True
                 i += 1
-            if False == swapped:
+            if swapped is False:
                 break
             n -= 1
 

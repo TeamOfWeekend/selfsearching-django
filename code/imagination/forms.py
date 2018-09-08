@@ -191,7 +191,7 @@ class ClassForm(forms.Form):
                                        'id': 'student_name',
                                        'rows': '6',
                                        'style': 'background:#DCDCDC; color:#000000; font-size:11pt',
-                                       'placeholder': '等待计算结果',
+                                       'placeholder': '-',
                                        'readonly': 'true'
                                    }))
     student_id = forms.CharField(min_length=1,
@@ -202,7 +202,7 @@ class ClassForm(forms.Form):
                                      'id': 'student_id',
                                      'rows': '6',
                                      'style': 'background:#DCDCDC; color:#000000; font-size:11pt',
-                                     'placeholder': '等待计算结果',
+                                     'placeholder': '-',
                                      'readonly': 'true'
                                  }))
     student_sex = forms.CharField(min_length=1,
@@ -213,6 +213,6 @@ class ClassForm(forms.Form):
                                       'id': 'student_sex',
                                       'rows': '6',
                                       'style': 'background:#DCDCDC; color:#000000; font-size:11pt',
-                                      'placeholder': '等待计算结果',
+                                      'placeholder': '-',
                                       'readonly': 'true'
                                   }))

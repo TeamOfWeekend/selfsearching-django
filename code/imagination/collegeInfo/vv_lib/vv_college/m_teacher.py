@@ -10,7 +10,7 @@
 """
 from enum import Enum, unique
 
-from ..vv_person.person import Person
+from ..vv_person.person import Person, SexEnum
 from . import m_major
 
 
@@ -64,7 +64,7 @@ class ImTeacher(Person):
         """
         attributes = {}
         attributes['name'] = self.name
-        attributes['sex'] = self.sex
+        attributes['sex'] = self.sex.name
         attributes['title'] = self.title
         attributes['position'] = self.position
         attributes['curricula'] = self.curricula
@@ -85,7 +85,7 @@ class ImTeacher(Person):
         if attributes_num != len(attributes):
             raise ValueError('attributes number error')
         self.name = attributes['name']
-        self.sex = attributes['sex']
+        self.sex = SexEnum[attributes['sex']]
         self.title = attributes['title']
         self.position = attributes['position']
         self.curricula = attributes['curricula']

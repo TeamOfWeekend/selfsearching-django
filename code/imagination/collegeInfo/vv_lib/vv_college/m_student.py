@@ -14,7 +14,7 @@ import datetime
 from pypinyin import pinyin, NORMAL
 from enum import Enum, unique
 
-from ..vv_person import baijiaxing, person, enumTypes
+from ..vv_person import baijiaxing, person
 from . import m_class
 
 
@@ -64,13 +64,13 @@ class ImStudent(person.Person):
         attributes['id'] = self.id
         attributes['name'] = self.name
         attributes['name_pinyin'] = self.name_pinyin
-        attributes['sex'] = self.sex
+        attributes['sex'] = self.sex.name
         attributes['age'] = self.age
         attributes['year_in_college'] = self.year_in_college
         attributes['height'] = self.height
         attributes['weight'] = self.weight
         attributes['id_number'] = self.id_number
-        attributes['hobbies'] = self.hobbies
+        attributes['hobbies'] = ''
         attributes['bust'] = self.bust
         attributes['waist'] = self.waist
         attributes['hips'] = self.hips
@@ -80,6 +80,13 @@ class ImStudent(person.Person):
         attributes['major_name'] = self.cclass.grade.major.name
         attributes['academy_name'] = self.cclass.grade.major.academy.name
         attributes['college_name'] = self.cclass.grade.major.academy.college.name
+        cnt = 0
+        for hobby in self.hobbies:
+            if 0 == cnt:
+                attributes['hobbies'] += hobby.name
+            else:
+                attributes['hobbies'] += ('、' + hobby.name)
+            cnt += 1
         return attributes
 
     def from_dict(self, attributes):
@@ -96,13 +103,12 @@ class ImStudent(person.Person):
         self.id = attributes['id']
         self.name = attributes['name']
         self.name_pinyin = attributes['name_pinyin']
-        self.sex = attributes['sex']
+        self.sex = person.SexEnum[attributes['sex']]
         self.age = attributes['age']
         self.year_in_college = attributes['year_in_college']
         self.height = attributes['height']
         self.weight = attributes['weight']
         self.id_number = attributes['id_number']
-        self.hobbies = attributes['hobbies']
         self.bust = attributes['bust']
         self.waist = attributes['waist']
         self.hips = attributes['hips']
@@ -112,6 +118,12 @@ class ImStudent(person.Person):
         self.cclass.grade.major.name = attributes['major_name']
         self.cclass.grade.major.academy.name = attributes['academy_name']
         self.cclass.grade.major.academy.college.name = attributes['college_name']
+        hobbies_name = attributes['hobbies'].spilt('、')
+        for hobby_name in hobbies_name:
+            if self.sex is person.SexEnum.男:
+                self.add_hobby(MaleHobbies[hobby_name])
+            elif self.sex is person.SexEnum.女:
+                self.add_hobby(FemaleHobbies[hobby_name])
 
     def get_random_name(self):
         """随机获取一个名字"""
@@ -128,27 +140,21 @@ class ImStudent(person.Person):
 
     def get_random_sex(self):
         """随机获取性别"""
-        random_int = random.randint(1, len(enumTypes.SexEnum))
-        self.sex = enumTypes.SexEnum(random_int).name
+        random_int = random.randint(1, len(person.SexEnum))
+        self.sex = person.SexEnum(random_int).name
 
     def get_random_hobbies(self):
         """获取随机爱好"""
 
         hobby_cnt = 0
-        if enumTypes.SexEnum(1).name == self.sex:
+        if person.SexEnum.男 == self.sex:
             ranInts = random.sample(range(1, len(MaleHobbies) + 1), random.randint(1, len(MaleHobbies)))
             for ranInt in ranInts:
-                if 0 != hobby_cnt:
-                    self.hobbies += ','
-                self.hobbies += MaleHobbies(ranInt).name
-                hobby_cnt += 1
+                self.add_hobby(MaleHobbies(ranInt))
         else:
             ranInts = random.sample(range(1, len(FemaleHobbies) + 1), random.randint(1, len(FemaleHobbies)))
             for ranInt in ranInts:
-                if 0 != hobby_cnt:
-                    self.hobbies += ','
-                self.hobbies += FemaleHobbies(ranInt).name
-                hobby_cnt += 1
+                self.add_hobby(FemaleHobbies(ranInt))
 
     def create_id(self):
         """根据入学年份、学校、院系、专业，生成学号，如 2018 000011 002 03 05"""
@@ -233,8 +239,13 @@ class ImStudent(person.Person):
     def hobbies(self):
         return self._hobbies
 
-    @hobbies.setter
-    def hobbies(self, hobbies):
-        if not isinstance(hobbies, list):
-            raise TypeError('hobbies')
-        self._hobbies = hobbies
+    def add_hobby(self, hobby):
+        if self.sex is person.SexEnum.男:
+            if hobby in MaleHobbies.__members__.values():
+                self._hobbies.append(hobby)
+                return True
+        elif self.sex is person.SexEnum.女:
+            if hobby in FemaleHobbies.__members__.values():
+                self._hobbies.append(hobby)
+                return True
+        raise TypeError('hobby')

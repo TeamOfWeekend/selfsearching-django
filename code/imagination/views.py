@@ -87,32 +87,22 @@ def gradeInfo(request):
 
 
 def classInfo(request):
-    # classForm = ClassForm()
     class_id = 0
     if request.method == 'POST':
         class_id = int(request.POST['class_id'])
     class_info = get_class_info(class_id)
-    # for student_info in class_info['students_info']:
-
     context = {'classs': class_info}
     return render(request, 'imagination/classInfo.html', context)
 
 
-def studentInfo(request):
-    student_id = 0
-    if request.method == 'POST':
-        student_id = int(request.POST['student_id'])
-    student_info = get_student_info(student_id)
-    context = {'classs': student_info}
+# @login_required
+def studentInfo(request, student_id):
+    student_info = get_student_info(int(student_id))
+    context = {'student': student_info}
+    return render(request, 'imagination/studentInfo.html', context)
+
+
+def teacherInfo(request, teacher_id):
+    teacher_info = get_student_info(teacher_id)
+    context = {'teacher': teacher_info}
     return render(request, 'imagination/classInfo.html', context)
-
-
-def teacherInfo(request):
-    teacher_name = ''
-    if request.method == 'POST':
-        teacher_name = int(request.POST['teacher_name'])
-    teacher_info = get_student_info(teacher_name)
-    context = {'classs': teacher_info}
-    return render(request, 'imagination/classInfo.html', context)
-
-
