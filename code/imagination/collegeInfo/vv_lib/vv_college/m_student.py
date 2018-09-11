@@ -118,12 +118,13 @@ class ImStudent(person.Person):
         self.cclass.grade.major.name = attributes['major_name']
         self.cclass.grade.major.academy.name = attributes['academy_name']
         self.cclass.grade.major.academy.college.name = attributes['college_name']
-        hobbies_name = attributes['hobbies'].spilt('、')
-        for hobby_name in hobbies_name:
-            if self.sex is person.SexEnum.男:
-                self.add_hobby(MaleHobbies[hobby_name])
-            elif self.sex is person.SexEnum.女:
-                self.add_hobby(FemaleHobbies[hobby_name])
+        if len(attributes['hobbies']) > 0:
+            hobbies_name = attributes['hobbies'].split('、')
+            for hobby_name in hobbies_name:
+                if self.sex is person.SexEnum.男:
+                    self.add_hobby(MaleHobbies[hobby_name])
+                elif self.sex is person.SexEnum.女:
+                    self.add_hobby(FemaleHobbies[hobby_name])
 
     def get_random_name(self):
         """随机获取一个名字"""

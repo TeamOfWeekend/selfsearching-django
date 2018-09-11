@@ -215,15 +215,19 @@ def send_ipc_wait_reply(module_id, msg_type, msg_subtype, opcode, data):
     ipc_msg_send.opcode = opcode
     ipc_msg_send.data = data
 
-    print('------------------------------------------------------')
-    print(repr(ipc_msg_send.to_list()))
-    print('------------------------------------------------------')
+    # print('------------------------------------------------------')
+    # print(repr(ipc_msg_send.to_list()))
+    # print('------------------------------------------------------')
 
     server.connect((host, port))
     server.sendall(repr(ipc_msg_send.to_list()).encode())
     ipc_msg_recv = IpcMsg()
     data = eval(server.recv(10240).decode())
-    # print(data)
+
+    print('------------------------------------------------------')
+    print('data recv : ', data)
+    print('------------------------------------------------------')
+
     ipc_msg_recv.from_list(data)
     server.shutdown(socket.SHUT_RDWR)
     server.close()

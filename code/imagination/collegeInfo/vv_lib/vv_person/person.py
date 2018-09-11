@@ -34,7 +34,7 @@ class Person:
     """自然人的类"""
 
     # Constructor
-    def __init__(self, name='', age=0, sex=SexEnum(1).name):
+    def __init__(self, name='', age=0, sex=SexEnum(1)):
         """Set the initial state of self, which includes the contents of
         sourceCollection, if it's present"""
 
