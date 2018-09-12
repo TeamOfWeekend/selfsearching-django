@@ -74,7 +74,7 @@ class ImStudent(person.Person):
         attributes['bust'] = self.bust
         attributes['waist'] = self.waist
         attributes['hips'] = self.hips
-        attributes['married'] = self.married
+        attributes['married'] = self.married.name
         attributes['class_id'] = self.cclass.id
         attributes['grade_id'] = self.cclass.grade.id
         attributes['major_name'] = self.cclass.grade.major.name
@@ -112,7 +112,7 @@ class ImStudent(person.Person):
         self.bust = attributes['bust']
         self.waist = attributes['waist']
         self.hips = attributes['hips']
-        self.married = attributes['married']
+        self.married = person.MarriedEnum[attributes['married']]
         self.cclass.id = attributes['class_id']
         self.cclass.grade.id = attributes['grade_id']
         self.cclass.grade.major.name = attributes['major_name']

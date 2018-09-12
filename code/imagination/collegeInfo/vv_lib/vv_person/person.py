@@ -18,6 +18,12 @@ class SexEnum(Enum):
     女 = 2
 
 
+@unique
+class MarriedEnum(Enum):
+    未婚 = 1
+    已婚 = 2
+
+
 AGE_MIN = 0
 AGE_MAX = 170
 
@@ -34,20 +40,20 @@ class Person:
     """自然人的类"""
 
     # Constructor
-    def __init__(self, name='', age=0, sex=SexEnum(1)):
+    def __init__(self, name='', age=0, sex=SexEnum(1), married=MarriedEnum(1)):
         """Set the initial state of self, which includes the contents of
         sourceCollection, if it's present"""
 
-        self._name = name       # 名字
-        self._id_number = 0     # 省份证号
-        self._sex = sex         # 性别
-        self._age = age         # 年龄
-        self._height = 0        # 身高
-        self._weight = 0        # 体重
-        self._bust = 0          # 胸围
-        self._waist = 0         # 腰围
-        self._hips = 0          # 臀围
-        self._married = False   # 是否结婚
+        self._name = name           # 名字
+        self._id_number = 0         # 省份证号
+        self._sex = sex             # 性别
+        self._age = age             # 年龄
+        self._height = 0            # 身高
+        self._weight = 0            # 体重
+        self._bust = 0              # 胸围
+        self._waist = 0             # 腰围
+        self._hips = 0              # 臀围
+        self._married = married     # 是否结婚
 
     def __str__(self):
         """Return the string representation of self."""
@@ -125,10 +131,10 @@ class Person:
         return self._married
 
     @married.setter
-    def married(self, val):
-        if not isinstance(val, bool):
-            raise ValueError('人的婚姻状况必须是Ture或False')
-        self._married = val
+    def married(self, married):
+        if married not in MarriedEnum.__members__.values():
+            raise ValueError('人的婚姻状况必须从枚举MarriedEnum中选择')
+        self._married = married
 
     @property
     def bust(self):
