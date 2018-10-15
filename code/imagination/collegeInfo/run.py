@@ -10,6 +10,7 @@
 
 import platform
 import socket
+import json
 
 from .vv_lib.vv_ipc_msg.ipc_msg import IpcMsg, ModuleId, MSG_Type, MSG_SubType, IPC_Opcode
 from .vv_lib.vv_college.m_colleges import ImColleges
@@ -220,9 +221,11 @@ def send_ipc_wait_reply(module_id, msg_type, msg_subtype, opcode, data):
     # print('------------------------------------------------------')
 
     server.connect((host, port))
-    server.sendall(repr(ipc_msg_send.to_list()).encode())
+    # server.sendall(repr(ipc_msg_send.to_list()).decode())
+    server.sendall(json.dumps(ipc_msg_send.to_list()).encode())
     ipc_msg_recv = IpcMsg()
-    data = eval(server.recv(10240).decode())
+    # data = eval(server.recv(10240).decode())
+    data = json.loads(server.recv(10240).decode())
 
     print('------------------------------------------------------')
     print('data recv : ', data)
