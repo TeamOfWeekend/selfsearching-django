@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'users',
     'learning_logs',
     'small_tools',
-    'imagination'
+    'imagination',
+    'films'
 ]
 
 MIDDLEWARE = [

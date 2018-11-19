@@ -41,6 +41,10 @@
 						<li><a href="{% url 'small_tools:showTools' %}">SmallTools</a></li>
 					</ul>
 
+					<ul class="nav navbar-nav">
+						<li><a href="{% url 'films:films' %}">Films</a></li>
+					</ul>
+
 					<ul class="nav navbar-nav navbar-right">
 						{% if user.is_authenticated %}
 							<li><a>Hello, {{ user.username }}.</a></li>
