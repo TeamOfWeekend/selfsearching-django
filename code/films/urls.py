@@ -16,6 +16,8 @@ urlpatterns = [
 	#显示所有的主题
 	path('films/', views.films, name='films'),
 
+	re_path('films/(?P<film_id>d+)/', views.film, name='film'),
+
 	#显示指定主题的细节
 	# re_path('topics/(?P<topic_id>\d+)/', views.topic, name='topic'),
 ]

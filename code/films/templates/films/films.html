@@ -9,18 +9,14 @@
 {% block content %}
 	
 	<ul>
-		{% for topic in topics %}
+		{% for film in films_list %}
 			<li>
-				<h3>
-					<p>
-						<!--<a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>-->
-						<!--<a href="{% url 'learning_logs:new_topic' %}">+</a>-->
-					</p>
-				</h3>
+				<h3><a href="{% url 'films:film' film.id %}">{{ film }}</a></h3>
+				<!--<p>{{ film.description }}</p>-->
 			</li>
 		{% empty %}
 			<li>
-				No topics have been added yet.
+				<h3>No film has been added yet.</h3>
 				<!--<a href="{% url 'learning_logs:new_topic' %}">Add a new topic</a>-->
 			</li>
 		{% endfor %}

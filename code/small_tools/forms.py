@@ -54,18 +54,18 @@ class AlgoStringForm(forms.Form):
 class AlgoRegixForm(forms.Form):
     """正则表达式小工具页面"""
     fileUpload = forms.FileField(required=False,
-                               widget = widgets.FileInput(attrs={
-                                   'type': 'file',
-                                   'id':'fileUpload',
-                                   'accept': "text/plain, application/msword",
-                               }))
+                                 widget = widgets.FileInput(attrs={
+                                     'type': 'file',
+                                     'id':'fileUpload',
+                                     'accept': "text/plain, application/msword",
+                                 }))
     strInput = forms.CharField(required=False,
                                widget = widgets.Textarea(attrs={
-                                   'class':'form-control',
-                                   'id':'strInput',
-                                   'rows':'3',
-                                   'style':'background:#FFFFFF; color:#000000; font-size:11pt',
-                                   'placeholder':'请输入一个字符串',
+                                   'class': 'form-control',
+                                   'id': 'strInput',
+                                   'rows': '3',
+                                   'style': 'background:#FFFFFF; color:#000000; font-size:11pt',
+                                   'placeholder': '请输入一个字符串',
                                }))
     regixInput = forms.CharField(required=False,
                               widget = widgets.Textarea(attrs={
