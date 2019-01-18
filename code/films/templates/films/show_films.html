@@ -1,0 +1,31 @@
+{% extends "films/base.html" %}
+
+{% block header %}
+	<h2>
+		Films
+	</h2>
+{% endblock header %}
+
+{% block content %}
+
+	<table border="0" class="table table-striped table-hover table-condensed">
+		{% for film in films_list %}
+			<tr>
+				<td>
+					<h4><b>
+						<a href="{% url 'films:show_film' film.num %}">{{ film.name }}</a>
+					</b></h4>
+				</td>
+			</tr>
+			<tr>
+				<td>{{ film.description }}</td>
+			</tr>
+		{% empty %}
+		{% endfor %}
+
+	</table>
+	
+
+	
+{% endblock content %}
+

@@ -1,0 +1,14 @@
+(1)自带：
+agency.js
+agency.min.js
+contact_me.js
+contact_me.min.js
+jqBootstrapValidation.js
+jqBootstrapValidation.min.js
+
+(2)从视频网站源码拷贝
+jquery.flexisel.js
+jquery-1.11.1.min.js
+register.js
+responsiveslides.min.js
+

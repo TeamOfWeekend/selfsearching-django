@@ -1,15 +1,15 @@
 {% extends 'admin_app/base.html' %}
 
 {% block header %}
-	<h2>{{ Film }}</h2>
+	<h2>{{ film.name }}</h2>
 {% endblock header %}
 
 {% block content %}
 	<p>
-		<a href="{% url 'learning_logs:new_entry' topic.id %}">add new entry</a>
+		{{ film.description }}
 	</p>
 	<video controls="controls">
-		<source src="images/Safe And Sound--音悦Tai.mp4" type="video/mp4" />
+		<source src="{{ film.url }}" type="video/mp4" />
 	</video>
 	
 {% endblock content %}

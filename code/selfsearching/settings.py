@@ -25,7 +25,7 @@ SECRET_KEY = 'd5n++)3hc^em$#@z&^6c*2o6w#02qrhkgi1d*mwg*j)4=*)@+&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#局域网访问服务器时添加ip，使用python manage.py runserver 0.0.0.0:8000启动服务器
+# 局域网访问服务器时添加ip，使用python manage.py runserver 0.0.0.0:8000启动服务器
 ALLOWED_HOSTS = ['192.192.121.121', 'localhost']
 
 
@@ -39,10 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    #第三方应用程序
+    # 第三方应用程序
     'bootstrap3',
     
-    #我的应用程序
+    # 我的应用程序
     'admin_app',
     'users',
     'learning_logs',
@@ -117,31 +117,46 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-#TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
 USE_L10N = True
 
-#USE_TZ = True
+# USE_TZ = True
 USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
 
-#我的设置
+# 当运行 python manage.py collectstatic 的时候
+# STATIC_ROOT 文件夹 是用来将所有STATICFILES_DIRS中所有文件夹中的文件，以及各app中static中的文件都复制过来
+# 把这些文件放到一起是为了用apache等部署的时候更方便
+# STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
+
+# 这个是默认设置，Django 默认会在 STATICFILES_DIRS中的文件夹 和 各app下的static文件夹中找文件
+# 注意有先后顺序，找到了就不再继续找了
+STATICFILES_FINDERS = (
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder"
+)
+
+
+
+# 我的设置
 LOGIN_URL = '/users/url'
 
 
-#django-bootstrap3的设置
-#在此处添加jquery，不需要在html中再包含jquery了
+# django-bootstrap3的设置
+# 在此处添加jquery，不需要在html中再包含jquery了
 BOOTSTRAP3 = {
 	'include_jquery': True,
 }

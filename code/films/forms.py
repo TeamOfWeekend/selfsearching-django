@@ -11,13 +11,18 @@
 
 from django import forms
 from .models import Film
+from django.forms import widgets
 
 
-class FilmForm(forms.ModelForm):
+class FilmForm(forms.Form):
 	"""大学表单"""
-	class Meta:
-		model = Film
-		fields = ['name', 'description']
-		labels = {'description': ''}
+	# class Meta:
+	# 	model = Film
+	# 	fields = ['name', 'description']
+	# 	labels = {'description': ''}
+	name = forms.CharField(max_length=50)
+	id = forms.CharField(max_length=100)
+	description = forms.CharField(max_length=500)
+	date_added = forms.DateField()
 
 
