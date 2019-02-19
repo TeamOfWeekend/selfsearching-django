@@ -48,7 +48,10 @@ INSTALLED_APPS = [
     'learning_logs',
     'small_tools',
     'imagination',
-    'films'
+    'films',
+
+    'djcelery',     # django-celery必须添加
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -161,4 +164,31 @@ BOOTSTRAP3 = {
 	'include_jquery': True,
 }
 
+# celery配置
+import djcelery
+from celery.schedules import crontab
+djcelery.setup_loader()                     # 加载djcelery
+CELERY_BROKER_URL = 'amqp://leo:leo@localhost:15672//'     # 配置broker，即消息队列
+CELERY_BROKER_POOL_LIMIT = 0
+CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'    # 配置backend
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ENABLE_UTC = False
+
+
+CELERY_BEAT_SCHEDULE = {
+    # 周期性任务
+    'task-one': {
+        'task': 'imagination.tasks.print_hello',
+        'schedule': 5.0, # 每5秒执行一次
+        # 'args': ()
+    },
+    # 定时任务
+    'task-two': {
+        'task': 'imagination.tasks.print_hello',
+        'schedule': crontab(minute=0, hour='*/3,10-19'),
+        # 'args': ()
+    }
+}
 

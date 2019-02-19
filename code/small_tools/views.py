@@ -8,11 +8,13 @@ from .smallToolsSet import algoStringApi
 from .smallToolsSet import algoRegixApi
 from .mathTools.random_walk import RandomWalk
 from .mathTools.worldPopulation import WorldPopulationMap
+from .tasks import test_add
 # Create your views here.
 
 
 def showTools(request):
 	"""学习笔记的首页"""
+	test_add.delay(1, 2)
 	return render(request, 'small_tools/showTools.html')
 
 

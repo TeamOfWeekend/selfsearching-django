@@ -1,0 +1,724 @@
+{
+  "movie": [
+    {
+      "name": "肖申克的救赎",
+      "mark": "9.6",
+      "director": "弗兰克·德拉邦特",
+      "release_time": "1994-09-10(多伦多电影节)",
+      "length": "142分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0111161",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "放牛班的春天",
+      "mark": "9.2",
+      "director": "克里斯托夫·巴拉蒂",
+      "release_time": "2004-10-16(中国大陆)",
+      "length": "97 分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0372824",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1910824951.jpg",
+      "summary": "\n                                　　1949年的法国乡村，音乐家克莱门特（杰勒德•尊诺 饰）到了一间外号叫“塘低”的男子寄宿学校当助理教师。学校里的学生大部分都是难缠的问题儿童，体罚在这里司空见惯，学校的校长（弗朗西斯•贝尔兰德 饰）只顾自己的前途，残暴高压。\n                                    "
+    },
+    {
+      "name": "大话西游之大圣娶亲",
+      "mark": "9.2",
+      "director": "刘镇伟",
+      "release_time": "语言:",
+      "length": "2017-04-13(中国大陆重映)",
+      "imdb_link": "http://www.imdb.com/title/tt0114996",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2455050536.jpg",
+      "summary": "\n                                　　至尊宝（周星驰 饰）被月光宝盒带回到五百年前，遇见紫霞仙子（朱茵 饰），被对方打上烙印成为对方的人，并发觉自己已变成孙悟空。\n                                    "
+    },
+    {
+      "name": "教父",
+      "mark": "9.2",
+      "director": "弗朗西斯·福特·科波拉",
+      "release_time": "1972-03-15(纽约首映)",
+      "length": "175 分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0068646",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2190556185.jpg",
+      "summary": "\n                                　　40年代的美国，“教父”维托·唐·柯里昂（马龙·白兰度 饰）是黑手党柯里昂家族的首领，带领家族从事非法的勾当，但同时他也是许多弱小平民的保护神，深得人们爱戴。\n                                    "
+    },
+    {
+      "name": "楚门的世界",
+      "mark": "9.1",
+      "director": "彼得·威尔",
+      "release_time": "1998-06-05(美国)",
+      "length": "又名:",
+      "imdb_link": "http://www.imdb.com/title/tt0120382",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p479682972.jpg",
+      "summary": "\n                                　　楚门（金•凯瑞 Jim Carrey 饰）是一个平凡得不能再平凡的人，除了一些有些稀奇的经历之外——初恋女友突然失踪、溺水身亡的父亲忽然似乎又出现在眼前，他和绝大多数30多岁的美国男人绝无异样。这令他倍感失落。他也曾试过离开自己生活了多年的地方，但总因种种理由而不能成行。\n                                    "
+    },
+    {
+      "name": "龙猫",
+      "mark": "9.1",
+      "director": "宫崎骏",
+      "release_time": "语言:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0096283",
+      "cover_link": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p537668599.jpg",
+      "summary": "\n                                　　小月的母亲生病住院了，父亲带着她与四岁的妹妹小梅到乡间的居住。她们对那里的环境都感到十分新奇，也发现了很多有趣的事情。她们遇到了很多小精灵，她们来到属于她们的环境中，看到了她们世界中很多的奇怪事物，更与一只大大胖胖的龙猫成为了朋友。龙猫与小精灵们利用他们的神奇力量，为小月与妹妹带来了很多神奇的景观，令她们大开眼界。\n                                    "
+    },
+    {
+      "name": "忠犬八公的故事",
+      "mark": "9.2",
+      "director": "拉斯·霍尔斯道姆",
+      "release_time": "2010-03-12(英国)",
+      "length": "又名:",
+      "imdb_link": "http://www.imdb.com/title/tt1028532",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p524964016.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "机器人总动员",
+      "mark": "9.3",
+      "director": "安德鲁·斯坦顿",
+      "release_time": "制片国家/地区:",
+      "length": "2008-06-27(美国)",
+      "imdb_link": "http://www.pixar.com/feature-films/walle",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1461851991.jpg",
+      "summary": "\n                                　　公元2805年，人类文明高度发展，却因污染和生活垃圾大量增加使得地球不再适于人类居住。地球人被迫乘坐飞船离开故乡，进行一次漫长无边的宇宙之旅。临行前他们委托Buynlarge的公司对地球垃圾进行清理，该公司开发了名为WALL·E（Waste Allocation Loa d Lifters – Earth 地球废品分装员）的机器人担当此重任。\n                                    "
+    },
+    {
+      "name": "星际穿越",
+      "mark": "9.2",
+      "director": "克里斯托弗·诺兰",
+      "release_time": "上映日期:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0816692",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2206088801.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "海上钢琴师",
+      "mark": "9.2",
+      "director": "朱塞佩·托纳多雷",
+      "release_time": "1998-10-28(意大利)",
+      "length": "又名:",
+      "imdb_link": "http://www.imdb.com/title/tt0120731",
+      "cover_link": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p511146807.jpg",
+      "summary": "\n                                　　本片讲述了一个钢琴天才传奇的一生。\n                                    "
+    },
+    {
+      "name": "三傻大闹宝莱坞",
+      "mark": "9.2",
+      "director": "拉吉库马尔·希拉尼",
+      "release_time": "语言:",
+      "length": "2009-12-25(印度)",
+      "imdb_link": "http://www.imdb.com/title/tt1187043",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p579729551.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "盗梦空间",
+      "mark": "9.3",
+      "director": "克里斯托弗·诺兰",
+      "release_time": "语言:",
+      "length": "2010-07-16(美国)",
+      "imdb_link": "http://www.imdb.com/title/tt1375666",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p513344864.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "千与千寻",
+      "mark": "9.3",
+      "director": "宫崎骏",
+      "release_time": "上映日期:",
+      "length": "125分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0245429",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1606727862.jpg",
+      "summary": "\n                                　　千寻和爸爸妈妈一同驱车前往新家，在郊外的小路上不慎进入了神秘的隧道——他们去到了另外一个诡异世界—一个中世纪的小镇。远处飘来食物的香味，爸爸妈妈大快朵颐，孰料之后变成了猪！这时小镇上渐渐来了许多样子古怪、半透明的人。\n                                    "
+    },
+    {
+      "name": "辛德勒的名单",
+      "mark": "9.4",
+      "director": "史蒂文·斯皮尔伯格",
+      "release_time": "上映日期:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0108052",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p492406163.jpg",
+      "summary": "\n                                　　1939年，波兰在纳粹德国的统治下，党卫军对犹太人进行了隔离统治。德国商人奥斯卡·辛德勒（连姆·尼森 Liam Neeson 饰）来到德军统治下的克拉科夫，开设了一间搪瓷厂，生产军需用品。凭着出众的社交能力和大量的金钱，辛德勒和德军建立了良好的关系，他的工厂雇用犹太人工作，大发战争财。\n                                    "
+    },
+    {
+      "name": "泰坦尼克号",
+      "mark": "9.3",
+      "director": "詹姆斯·卡梅隆",
+      "release_time": "上映日期:",
+      "length": "1997-12-19(美国)",
+      "imdb_link": "http://www.imdb.com/title/tt0120338",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p457760035.jpg",
+      "summary": "\n                                　　1912年4月10日，号称 “世界工业史上的奇迹”的豪华客轮泰坦尼克号开始了自己的处女航，从英国的南安普顿出发驶往美国纽约。富家少女罗丝（凯特•温丝莱特）与母亲及未婚夫卡尔坐上了头等舱；另一边，放荡不羁的少年画家杰克（莱昂纳多·迪卡普里奥）也在码头的一场赌博中赢得了下等舱的船票。\n                                    "
+    },
+    {
+      "name": "天堂电影院",
+      "mark": "9.1",
+      "director": "朱塞佩·托纳多雷",
+      "release_time": "1988-11-17(意大利)",
+      "length": "又名:",
+      "imdb_link": "http://www.imdb.com/title/tt0095765",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1910901025.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "当幸福来敲门",
+      "mark": "8.9",
+      "director": "加布里埃莱·穆奇诺",
+      "release_time": "上映日期:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0454921",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2220721286.jpg",
+      "summary": "\n                                　　克里斯•加纳（威尔·史密斯 Will Smith 饰）用尽全部积蓄买下了高科技治疗仪，到处向医院推销，可是价格高昂，接受的人不多。就算他多努力都无法提供一个良好的生活环境给妻儿，妻子（桑迪·牛顿 Thandie Newton 饰）最终选择离开家。从此他带着儿子克里斯托夫（贾登·史密斯 Jaden Smith 饰）相依为命。克里斯好不容易争取回来一个股票投资公司实习的机会，就算没有报酬，成功机会只有百分之五，他仍努力奋斗，儿子是他的力量。他看尽白眼，与儿子躲在地铁站里的公共厕所里，住在教堂的收容所里…… 他坚信，幸福明天就会来临。\n                        "
+    },
+    {
+      "name": "无间道",
+      "mark": "9.1",
+      "director": "刘伟强",
+      "release_time": "上映日期:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0338564",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2233971046.jpg",
+      "summary": "\n                                　　1991年，香港黑帮三合会会员刘健明（刘德华）听从老大韩琛（曾志伟）的吩咐，加入警察部队成为黑帮卧底，韩琛许诺刘健明会帮其在七年后晋升为见习督察。1992年，警察训练学校优秀学员陈永仁（梁朝伟）被上级要求深入到三合会做卧底，终极目标是成为韩琛身边的红人。2002年，两人都不负重望，也都身背重压，刘健明渐想成为一个真正的好人，陈永仁则盼着尽快回归警察身份。\n                                    "
+    },
+    {
+      "name": "触不可及",
+      "mark": "9.2",
+      "director": "奥利维埃·纳卡什",
+      "release_time": "2011-11-02(法国)",
+      "length": "又名:",
+      "imdb_link": "http://www.imdb.com/title/tt1675434",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1454261925.jpg",
+      "summary": "\n                                　　因为一次跳伞事故，白人富翁菲利普Philippe（弗朗索瓦·克鲁塞 François Cluzet 饰）瘫痪在床，欲招聘一名全职陪护。由于薪酬高，应聘者云集，个个舌灿莲花，却无法打动他的心。直到黑人德希斯Driss（奥玛·赛 Omar Sy 饰）的出现才让他作出决定。德希斯刚从监狱出来，背负家庭重担，一心只想寻张辞退信以申领救济金，而且他明显对女助理的兴趣要远大于这份工作。但是菲利普还是一眼相中了这个小伙子。于是，德希斯开始了一个月的试用期。虽然舒适的豪宅环境让他倍感虚荣，但是他仍面临很多挑战：不仅要为菲利普作身体复健，还得给他洗浴、灌肠、拆信、穿丝袜等。起初，两人的思维方式与价值观大相径庭，但是，随着了解的不断深入，他们成为了朋友……\n                                    "
+    },
+    {
+      "name": "乱世佳人",
+      "mark": "9.2",
+      "director": "维克多·弗莱明",
+      "release_time": "语言:",
+      "length": "1940-01-17(美国)",
+      "imdb_link": "http://www.imdb.com/title/tt0031381",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1963126880.jpg",
+      "summary": "\n                                　　美国南北战争前夕，南方农场塔拉庄园的千金斯嘉丽（费雯·丽 Vivien Leigh 饰）爱上了另一个农场主的儿子艾希礼（莱斯利·霍华德 Leslie Howard 饰），遭到了拒绝，为了报复，她嫁给了自己不爱的男人，艾希礼妻子梅兰（奥利维娅·德哈维兰 Olivia de Havilland 饰）的弟弟查尔斯。\n                                    "
+    },
+    {
+      "name": "美丽人生",
+      "mark": "9.5",
+      "director": "罗伯托·贝尼尼",
+      "release_time": "语言:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0118799",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p510861873.jpg",
+      "summary": "\n                                　　犹太青年圭多（罗伯托·贝尼尼）邂逅美丽的女教师多拉（尼可莱塔·布拉斯基），他彬彬有礼的向多拉鞠躬：“早安！公主！”。历经诸多令人啼笑皆非的周折后，天遂人愿，两人幸福美满的生活在一起。\n                                    "
+    },
+    {
+      "name": "阿甘正传",
+      "mark": "9.4",
+      "director": "罗伯特·泽米吉斯",
+      "release_time": "1994-06-23(洛杉矶首映)",
+      "length": "142 分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0109830",
+      "cover_link": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p510876377.jpg",
+      "summary": "\n                                　　阿甘（汤姆·汉克斯 饰）于二战结束后不久出生在美国南方阿拉巴马州一个闭塞的小镇，他先天弱智，智商只有75，然而他的妈妈是一个性格坚强的女性，她常常鼓励阿甘“傻人有傻福”，要他自强不息。\n                                    "
+    },
+    {
+      "name": "这个杀手不太冷",
+      "mark": "9.4",
+      "director": "吕克·贝松",
+      "release_time": "上映日期:",
+      "length": "110分钟(剧场版)",
+      "imdb_link": "http://www.imdb.com/title/tt0110413",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p511118051.jpg",
+      "summary": "\n                                　　里昂（让·雷诺饰）是名孤独的职业杀手，受人雇佣。一天，邻居家小姑娘马蒂尔达（纳塔丽·波特曼饰)敲开他的房门，要求在他那里暂避杀身之祸。原来邻居家的主人是警方缉毒组的眼线，只因贪污了一小包毒品而遭恶警（加里·奥德曼饰）杀害全家的惩罚。马蒂尔达得到里昂的留救，幸免于难，并留在里昂那里。里昂教小女孩使枪，她教里昂法文，两人关系日趋亲密，相处融洽。\n                                    "
+    },
+    {
+      "name": "霸王别姬",
+      "mark": "9.5",
+      "director": "陈凯歌",
+      "release_time": "上映日期:",
+      "length": "171 分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0106332",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1910813120.jpg",
+      "summary": "\n                                　　段小楼（张丰毅）与程蝶衣（张国荣）是一对打小一起长大的师兄弟，两人一个演生，一个饰旦，一向配合天衣无缝，尤其一出《霸王别姬》，更是誉满京城，为此，两人约定合演一辈子《霸王别姬》。但两人对戏剧与人生关系的理解有本质不同，段小楼深知戏非人生，程蝶衣则是人戏不分。\n                                    "
+    },
+    {
+      "name": "阿甘正传",
+      "mark": "9.4",
+      "director": "罗伯特·泽米吉斯",
+      "release_time": "1994-06-23(洛杉矶首映)",
+      "length": "142 分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0109830",
+      "cover_link": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p510876377.jpg",
+      "summary": "\n                                　　阿甘（汤姆·汉克斯 饰）于二战结束后不久出生在美国南方阿拉巴马州一个闭塞的小镇，他先天弱智，智商只有75，然而他的妈妈是一个性格坚强的女性，她常常鼓励阿甘“傻人有傻福”，要他自强不息。\n                                    "
+    },
+    {
+      "name": "这个杀手不太冷",
+      "mark": "9.4",
+      "director": "吕克·贝松",
+      "release_time": "上映日期:",
+      "length": "110分钟(剧场版)",
+      "imdb_link": "http://www.imdb.com/title/tt0110413",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p511118051.jpg",
+      "summary": "\n                                　　里昂（让·雷诺饰）是名孤独的职业杀手，受人雇佣。一天，邻居家小姑娘马蒂尔达（纳塔丽·波特曼饰)敲开他的房门，要求在他那里暂避杀身之祸。原来邻居家的主人是警方缉毒组的眼线，只因贪污了一小包毒品而遭恶警（加里·奥德曼饰）杀害全家的惩罚。马蒂尔达得到里昂的留救，幸免于难，并留在里昂那里。里昂教小女孩使枪，她教里昂法文，两人关系日趋亲密，相处融洽。\n                                    "
+    },
+    {
+      "name": "机器人总动员",
+      "mark": "9.3",
+      "director": "安德鲁·斯坦顿",
+      "release_time": "制片国家/地区:",
+      "length": "2008-06-27(美国)",
+      "imdb_link": "http://www.pixar.com/feature-films/walle",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1461851991.jpg",
+      "summary": "\n                                　　公元2805年，人类文明高度发展，却因污染和生活垃圾大量增加使得地球不再适于人类居住。地球人被迫乘坐飞船离开故乡，进行一次漫长无边的宇宙之旅。临行前他们委托Buynlarge的公司对地球垃圾进行清理，该公司开发了名为WALL·E（Waste Allocation Loa d Lifters – Earth 地球废品分装员）的机器人担当此重任。\n                                    "
+    },
+    {
+      "name": "盗梦空间",
+      "mark": "9.3",
+      "director": "克里斯托弗·诺兰",
+      "release_time": "语言:",
+      "length": "2010-07-16(美国)",
+      "imdb_link": "http://www.imdb.com/title/tt1375666",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p513344864.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "辛德勒的名单",
+      "mark": "9.4",
+      "director": "史蒂文·斯皮尔伯格",
+      "release_time": "上映日期:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0108052",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p492406163.jpg",
+      "summary": "\n                                　　1939年，波兰在纳粹德国的统治下，党卫军对犹太人进行了隔离统治。德国商人奥斯卡·辛德勒（连姆·尼森 Liam Neeson 饰）来到德军统治下的克拉科夫，开设了一间搪瓷厂，生产军需用品。凭着出众的社交能力和大量的金钱，辛德勒和德军建立了良好的关系，他的工厂雇用犹太人工作，大发战争财。\n                                    "
+    },
+    {
+      "name": "泰坦尼克号",
+      "mark": "9.3",
+      "director": "詹姆斯·卡梅隆",
+      "release_time": "上映日期:",
+      "length": "1997-12-19(美国)",
+      "imdb_link": "http://www.imdb.com/title/tt0120338",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p457760035.jpg",
+      "summary": "\n                                　　1912年4月10日，号称 “世界工业史上的奇迹”的豪华客轮泰坦尼克号开始了自己的处女航，从英国的南安普顿出发驶往美国纽约。富家少女罗丝（凯特•温丝莱特）与母亲及未婚夫卡尔坐上了头等舱；另一边，放荡不羁的少年画家杰克（莱昂纳多·迪卡普里奥）也在码头的一场赌博中赢得了下等舱的船票。\n                                    "
+    },
+    {
+      "name": "千与千寻",
+      "mark": "9.3",
+      "director": "宫崎骏",
+      "release_time": "上映日期:",
+      "length": "125分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0245429",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1606727862.jpg",
+      "summary": "\n                                　　千寻和爸爸妈妈一同驱车前往新家，在郊外的小路上不慎进入了神秘的隧道——他们去到了另外一个诡异世界—一个中世纪的小镇。远处飘来食物的香味，爸爸妈妈大快朵颐，孰料之后变成了猪！这时小镇上渐渐来了许多样子古怪、半透明的人。\n                                    "
+    },
+    {
+      "name": "美丽人生",
+      "mark": "9.5",
+      "director": "罗伯托·贝尼尼",
+      "release_time": "语言:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0118799",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p510861873.jpg",
+      "summary": "\n                                　　犹太青年圭多（罗伯托·贝尼尼）邂逅美丽的女教师多拉（尼可莱塔·布拉斯基），他彬彬有礼的向多拉鞠躬：“早安！公主！”。历经诸多令人啼笑皆非的周折后，天遂人愿，两人幸福美满的生活在一起。\n                                    "
+    },
+    {
+      "name": "霸王别姬",
+      "mark": "9.5",
+      "director": "陈凯歌",
+      "release_time": "上映日期:",
+      "length": "171 分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0106332",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1910813120.jpg",
+      "summary": "\n                                　　段小楼（张丰毅）与程蝶衣（张国荣）是一对打小一起长大的师兄弟，两人一个演生，一个饰旦，一向配合天衣无缝，尤其一出《霸王别姬》，更是誉满京城，为此，两人约定合演一辈子《霸王别姬》。但两人对戏剧与人生关系的理解有本质不同，段小楼深知戏非人生，程蝶衣则是人戏不分。\n                                    "
+    },
+    {
+      "name": "肖申克的救赎",
+      "mark": "9.6",
+      "director": "弗兰克·德拉邦特",
+      "release_time": "1994-09-10(多伦多电影节)",
+      "length": "142分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0111161",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "天堂电影院",
+      "mark": "9.1",
+      "director": "朱塞佩·托纳多雷",
+      "release_time": "1988-11-17(意大利)",
+      "length": "又名:",
+      "imdb_link": "http://www.imdb.com/title/tt0095765",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1910901025.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "当幸福来敲门",
+      "mark": "8.9",
+      "director": "加布里埃莱·穆奇诺",
+      "release_time": "上映日期:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0454921",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2220721286.jpg",
+      "summary": "\n                                　　克里斯•加纳（威尔·史密斯 Will Smith 饰）用尽全部积蓄买下了高科技治疗仪，到处向医院推销，可是价格高昂，接受的人不多。就算他多努力都无法提供一个良好的生活环境给妻儿，妻子（桑迪·牛顿 Thandie Newton 饰）最终选择离开家。从此他带着儿子克里斯托夫（贾登·史密斯 Jaden Smith 饰）相依为命。克里斯好不容易争取回来一个股票投资公司实习的机会，就算没有报酬，成功机会只有百分之五，他仍努力奋斗，儿子是他的力量。他看尽白眼，与儿子躲在地铁站里的公共厕所里，住在教堂的收容所里…… 他坚信，幸福明天就会来临。\n                        "
+    },
+    {
+      "name": "无间道",
+      "mark": "9.1",
+      "director": "刘伟强",
+      "release_time": "上映日期:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0338564",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2233971046.jpg",
+      "summary": "\n                                　　1991年，香港黑帮三合会会员刘健明（刘德华）听从老大韩琛（曾志伟）的吩咐，加入警察部队成为黑帮卧底，韩琛许诺刘健明会帮其在七年后晋升为见习督察。1992年，警察训练学校优秀学员陈永仁（梁朝伟）被上级要求深入到三合会做卧底，终极目标是成为韩琛身边的红人。2002年，两人都不负重望，也都身背重压，刘健明渐想成为一个真正的好人，陈永仁则盼着尽快回归警察身份。\n                                    "
+    },
+    {
+      "name": "触不可及",
+      "mark": "9.2",
+      "director": "奥利维埃·纳卡什",
+      "release_time": "2011-11-02(法国)",
+      "length": "又名:",
+      "imdb_link": "http://www.imdb.com/title/tt1675434",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1454261925.jpg",
+      "summary": "\n                                　　因为一次跳伞事故，白人富翁菲利普Philippe（弗朗索瓦·克鲁塞 François Cluzet 饰）瘫痪在床，欲招聘一名全职陪护。由于薪酬高，应聘者云集，个个舌灿莲花，却无法打动他的心。直到黑人德希斯Driss（奥玛·赛 Omar Sy 饰）的出现才让他作出决定。德希斯刚从监狱出来，背负家庭重担，一心只想寻张辞退信以申领救济金，而且他明显对女助理的兴趣要远大于这份工作。但是菲利普还是一眼相中了这个小伙子。于是，德希斯开始了一个月的试用期。虽然舒适的豪宅环境让他倍感虚荣，但是他仍面临很多挑战：不仅要为菲利普作身体复健，还得给他洗浴、灌肠、拆信、穿丝袜等。起初，两人的思维方式与价值观大相径庭，但是，随着了解的不断深入，他们成为了朋友……\n                                    "
+    },
+    {
+      "name": "乱世佳人",
+      "mark": "9.2",
+      "director": "维克多·弗莱明",
+      "release_time": "语言:",
+      "length": "1940-01-17(美国)",
+      "imdb_link": "http://www.imdb.com/title/tt0031381",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1963126880.jpg",
+      "summary": "\n                                　　美国南北战争前夕，南方农场塔拉庄园的千金斯嘉丽（费雯·丽 Vivien Leigh 饰）爱上了另一个农场主的儿子艾希礼（莱斯利·霍华德 Leslie Howard 饰），遭到了拒绝，为了报复，她嫁给了自己不爱的男人，艾希礼妻子梅兰（奥利维娅·德哈维兰 Olivia de Havilland 饰）的弟弟查尔斯。\n                                    "
+    },
+    {
+      "name": "星际穿越",
+      "mark": "9.2",
+      "director": "克里斯托弗·诺兰",
+      "release_time": "上映日期:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0816692",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2206088801.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "教父",
+      "mark": "9.2",
+      "director": "弗朗西斯·福特·科波拉",
+      "release_time": "1972-03-15(纽约首映)",
+      "length": "175 分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0068646",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2190556185.jpg",
+      "summary": "\n                                　　40年代的美国，“教父”维托·唐·柯里昂（马龙·白兰度 饰）是黑手党柯里昂家族的首领，带领家族从事非法的勾当，但同时他也是许多弱小平民的保护神，深得人们爱戴。\n                                    "
+    },
+    {
+      "name": "龙猫",
+      "mark": "9.1",
+      "director": "宫崎骏",
+      "release_time": "语言:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0096283",
+      "cover_link": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p537668599.jpg",
+      "summary": "\n                                　　小月的母亲生病住院了，父亲带着她与四岁的妹妹小梅到乡间的居住。她们对那里的环境都感到十分新奇，也发现了很多有趣的事情。她们遇到了很多小精灵，她们来到属于她们的环境中，看到了她们世界中很多的奇怪事物，更与一只大大胖胖的龙猫成为了朋友。龙猫与小精灵们利用他们的神奇力量，为小月与妹妹带来了很多神奇的景观，令她们大开眼界。\n                                    "
+    },
+    {
+      "name": "楚门的世界",
+      "mark": "9.1",
+      "director": "彼得·威尔",
+      "release_time": "1998-06-05(美国)",
+      "length": "又名:",
+      "imdb_link": "http://www.imdb.com/title/tt0120382",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p479682972.jpg",
+      "summary": "\n                                　　楚门（金•凯瑞 Jim Carrey 饰）是一个平凡得不能再平凡的人，除了一些有些稀奇的经历之外——初恋女友突然失踪、溺水身亡的父亲忽然似乎又出现在眼前，他和绝大多数30多岁的美国男人绝无异样。这令他倍感失落。他也曾试过离开自己生活了多年的地方，但总因种种理由而不能成行。\n                                    "
+    },
+    {
+      "name": "大话西游之大圣娶亲",
+      "mark": "9.2",
+      "director": "刘镇伟",
+      "release_time": "语言:",
+      "length": "2017-04-13(中国大陆重映)",
+      "imdb_link": "http://www.imdb.com/title/tt0114996",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2455050536.jpg",
+      "summary": "\n                                　　至尊宝（周星驰 饰）被月光宝盒带回到五百年前，遇见紫霞仙子（朱茵 饰），被对方打上烙印成为对方的人，并发觉自己已变成孙悟空。\n                                    "
+    },
+    {
+      "name": "放牛班的春天",
+      "mark": "9.2",
+      "director": "克里斯托夫·巴拉蒂",
+      "release_time": "2004-10-16(中国大陆)",
+      "length": "97 分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0372824",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1910824951.jpg",
+      "summary": "\n                                　　1949年的法国乡村，音乐家克莱门特（杰勒德•尊诺 饰）到了一间外号叫“塘低”的男子寄宿学校当助理教师。学校里的学生大部分都是难缠的问题儿童，体罚在这里司空见惯，学校的校长（弗朗西斯•贝尔兰德 饰）只顾自己的前途，残暴高压。\n                                    "
+    },
+    {
+      "name": "忠犬八公的故事",
+      "mark": "9.2",
+      "director": "拉斯·霍尔斯道姆",
+      "release_time": "2010-03-12(英国)",
+      "length": "又名:",
+      "imdb_link": "http://www.imdb.com/title/tt1028532",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p524964016.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "海上钢琴师",
+      "mark": "9.2",
+      "director": "朱塞佩·托纳多雷",
+      "release_time": "1998-10-28(意大利)",
+      "length": "又名:",
+      "imdb_link": "http://www.imdb.com/title/tt0120731",
+      "cover_link": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p511146807.jpg",
+      "summary": "\n                                　　本片讲述了一个钢琴天才传奇的一生。\n                                    "
+    },
+    {
+      "name": "三傻大闹宝莱坞",
+      "mark": "9.2",
+      "director": "拉吉库马尔·希拉尼",
+      "release_time": "语言:",
+      "length": "2009-12-25(印度)",
+      "imdb_link": "http://www.imdb.com/title/tt1187043",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p579729551.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "十二怒汉",
+      "mark": "9.4",
+      "director": "西德尼·吕美特",
+      "release_time": "片长:",
+      "length": "IMDb链接:",
+      "imdb_link": "http://www.imdb.com/title/tt0050083",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2173577632.jpg",
+      "summary": "\n                                　　一个在贫民窟长大的18岁少年因为涉嫌杀害自己的父亲被告上法庭，证人言之凿凿，各方面的证据都对他极为不利。十二个不同职业的人组成了这个案件的陪审团，他们要在休息室达成一致的意见，裁定少年是否有罪，如果罪名成立，少年将会被判处死刑。\n                                    "
+    },
+    {
+      "name": "怦然心动",
+      "mark": "8.9",
+      "director": "罗伯·莱纳",
+      "release_time": "上映日期:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0817177",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p663036666.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "指环王3：王者无敌",
+      "mark": "9.1",
+      "director": "彼得·杰克逊",
+      "release_time": "制片国家/地区:",
+      "length": "2004-03-12(中国大陆)",
+      "imdb_link": "http://www.lordoftherings.net/",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1910825503.jpg",
+      "summary": "\n                                　　魔幻战争逐渐进入高潮阶段。霍比特人弗拉多（伊利亚·伍德 Elijah Wood 饰）携带着魔戒，与伙伴山姆（Sean Astin 饰）以及狡猾阴暗的咕噜等前往末日山，一路上艰难险阻不断，魔君索伦为阻止魔戒被销毁用尽全力阻挠。另一方面，白袍巫师甘道夫（伊安·麦克莱恩 Ian McKellen 饰）率中土勇士们镇守刚铎首都——白城米那斯提里斯。魔兽大军压境，黑暗与光明的决战即将来临……\n                                    "
+    },
+    {
+      "name": "活着",
+      "mark": "9.1",
+      "director": "张艺谋",
+      "release_time": "上映日期:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0110081",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2513253791.jpg",
+      "summary": "\n                                　　根据余华同名小说改编。\n                                    "
+    },
+    {
+      "name": "鬼子来了",
+      "mark": "9.2",
+      "director": "姜文",
+      "release_time": "上映日期:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0245929",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1181775734.jpg",
+      "summary": "\n                                　　抗日战争末期，河北某偏僻乡村挂甲台的老实村民马大三（姜文 饰）迎来棘手难题：某人将分别装有日本鬼子花屋小三郎（香川照之 饰）和汉奸翻译董汉臣的麻袋扔给他，声称不日来取，却迟迟不见其来。厚道的马大三一边将两人当亲爹娘侍奉，一边同村人商议计策，最后决定将两人处死，但终因“天 意”不了了之。\n                                    "
+    },
+    {
+      "name": "蝙蝠侠：黑暗骑士",
+      "mark": "9.1",
+      "director": "克里斯托弗·诺兰",
+      "release_time": "官方网站:",
+      "length": "上映日期:",
+      "imdb_link": "http://thedarkknight.warnerbros.com",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p462657443.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "少年派的奇幻漂流",
+      "mark": "9.0",
+      "director": "李安",
+      "release_time": "语言:",
+      "length": "2012-09-28(纽约电影节)",
+      "imdb_link": "http://www.lifeofpimovie.com",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1784592701.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "美丽心灵",
+      "mark": "8.9",
+      "director": "朗·霍华德",
+      "release_time": "2001-12-13(加州首映)",
+      "length": "135 分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0268978",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1665997400.jpg",
+      "summary": "\n                                　　本片是关于20世纪伟大数学家小约翰•福布斯-纳什的人物传记片。\n                                    "
+    },
+    {
+      "name": "教父2",
+      "mark": "9.1",
+      "director": "弗朗西斯·福特·科波拉",
+      "release_time": "1974-12-12(纽约首映)",
+      "length": "202分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0071562",
+      "cover_link": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2194138787.jpg",
+      "summary": "\n                                　　影片主要讲述第二代教父麦克·柯里昂（阿尔·帕西诺 饰）的奋斗历程，同时回忆了第一代教父维多·柯里昂（罗伯特·德尼罗 饰）创业的艰辛，反映了不同历史时期，两代教父的事业、家庭生活。\n                                    "
+    },
+    {
+      "name": "死亡诗社",
+      "mark": "9.0",
+      "director": "彼得·威尔",
+      "release_time": "1989-06-09(美国)",
+      "length": "又名:",
+      "imdb_link": "http://www.imdb.com/title/tt0097165",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1910824340.jpg",
+      "summary": "\n                                　　威尔顿预备学院以其沉稳凝重的教学风格和较高的升学率闻名，作为其毕业班的学生，理想就是升入名校。新学期文学老师约翰·基汀（罗宾·威廉姆斯 饰）的到来如同一阵春风，一反传统名校的严肃刻板。\n                                    "
+    },
+    {
+      "name": "V字仇杀队",
+      "mark": "8.8",
+      "director": "詹姆斯·麦克特格",
+      "release_time": "语言:",
+      "length": "2006-03-17(美国)",
+      "imdb_link": "http://www.imdb.com/title/tt0434409",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1465235231.jpg",
+      "summary": "\n                                　　未来的英国社会处于极权统治的高压下，不能容许同性恋者、异教徒等社会角色的存在，人民在黑暗政权下苟延残喘。\n                                    "
+    },
+    {
+      "name": "辩护人",
+      "mark": "9.1",
+      "director": "杨宇硕",
+      "release_time": "2013-12-18(韩国)",
+      "length": "又名:",
+      "imdb_link": "http://www.lawyersong.kr",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2158166535.jpg",
+      "summary": "\n                                　　1978年，只有高中学历的宋佑硕（宋康昊 饰）通过多年的艰苦努力，终于通过司法考试，并在成为法官后很快转行成为一名律师。他敏锐地从最新政策中嗅到商机，以不动产代书业务起家。虽然被同行讥讽为随时随地派发名片的夜店小弟，但佑硕不以为忤，一步一步朝着心中的目标迈进。他依靠赚来的钱让妻儿过上富足的生活，也还了七年前在饭店大婶那里欠下的良心债。进入20世纪80年代，韩国民主化斗争愈演愈烈。佑硕全然不管窗外事，关起门来继续赚钱。然而社会的巨变已经不容他置身事外，饭店大婶的儿子朴镇宇因从属的釜山读书联合会被控为左翼社团而遭到逮捕，更受到残酷的虐待和不公的指控。\n                                    "
+    },
+    {
+      "name": "海豚湾",
+      "mark": "9.3",
+      "director": "路易·西霍尤斯",
+      "release_time": "2009-07-31(美国)",
+      "length": "又名:",
+      "imdb_link": "http://www.thecovemovie.com",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p455222172.jpg",
+      "summary": "\n                                　　日本和歌山县太地，是一个景色优美的小渔村，然而这里却常年上演着惨无人道的一幕。每年，数以万计的海豚经过这片海域，他们的旅程却在太地戛然而止。渔民们将海豚驱赶到靠近岸边的一个地方，来自世界各地的海豚训练师挑选合适的对象，剩下的大批海豚则被渔民毫无理由地赶尽杀绝。这些屠杀，这些罪行，因为种种利益而被政府和相关组织所隐瞒。\n                                    "
+    },
+    {
+      "name": "哈尔的移动城堡",
+      "mark": "8.9",
+      "director": "宫崎骏",
+      "release_time": "上映日期:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0347149",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2174346180.jpg",
+      "summary": "\n                                　　继母因无力负担生活，将苏菲和她的两个妹妹都送到了制帽店去当学徒。两个妹妹很快先后就离开了制帽店去追寻各自的梦想，只有苏菲坚持了下来。一天，小镇旁边来了一座移动堡垒，传说堡垒的主人哈尔专吸取年青姑娘的灵魂，所以小镇的姑娘都不敢靠近。\n                                    "
+    },
+    {
+      "name": "闻香识女人",
+      "mark": "8.9",
+      "director": "马丁·布莱斯",
+      "release_time": "片长:",
+      "length": "IMDb链接:",
+      "imdb_link": "http://www.imdb.com/title/tt0105323",
+      "cover_link": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p925123037.jpg",
+      "summary": "\n                                　　查理（克里斯•奥唐纳 Chris O'Donnell  饰）是一个普通的中学生，他因为见证着一件恶作剧但又不想出卖朋友，于是面临着一道艰难的选择题——要么坦白，要么被学校勒退。而史法兰（阿尔•帕西诺 Al Pacino  饰）是一个退伍军官，因为意外失明，人生从顶点的辉煌滑落谷底。\n                                    "
+    },
+    {
+      "name": "飞越疯人院",
+      "mark": "9.0",
+      "director": "米洛斯·福尔曼",
+      "release_time": "片长:",
+      "length": "IMDb链接:",
+      "imdb_link": "http://www.imdb.com/title/tt0073486",
+      "cover_link": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p792238287.jpg",
+      "summary": "\n                                　　麦克墨菲（杰克·尼科尔森 Jack Nicholson 饰）为了逃避监狱里的强制劳动，装作精神异常，被送进了精神病院，他的到来，给死气沉沉的精神病院带来了剧烈的冲击。\n                                    "
+    },
+    {
+      "name": "两杆大烟枪",
+      "mark": "9.1",
+      "director": "盖·里奇",
+      "release_time": "上映日期:",
+      "length": "107分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0120735",
+      "cover_link": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p792443418.jpg",
+      "summary": "\n                                　　艾迪（尼克·莫伦）思维敏捷，是个玩牌高手。在三个好友的支持下，艾迪携巨资参加了黑社会的高额赌局，不想落入圈套，欠下50万的赌债。为了还清赌债，艾迪和朋友们绞尽脑汁，最终算计到一群毒贩身上，并为打劫购买了两杆老式烟枪。\n                                    "
+    },
+    {
+      "name": "控方证人",
+      "mark": "9.6",
+      "director": "比利·怀尔德",
+      "release_time": "上映日期:",
+      "length": "116分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0051201",
+      "cover_link": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1505392928.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "飞屋环游记",
+      "mark": "8.9",
+      "director": "彼特·道格特",
+      "release_time": "语言:",
+      "length": "2009-05-13(戛纳电影节)",
+      "imdb_link": "http://www.imdb.com/title/tt1049413",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2364094053.jpg",
+      "summary": "\n                            "
+    },
+    {
+      "name": "窃听风暴",
+      "mark": "9.1",
+      "director": "弗洛里安·亨克尔·冯·多纳斯马尔克",
+      "release_time": "2006-03-23(德国)",
+      "length": "又名:",
+      "imdb_link": "http://www.imdb.com/title/tt0405094",
+      "cover_link": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1808872109.jpg",
+      "summary": "\n                                　　1984年的东德，整个社会笼罩在国家安全局的高压统治之下，特工魏斯曼（乌尔利希·穆厄 饰）奉命监听剧作家德莱曼（塞巴斯蒂安·寇治 饰）及其女友演员克里斯蒂娜（玛蒂娜·杰蒂克 饰）的生活，监听过程中，魏斯曼渐渐对这家人的生活产生了兴趣，开始暗中帮助他们。一篇刊登在西德《明 镜》报上的文章引起了特工头目的注意，他们认为这篇文章是德莱曼写的，并逮捕了克里斯蒂娜，希望能够从她口中得出她丈夫的秘密？而审问克里斯蒂娜的正是魏斯曼……\n                        "
+    },
+    {
+      "name": "罗马假日",
+      "mark": "8.9",
+      "director": "威廉·惠勒",
+      "release_time": "上映日期:",
+      "length": "118 分钟",
+      "imdb_link": "http://www.imdb.com/title/tt0046250",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2189265085.jpg",
+      "summary": "\n                                　　欧洲某国的安妮公主（奥黛丽·赫本 Audrey Hepburn 饰）到访罗马，国务烦身，但她又厌倦繁文缛节。一天晚上，身心俱疲的她偷偷来到民间欣赏夜景，巧遇报社记者乔（格里高利·派克 Gregory Peck 饰）。二人把手同游，相当快乐。公主更是到乔的家中作客并在那过夜。\n                                    "
+    },
+    {
+      "name": "大话西游之月光宝盒",
+      "mark": "8.9",
+      "director": "刘镇伟",
+      "release_time": "语言:",
+      "length": "1995-01-21(香港)",
+      "imdb_link": "http://www.imdb.com/title/tt0112778",
+      "cover_link": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1280323646.jpg",
+      "summary": "\n                                　　孙悟空（周星驰）护送唐三藏（罗家英）去西天取经路上，与牛魔王合谋欲杀害唐三藏，并偷走了月光宝盒，此举使观音萌生将其铲除心思，经唐三藏请求，孙悟空被判五百年后重新投胎做人赎其罪孽。\n                                    "
+    },
+    {
+      "name": "疯狂动物城",
+      "mark": "9.2",
+      "director": "拜伦·霍华德",
+      "release_time": "上映日期:",
+      "length": "109分钟(中国大陆)",
+      "imdb_link": "http://www.imdb.com/title/tt2948356",
+      "cover_link": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2315672647.jpg",
+      "summary": "\n                                　　故事发生在一个所有哺乳类动物和谐共存的美好世界中，兔子朱迪（金妮弗·古德温 Ginnifer Goodwin 配音）从小就梦想着能够成为一名惩恶扬善的刑警，凭借着智慧和努力，朱迪成功的从警校中毕业进入了疯狂动物城警察局，殊不知这里是大型肉食类动物的领地，作为第一只，也是唯一的小型食草类动物，朱迪会遇到怎样的故事呢？\n                                    "
+    },
+    {
+      "name": "天空之城",
+      "mark": "9.0",
+      "director": "宫崎骏",
+      "release_time": "上映日期:",
+      "length": "片长:",
+      "imdb_link": "http://www.imdb.com/title/tt0092067",
+      "cover_link": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1446261379.jpg",
+      "summary": "\n                                　　古老帝国拉比达是一座漂浮在空中的巨大的机器岛，传说那里已经无人居住，蕴藏着巨大的财富。因此，无论军方还是海盗，都在找寻着这座传说中的飞行岛。\n                                    "
+    }
+  ]
+}

@@ -18,5 +18,6 @@ urlpatterns = [
 	path('show_films/', views.show_films, name='show_films'),
 
 	re_path('show_film/(?P<film_id>\d+)/', views.show_film, name='show_film'),
+	re_path('single/(?P<film_id>\d+)/', views.single, name='single'),
 
 ]
