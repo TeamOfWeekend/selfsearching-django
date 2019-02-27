@@ -8,10 +8,10 @@
 @Time    : 2019/1/28 16:28
 """
 
-from celery.task import task
+from celery import shared_task
 
 
 # 自定义要执行的task任务
-@task
+@shared_task
 def print_hello():
     return 'hello celery and diango...'

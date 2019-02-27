@@ -1,7 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
-
 
 # 视频类型
 class StyleType(models.Model):
@@ -12,7 +12,6 @@ class StyleType(models.Model):
 
     def __str__(self):
         return self.style_type
-
 
 # 演员模型
 class LeadRole(models.Model):
@@ -35,32 +34,31 @@ class Country(models.Model):
     def __str__(self):
         return self.country
 
-
-# 用户模型
-class User(models.Model):
-    username = models.CharField('昵称', max_length=32, unique=True)  # 用户昵称
-    password = models.CharField(max_length=200)  # 密码
-    email = models.CharField('邮箱', max_length=64, unique=True)  # 邮箱
-    subscribe = models.CharField('是否订阅电子杂志', max_length=4, default='on')  # 用户是否订阅杂志on/off
-    token = models.CharField(max_length=250, default='')
-
-    # 创建用户
-    @classmethod
-    def createuser(cls, username, password, email, is_subscribe, token):
-        u = cls(username=username, password=password, email=email, subscribe=is_subscribe, token=token)
-        return u
-
-    class Meta:
-        db_table = 'users'
-
-    def __str__(self):
-        return self.username
+# # 用户模型
+# class User(models.Model):
+#     username = models.CharField('昵称', max_length=32, unique=True)  # 用户昵称
+#     password = models.CharField(max_length=200)  # 密码
+#     email = models.CharField('邮箱', max_length=64, unique=True)  # 邮箱
+#     subscribe = models.CharField('是否订阅电子杂志', max_length=4, default='on')  # 用户是否订阅杂志on/off
+#     token = models.CharField(max_length=250, default='')
+#
+#     # 创建用户
+#     @classmethod
+#     def createuser(cls, username, password, email, is_subscribe, token):
+#         u = cls(username=username, password=password, email=email, subscribe=is_subscribe, token=token)
+#         return u
+#
+#     class Meta:
+#         db_table = 'users'
+#
+#     def __str__(self):
+#         return self.username
 
 
 # 视频模型
 class Movie(models.Model):
     name = models.CharField('视频名称', max_length=200)  # 视频名称
-    # country = models.CharField('国家/地区', max_length=200)  # 国家/地区
+    country = models.CharField('国家/地区', max_length=200)  # 国家/地区
     release_time = models.DateField('上映时间')  # 上映时间
     director = models.CharField('导演', max_length=200)  # 导演
     # lead_role = models.CharField(max_length=400)  # 主演
@@ -79,29 +77,36 @@ class Movie(models.Model):
     lead_role = models.ManyToManyField(LeadRole, verbose_name='主演')  # 多对多关联
     like = models.ManyToManyField(User, verbose_name='喜欢')  # 喜欢/收藏
 
+
     class Meta:
         db_table = 'movies'
 
     def __str__(self):
         return self.name
 
-
 # 浏览记录
 class Visited(models.Model):
     m = models.ForeignKey('Movie', on_delete=models.DO_NOTHING)
-    u = models.ForeignKey('User', on_delete=models.DO_NOTHING)
+    # u = models.ForeignKey('User', on_delete=models.DO_NOTHING)
+
+    owner = models.ForeignKey(
+        User,  # 这里应该是 User, 而不是 'User', 否则会报错
+        on_delete=models.CASCADE,
+    )
 
     class Meta:
         db_table = 'visited'
-
 
 # 评论表
 class Comment(models.Model):
     comment_content = models.TextField()  # 评论内容
     comment_time = models.DateTimeField(auto_now=True)  # 评论时间
     movie_id = models.ForeignKey('Movie', on_delete=models.DO_NOTHING)
-    user_id = models.ForeignKey('User', on_delete=models.DO_NOTHING)
-
+    # user_id = models.ForeignKey('User', on_delete=models.DO_NOTHING)
+    owner = models.ForeignKey(
+        User,  # 这里应该是 User, 而不是 'User', 否则会报错
+        on_delete=models.CASCADE,
+    )
     class Meta:
         db_table = 'comments'
 

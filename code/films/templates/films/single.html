@@ -1,6 +1,17 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 
+{% block mine %}
+    <!--<li style="list-style-type: none"><img src="{% static 'images/p1.png' %}" alt=""/></li>-->
+    {% if username %}
+        <li style="list-style-type: none"><p><a href="/person/">{{ username }}</a></p></li>
+        <li style="list-style-type: none"><p><a href="/quit/">退出</a></p></li>
+    {% else %}
+        <li style="list-style-type: none"><p><a href="/login/">立即登陆</a></p></li>
+    {% endif %}
+
+{% endblock %}
+
 
 {% block content %}
     <div class="content">

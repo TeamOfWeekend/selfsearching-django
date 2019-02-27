@@ -1,144 +1,68 @@
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
+from django.http import JsonResponse
+from django.contrib.auth.hashers import make_password, check_password
+from django.db import models
 
-import os
-import sys
-import platform
-import json
-import xml.etree.ElementTree as ET
-import copy
-# import filetype
-
-from .models import Movie, Comment
-# from .forms import FilmForm
-from .lib.film import Film
+from .models import Movie, User, Comment, Advertise
 
 # Create your views here.
+# 首页
+def index(request):
+    # return HttpResponse('hi')
+    # return render(request, 'index.html')
 
-# find current path  os what system we're on
-# find films path
-films_path = ''
-if "Windows" == platform.system():
-    # sys.path.append(os.path.abspath('.') + "\\libs")
-    films_path = "static\\video"
-else:
-    # sys.path.append(os.path.abspath('.') + "/libs")
-    films_path = "static/video"
+    # print(request.session.items())
+    # print(request.COOKIES)
+    user_id = int(request.session.get('_auth_user_id'))
+    # print('user_id = %s' % user_id)
+    user = User.objects.get(id=user_id)
+    # print(user.username)
 
+    # 导航显示的视频封面图片
+    carousel_list = Movie.objects.filter(is_carousel=True)
+    for i in carousel_list:
+        i.new_link = 'https://img3.doubanio.com/view/photo/l/public/' + str(i.cover_link).split('_')[0] + '.webp'
+        if i.new_link.count('.webp') > 1:
+            i.new_link = i.new_link[ : len(i.new_link) - 5]
+#        print(i.new_link)
 
-# html_list = os.listdir('films\\templates\\films')
-# print(html_list)
-# video_list = os.listdir('static\\video')
-# print(video_list)
+    # 推荐页面显示的视频小图（10个）
+    recommend_list = Movie.objects.order_by('-mark')[:10]
+    for r in recommend_list:
+        r.pic_link = 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/' + str(r.cover_link).split('_')[0] + '.webp'
+        if r.pic_link.count('.webp') > 1:
+            r.pic_link = r.pic_link[ : len(r.pic_link) - 5]
+        # print(r.pic_link)
+        r.like_count = len(r.like.all())  # 视频被收藏的总数
+        # print(r.like_count)
 
-
-# 注释掉该修饰器，否则用户未登录时不能进行跳转
-@login_required
-def show_films(request):
-    """显示所有的主题"""
-    if request.user.is_authenticated:
-        films_list = get_all_films()
-
-        context = {'films_list': films_list}
-        return render(request, 'films/show_films.html', context)
-    else:
-        return render(request, 'users/login.html')
-
-
-@login_required
-def show_film(request, film_id):
-    """
-    显示film
-    :param request:
-    :return:
-    """
-    # print(request.META['wsgi.url_scheme'])        # http
-    # print(request.META['HTTP_HOST'])              # 127.0.0.1:8000
-    if request.user.is_authenticated:
-        film = get_all_films()[int(film_id) - 1]
-        context = {'film': film}
-        film.url = request.META['wsgi.url_scheme'] + '://' + request.META['HTTP_HOST'] + '/' + film.url
-        print(film.url)
-        return render(request, 'films/show_film.html', context)
-        # return render(request, 'films/base.html')
-        # return render(request, 'films/movie.html')
-    else:
-        return render(request, 'users/login.html')
+    return render(request, 'films/index.html', {'carousel_list': carousel_list,
+                                          'recommend_list': recommend_list,
+                                          'username': user.username,
+                                        })
 
 
-# def get_all_films():
-#     global films_path
-#     films_list = []
-#     films_dir_list = os.listdir(films_path)  # 获取文件夹下所有的目录与文件
-#     # print('films_list ------------------ %d' % len(films_dir_list))
-#     for i in range(len(films_dir_list)):
-#         film_folder = os.path.join(films_path, films_dir_list[i])
-#         # print('********************************* film_folder = %s' % film_folder)
-#         if os.path.isdir(film_folder):
-#             files_list = os.listdir(film_folder)  # 获取所有文件
-#             if len(files_list) == 2:
-#                 film_description = ''
-#                 film_name = ''
-#                 film_path = ''
-#                 files_valid = 0  # 标识两个文件：视频文件、文本文件
-#                 # print(files_list)
-#
-#                 for j in range(len(files_list)):
-#                     if is_video(files_list[j]):  # 文件为视频文件
-#                         # film_name = os.path.splitext(files_list[j])[0]
-#                         film_name = files_list[j]
-#                         film_path = os.path.join(film_folder, film_name)
-#                         files_valid |= (0x01 << 0)
-#                     elif os.path.splitext(files_list[j])[1] == '.txt':  # 文本文件
-#                         print(files_list[j])
-#                         txt_path = os.path.join(film_folder, files_list[j])
-#                         with open(txt_path, 'r', encoding='utf-8') as f:
-#                             for line in f.readlines():
-#                                 film_description += line.rstrip('\n')
-#                         files_valid |= (0x01 << 1)
-#
-#                 if files_valid == 0x03:
-#                     film_form = Film()
-#                     film_form.name = film_name
-#                     film_form.description = film_description
-#                     film_form.num = (i + 1)
-#                     film_form.url = film_path
-#                     films_list.append(copy.deepcopy(film_form))
-#                 else:
-#                     pass
-#             else:
-#                 pass
-#     return films_list
+# 收藏/取消收藏
+def like(request):
+    state = request.GET.get('state')  # 收藏状态
+    movie_id = request.GET.get('movie_id')  # 视频id
 
+    token = request.COOKIES.get('userToken')
+    currentuser = User.objects.get(token=token)  # 当前登陆的用户
 
-def get_all_films():
-    """
-    从movies.json或movies.xml文件获取全部电影信息
-    :return:
-    """
-    global films_path
-    MOVIES_JSON = 'movies.json'
-    MOVIES_XML = 'movies.xml'
-    films_list = []
-    files_name_all = os.listdir(films_path)  # 获取文件夹下所有的目录与文件
-    for file_name in files_name_all:
-        file_dir = os.path.join(films_path, file_name)
-        print(file_name)
-        # if file_name is MOVIES_JSON:
-        #     with open(file_dir, 'r', encoding='utf-8') as f:
-        #         dict_load = json.load(f)
-        #         print(dict_load)
-        if file_name == MOVIES_XML:
-            tree = ET.parse(file_dir)
-            # 获取所有movie
-            movies_list = tree.findall('movie')
-            # print(movies_list)
-            for movie in movies_list:
-                print(movie.find('name').text)
+    like_movie = Movie.objects.get(id=movie_id)  # 获取视频对象
+    # print(like_movie.like.all())  # 该视频对应的所有收藏用户
+
+    if state == '1':  # 取消
+        like_movie.like.remove(currentuser)
+    elif state == '0':  # 收藏
+        like_movie.like.add(currentuser)
+
+    return JsonResponse({'data':'success'})
 
 
 # 详情页
-@login_required
 def single(request, mid):
     key = request.COOKIES.get('usernameKey')
     usernameKey = request.session.get(key, 0)
@@ -192,16 +116,252 @@ def single(request, mid):
                                            })
 
 
-def is_video(file_name):
-    """
-    根据文件的后缀名判断是否为视频文件
-    :param file_name:
-    :return:
-    """
-    video_names = ('.mp4', '.m4v', '.mkv', '.webm', '.mov'
-                   '.avi', '.wmv', '.mpg', '.flv')
-    extension_name = os.path.splitext(file_name)[1]
-    if extension_name in video_names:
-        return True
+# 评论
+def comment(request, mid):
+    comment_content = request.POST.get('comment')
+
+    token = request.COOKIES.get('userToken')
+    currentuser = User.objects.get(token=token)
+    m = Movie.objects.get(id=mid)
+
+    Comment.objects.create(comment_content=comment_content, movie_id=m, user_id=currentuser)
+
+    return redirect('/single/' + mid)
+
+
+# 各类视频展示及搜索页面
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+def movie(request, tid):
+    key = request.COOKIES.get('usernameKey')
+    usernameKey = request.session.get(key, 0)
+
+    # search_result_list = Movie.objects.filter(style_type=)
+    # 根据id,分类搜索
+    # print(tid)
+    # print(type(tid))
+    if tid == '2':  # 最新
+        search_list = Movie.objects.order_by('-release_time')
+    elif tid == '4':  # 高分
+        search_list = Movie.objects.order_by('-mark')
+    elif tid == '5':  # 华语
+        search_list = Movie.objects.filter(country_id=3)
+    elif tid == '6':  # 欧美
+        search_list = Movie.objects.filter(country_id=2)
+    elif tid == '7':  # 韩国
+        search_list = Movie.objects.filter(country_id=1)
+    elif tid == '8':  # 日本
+        search_list = Movie.objects.filter(country_id=4)
+    elif tid == '9':  # 更多
+        search_list = Movie.objects.all()
+    elif tid == '0':
+        key_word = request.POST.get('keyword')
+        search_list = Movie.objects.filter(name__contains=key_word)
+
+
+    # 重新拼接处理封面图片的url以及出演人员的处理（默认显示3个主角）
+    for s in search_list:
+        # 封面图片的链接
+        s.slink = 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/' + str(s.cover_link).split('_')[0] + '.webp'
+        if s.slink.count('.webp') > 1:
+            s.slink = s.slink[ : len(s.slink) - 5]
+        # print(s.slink)
+
+        # 主角
+        s.s_lead = s.lead_role.all()[:3]
+        # print(s.s_lead)
+
+        s.like_count = len(s.like.all())  # 视频被收藏的总数
+
+
+    paginator = Paginator(search_list, 6) # 一页显示 6 条
+    page = request.GET.get('page')
+
+        # 获取对应页面
+    try:
+        results = paginator.page(page)
+
+        # 页面不是整数，返回第一页
+    except PageNotAnInteger:
+        results = paginator.page(1)
+
+        # 页码越界，返回最后一页
+    except EmptyPage:
+        results = paginator.page(paginator.num_pages)
+
+    # 侧边栏推荐
+    side_recommend = Movie.objects.order_by('-mark')[: 3]
+    for s in side_recommend:
+        s.new_link = 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/' + str(s.cover_link).split('_')[
+            0] + '.webp'
+        if s.new_link.count('.webp') > 1:
+            s.new_link = s.new_link[: len(s.new_link) - 5]
+
+        s.like_count = len(s.like.all())
+
+    # 底部广告栏
+    ad_list = Advertise.objects.all()
+    import os
+    for a in ad_list:
+        print(a.pic)
+
+
+    return render(request, 'movie.html', {'username':usernameKey,
+                                          'results':results,
+                                          'side_recommend':side_recommend,
+                                          'ad_list':ad_list,
+                                          })
+
+
+# 登陆页
+def login(request):
+    # 将上一个页面的地址记录
+    url = request.META.get('HTTP_REFERER', '/   ')
+    print(url)
+    request.session['preUrl'] = url
+    if request.method == 'GET':
+        return render(request, 'login.html')
     else:
-        return False
+        nickname = request.POST.get('nickname')
+        password = request.POST.get('password')
+
+        # 查询用户是否存在
+        try:
+            u = User.objects.get(username=nickname)
+        except User.DoesNotExist as e:
+            return redirect('/login/')
+
+        # 如果存在,验证密码是否正确
+        if password != u.password:
+            return redirect('/login/')
+
+        # 登陆成功
+        response = HttpResponseRedirect('/index/')
+        token = make_password(nickname)
+        u.token = token
+        u.save()
+        response.set_cookie('userToken', token)
+
+        request.session['username'] = u.username
+        response.set_cookie('usernameKey', 'username')
+
+        return response
+
+
+# 注册页
+def register(request):
+    if request.method == 'GET':
+        return render(request, 'register.html')
+    else:
+        # 如果是ajax请求
+        if request.is_ajax():
+            # 验证账号是否存在
+            nickname = request.POST.get('nickname')
+
+            try:
+                user = User.objects.get(username=nickname)
+                # 说明账号已被使用
+                return JsonResponse({'data':'1'})
+            except User.DoesNotExist as e:
+                # 判断邮箱是否可用
+                email = request.POST.get('email')
+                try:
+                    email_user = User.objects.get(email=email)
+                    # 说明邮箱已被占用
+                    return JsonResponse({'data':'2'})
+                except User.DoesNotExist as e:
+                    # 邮箱可用
+                    return JsonResponse({'data':'3'})
+                # 说明账号可以使用
+                return JsonResponse({'data':'0'})
+
+        # 如果信息验证全部通过,注册用户
+        else:
+            nickname = request.POST.get('nickname')
+            email = request.POST.get('email')
+            password = request.POST.get('password')
+            subscribe = request.POST.get('subscribe')
+
+            # 用户token
+            userToken = make_password(nickname)
+
+            # 创建用户
+            user = User.createuser(username=nickname, password=password, email=email, is_subscribe=subscribe, token=userToken)
+            user.save()
+
+            # 注册成功需要做状态保持,写入session,默认登陆
+            request.session['username'] = nickname
+            response = redirect('/index/')
+            response.set_cookie('usernameKey', 'username')
+            response.set_cookie('userToken', userToken)
+
+            return response
+
+
+# 退出页
+from django.contrib.auth import logout
+def quit(request):
+    logout(request)
+    return redirect('/index/')
+
+
+# 个人中心
+def person(request):
+    key = request.COOKIES.get('usernameKey')
+    usernameKey = request.session.get(key, 0)
+
+    token = request.COOKIES.get('userToken')
+    currentuser = User.objects.get(token=token).id
+
+    results = Movie.objects.filter(like=currentuser)
+    # 重新拼接处理封面图片的url以及出演人员的处理（默认显示3个主角）
+    for s in results:
+        # 封面图片的链接
+        s.slink = 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/' + str(s.cover_link).split('_')[
+            0] + '.webp'
+        if s.slink.count('.webp') > 1:
+            s.slink = s.slink[: len(s.slink) - 5]
+        # print(s.slink)
+
+        # 主角
+        s.s_lead = s.lead_role.all()[:3]
+        # print(s.s_lead)
+
+        s.like_count = len(s.like.all())  # 视频被收藏的总数
+
+    paginator = Paginator(results, 6)  # 一页显示 6 条
+    page = request.GET.get('page')
+
+    # 获取对应页面
+    try:
+        results = paginator.page(page)
+
+        # 页面不是整数，返回第一页
+    except PageNotAnInteger:
+        results = paginator.page(1)
+
+        # 页码越界，返回最后一页
+    except EmptyPage:
+        results = paginator.page(paginator.num_pages)
+
+    # 侧边栏推荐
+    side_recommend = Movie.objects.order_by('-mark')[: 3]
+    for s in side_recommend:
+        s.new_link = 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/' + str(s.cover_link).split('_')[
+            0] + '.webp'
+        if s.new_link.count('.webp') > 1:
+            s.new_link = s.new_link[: len(s.new_link) - 5]
+
+        s.like_count = len(s.like.all())
+
+    # 底部广告栏
+    ad_list = Advertise.objects.all()
+    import os
+    for a in ad_list:
+        print(a.pic)
+
+    return render(request, 'person.html', {
+        'username':usernameKey,
+        'side_recommend': side_recommend,
+        'ad_list': ad_list,
+        'results':results,
+    })
